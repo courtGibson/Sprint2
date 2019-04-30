@@ -3,8 +3,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -95,6 +97,7 @@
                <padding>
                   <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
                </padding></Button>
+            <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="138.0" scaleX="0.9" text="Delete Comment" translateY="90.0" />
          </children>
       </VBox>
    </right>
@@ -126,19 +129,26 @@
                <center>
                   <HBox prefHeight="169.0" prefWidth="392.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="71.0" text="Contents: ">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextArea id="contents" fx:id="contents" onKeyReleased="#changeContent" onMouseExited="#changeContent" prefHeight="111.0" prefWidth="289.0">
-                           <HBox.margin>
-                              <Insets bottom="175.0" />
-                           </HBox.margin>
-                        </TextArea>
+                        <VBox prefHeight="366.0" prefWidth="438.0">
+                           <children>
+                              <HBox prefHeight="151.0" prefWidth="392.0">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="78.0" text="Contents:" />
+                                    <TextField id="contents" fx:id="contents" prefHeight="126.0" prefWidth="307.0" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="201.0" prefWidth="392.0">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="91.0" text="Comments:" />
+                                    <ScrollPane prefHeight="201.0" prefWidth="290.0">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="195.0" />
+                                      </content>
+                                    </ScrollPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
                </center>
