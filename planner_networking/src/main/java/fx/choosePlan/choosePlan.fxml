@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -13,11 +14,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.choosePlan.ChoosePlanController">
+<BorderPane prefHeight="412.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.choosePlan.ChoosePlanController">
    <center>
-      <Pane prefHeight="306.0" prefWidth="454.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="306.0" prefWidth="442.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane layoutX="96.0" layoutY="-11.0" prefHeight="242.0" prefWidth="262.0">
+            <GridPane layoutX="96.0" layoutY="-11.0" prefHeight="242.0" prefWidth="266.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.800048828125" minWidth="10.0" prefWidth="220.800048828125" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.39996337890625" minWidth="10.0" prefWidth="41.59995117187498" />
@@ -26,6 +27,8 @@
                 <RowConstraints maxHeight="132.00000610351563" minHeight="10.0" prefHeight="92.20000610351562" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="88.20000000000002" minHeight="10.0" prefHeight="86.59999389648439" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="61.999975585937506" minHeight="10.0" prefHeight="61.999975585937506" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="61.999975585937506" minHeight="10.0" prefHeight="61.999975585937506" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="61.999975585937506" minHeight="10.0" prefHeight="61.999975585937506" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label id="viewPlanLabel" fx:id="viewPlanLabel" prefHeight="18.0" prefWidth="194.0" text="View Plan" textAlignment="CENTER">
@@ -54,9 +57,16 @@
                   </HBox>
                   <RadioButton id="viewPlanRBtn" fx:id="viewPlanRBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" GridPane.columnIndex="1" />
                   <RadioButton id="newPlanRBtn" fx:id="newPlanRBtn" mnemonicParsing="false" prefHeight="18.0" prefWidth="46.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label id="newPlanLabel" fx:id="newPlanLabel1" prefHeight="56.0" prefWidth="188.0" text="Compare Plans" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <RadioButton id="newPlanRBtn" fx:id="newPlanRBtn1" mnemonicParsing="false" prefHeight="18.0" prefWidth="46.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ComboBox prefWidth="150.0" GridPane.rowIndex="4" />
                </children>
             </GridPane>
-            <Button fx:id="planSubBtn" layoutX="188.0" layoutY="231.0" mnemonicParsing="false" onAction="#choosePlanType" prefHeight="36.0" prefWidth="78.0" text="Submit" />
+            <Button fx:id="planSubBtn" layoutX="186.0" layoutY="249.0" mnemonicParsing="false" onAction="#choosePlanType" prefHeight="36.0" prefWidth="78.0" text="Submit" />
          </children>
       </Pane>
    </center>
