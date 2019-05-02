@@ -62,7 +62,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <RadioButton id="newPlanRBtn" fx:id="newPlanRBtn1" mnemonicParsing="false" prefHeight="18.0" prefWidth="46.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <RadioButton id="compButton" fx:id="compButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="46.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <ComboBox prefWidth="150.0" GridPane.rowIndex="4" />
                </children>
             </GridPane>
