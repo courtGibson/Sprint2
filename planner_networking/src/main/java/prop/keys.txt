@@ -1,0 +1,5 @@
+serverSelection.text
+locolHost.text
+other.text
+selectLanguage.text
+submit.text
