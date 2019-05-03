@@ -20,6 +20,7 @@ public class PlanNode implements Serializable
 	private PlanNode parent;
 	private String name;
 	private String data;
+	private ArrayList<String> comments = new ArrayList<String>();
 	private ArrayList<PlanNode> children = new ArrayList<PlanNode>();
 
 	// constructor is data is not known
@@ -57,6 +58,11 @@ public class PlanNode implements Serializable
 		return name;
 	}
 
+	public ArrayList<String> getComments()
+	{
+		return comments;
+	}
+	
 	/**
 	 * Sets name of node
 	 * 

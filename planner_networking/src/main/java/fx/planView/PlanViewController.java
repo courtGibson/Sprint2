@@ -2,6 +2,7 @@ package fx.planView;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import fx.checkSave.CheckSaveController;
 import fx.homePageView.HomePageViewController;
@@ -11,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -48,7 +50,16 @@ public class PlanViewController
 	private TreeView tree;
 
 	@FXML
-	private TextArea contents;
+	TextArea contentsArea;
+	
+	@FXML
+	TextArea commentArea;
+	
+	@FXML
+	Button post;
+	
+	@FXML
+	Button delete;
 	
 	@FXML
 	Label user;
@@ -64,6 +75,23 @@ public class PlanViewController
 		return user;
 	}
 
+	public void postComment()
+	{
+		String comment = commentArea.getText();
+		
+		if(comment != null)
+		{
+			String newComment = (user.getText())+": "+comment;
+			 this.testClient.getCurrNode().getComments().add(newComment);
+			 addNewComment(newComment);
+		}
+		
+		
+		
+		
+	}
+	
+	
 	/**
 	 * @param user the user to set
 	 */
@@ -130,6 +158,9 @@ public class PlanViewController
 	Button removeBtn;
 	@FXML
 	Button addBtn;
+	@FXML
+	ScrollPane scroll;
+	
 	private Object PlanNode;
 	
 	// lets never touch this again... it works
@@ -216,8 +247,9 @@ public class PlanViewController
 			addBtn.setDisable(true);
 			saveBtn.setDisable(true);
 
+			setComments();
 		
-			contents.setText("");
+			contentsArea.setText("");
 
 			TreeItem<PlanNode> theRoot = makeTree();
 
@@ -303,6 +335,30 @@ public class PlanViewController
 
 		}
 
+	}
+	
+	
+	private void setComments()
+	{
+		ArrayList<String> com = this.testClient.getCurrNode().getComments();
+		
+		ArrayList<Label> ls = new ArrayList<Label>();
+		
+		for (int i = 0; i<com.size(); i++)
+		{
+			//String currString = com;
+			Label curr = new Label(com.get(i));
+			ls.add(curr);
+			scroll.getChildrenUnmodifiable().add(curr);
+		}
+		
+		
+		
+	}
+	
+	private void addNewComment(String c)
+	{
+		
 	}
 	
 	
