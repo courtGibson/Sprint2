@@ -21,6 +21,7 @@ public class PlanNode implements Serializable
 	private String name;
 	private String data;
 	private ArrayList<PlanNode> children = new ArrayList<PlanNode>();
+	private ArrayList<String> comments = new ArrayList<String>();
 
 	// constructor is data is not known
 	/**
@@ -37,6 +38,8 @@ public class PlanNode implements Serializable
 		this.name = name;
 		this.parent = parent;
 		this.data = data;
+		
+		this.comments = new ArrayList<String>();
 
 	}
 
@@ -147,12 +150,14 @@ public class PlanNode implements Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
+		
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
+		
 		PlanNode other = (PlanNode) obj;
 		if (children == null)
 		{
@@ -186,6 +191,71 @@ public class PlanNode implements Serializable
 		
 	}
 
+	/**
+	 * @return the comments
+	 */
+	public ArrayList<String> getComments()
+	{
+		return comments;
+	}
+
+	/**
+	 * @param comments the comments to set
+	 */
+	public void setComments(ArrayList<String> comments)
+	{
+		this.comments = comments;
+	}
+
+	/**
+	 * Takes a node child and adds child to child list
+	 * 
+	 * @param child child to be added to this node
+	 */
+	public void addNote(String child)
+	{
+		System.out.println(child);
+		this.comments.add(child);
+	}
+
+	// remove child node from a node's children list
+	/**
+	 * @param child child to be removed from this node
+	 */
+	public void removeNote(String child)
+	{
+		this.comments.remove(child);
+	}
 	
+	
+	public ArrayList<String> compare(PlanNode other)
+	{
+		if(this.getName() != other.getName())
+		{
+			
+			String note = this.getName() + " has a different name than " + other.getName();
+			
+
+			this.addNote(note);
+		}
+		
+		if(this.children.size() != other.getChildren().size())
+		{
+			String note = this.getName() + " has " + this.children.size() + " children, while " 
+							+ other.getName() + " has " + other.getChildren().size() + "children";
+			this.addNote(note);
+			
+		}
+		if(this.getData() != other.getData())
+		{
+			String note = this.getName() + " has this data: " + this.getData() + ", while " 
+					+ other.getName() + " has that data: " + other.getData();
+			
+			this.addNote(note);
+		}
+		
+		
+		return comments;
+	}
 
 }

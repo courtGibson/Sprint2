@@ -3,6 +3,7 @@ package software_masters.planner_networking;
 import static org.junit.Assert.*;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -31,9 +32,32 @@ public class NodeTest
 		assertEquals("Description", tree.getData());
 		assertEquals(null, tree.getParent());
 		assertEquals(true, tree.getChildren().isEmpty());
+		
+		
+		PlanNode compare = new PlanNode(null, "TreeNode", null, null);
 
+		compare.setName("compare");
+	
+
+
+		compare.setData("Not Description");
+
+		
+		ArrayList<String> different = tree.compare(compare);
+		
+		for(int i = 0 ; i < different.size(); i++)
+		{
+			System.out.println(different.get(i));
+			
+			
+		}
 		// make child nodes for tree, test addChild and getParent
 		PlanNode n1 = new PlanNode(tree, "Vision", null, null);
+		
+		n1.addNote("could be better");
+		
+		assertEquals(n1.getComments().get(0), "could be better");
+		
 		tree.addChild(n1);
 		assertEquals(tree, n1.getParent());
 		assertEquals("Vision", n1.getName());

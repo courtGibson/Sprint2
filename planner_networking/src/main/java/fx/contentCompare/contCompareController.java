@@ -73,5 +73,13 @@ public class contCompareController
 		
 		
 	}
+	
+	public void close()
+	{
+		
+		primaryStage.close();
+		
+		
+	}
 
 }

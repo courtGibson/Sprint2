@@ -176,7 +176,7 @@ public class ChoosePlanController
 		
 		else
 		{
-			compare(testClient.getCurrPlanFile(), testClient.getServer().getPlan(menu.getValue(), testClient.getCookie()));
+			this.compare(testClient.getCurrPlanFile(), testClient.getServer().getPlan(menu.getValue(), testClient.getCookie()));
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/fx/planView/planView.fxml"));
 			//this.mainView = loader.load();
@@ -289,31 +289,24 @@ public class ChoosePlanController
 	
 	public void compare(PlanFile one, PlanFile two) throws IOException
 	{
-		if(one.getYear() == two.getYear())
+			System.out.println("here");
+		if(one.getYear().equals(two.getYear()))
 		{
-			Stage stage = new Stage();
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("/fx/contentCompare/contentChange.fxml"));
-			BorderPane backing = loader.load();
-		
-			contCompareController cont = loader.getController();
-			cont.setDifference("They are the same plan");
-			cont.setPrimaryStage(stage);
-			Scene s = new Scene(backing, 100, 100);
-			stage.setScene(s);
-			stage.show();
+			this.makeBox("They are the same");
 			
 			
 		}
 		else
 		{
 			
+			PlanNode ogRoot = one.getPlan().getRoot();
+			PlanNode otherRoot = two.getPlan().getRoot();
 			
+			ArrayList<String> notes = recursiveCompare(ogRoot, otherRoot);
 			
-			
-			for(int i = 0; i<10; i++)
+			for(int i = 0; i<notes.size(); i++)
 			{
-				
+				this.makeBox(one.getYear() + notes.get(i));
 
 			
 			}
@@ -324,18 +317,60 @@ public class ChoosePlanController
 		
 	}
 	
+	
+	
+	public ArrayList<String> recursiveCompare(PlanNode og, PlanNode other) throws IOException
+	{
+		
+		for(int i =0 ; i < og.getChildren().size(); i++)
+		{
+			
+			if(other.getChildren().get(i) != null)
+			{
+				ArrayList<String> otherList = recursiveCompare(og.getChildren().get(i), other.getChildren().get(i));
+				
+				
+				
+				for(int j = 0 ; j< otherList.size() ; j++)
+				{
+					
+					this.makeBox(this.testClient.getCurrPlanFile().getYear() + otherList.get(j));
+					
+					
+					
+				}
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		ArrayList<String> notes = og.compare(other);
+		
+		
+		return notes;
+	}
+	
+	
+	
 	public void makeBox(String text) throws IOException
 	{
 		
 		Stage stage = new Stage();
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/fx/contentCompare/contentChange.fxml"));
-		BorderPane backing = loader.load();
+		BorderPane view = loader.load();
 	
 		contCompareController cont = loader.getController();
 		cont.setDifference(text);
 		cont.setPrimaryStage(stage);
-		Scene s = new Scene(backing, 100, 100);
+		Scene s = new Scene(view, 300, 300);
 		stage.setScene(s);
 		
 		stage.show();
