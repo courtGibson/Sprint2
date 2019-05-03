@@ -176,28 +176,30 @@ public class ChoosePlanController
 		
 		else
 		{
-			String planYear = newPlanYearText.getText();
-			System.out.println(planYear);
-			
-			
-			
-			for(int i = 0; i<10; i++)
-			{
-				
-			Stage stage = new Stage();
+			compare(testClient.getCurrPlanFile(), testClient.getServer().getPlan(menu.getValue(), testClient.getCookie()));
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("/fx/contentCompare/contentChange.fxml"));
-			this.mainView = loader.load();
+			loader.setLocation(Main.class.getResource("/fx/planView/planView.fxml"));
+			//this.mainView = loader.load();
+			BorderPane newMain = loader.load();
 			
-			contCompareController cont = loader.getController();
+			PlanViewController cont = loader.getController();
+			cont.setTestClient(testClient);
 			
-			cont.setPrimaryStage(stage);
-			Scene s = new Scene(mainView);
-			stage.setScene(s);
-			stage.show();
+			cont.setPrimaryStage(primaryStage);
 			
-			}
+
+	
+			cont.setDept(dept);
+		
 			
+			cont.setUser(user);
+		
+			
+			primaryStage.getScene().setRoot(newMain);
+			
+			
+			
+
 			
 		
 		
@@ -285,7 +287,7 @@ public class ChoosePlanController
 	
 	
 	
-	public void compare(PlanFile one, PlanFile two)
+	public void compare(PlanFile one, PlanFile two) throws IOException
 	{
 		if(one.getYear() == two.getYear())
 		{
@@ -296,10 +298,22 @@ public class ChoosePlanController
 		else
 		{
 			
-			// use set tree from hard code project
+			for(int i = 0; i<10; i++)
+			{
+				
+			Stage stage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/fx/contentCompare/contentChange.fxml"));
+			this.mainView = loader.load();
 			
-			//iterate through tree
-			// use method developed in design doc
+			contCompareController cont = loader.getController();
+			
+			cont.setPrimaryStage(stage);
+			Scene s = new Scene(mainView);
+			stage.setScene(s);
+			stage.show();
+			
+			}
 			
 			
 			
