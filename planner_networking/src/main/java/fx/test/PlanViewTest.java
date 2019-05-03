@@ -152,7 +152,11 @@ public class PlanViewTest extends ApplicationTest{
 		
 		//Checking changing content
 		clickOn("#contentsArea");
-		write("Add some good content here");
+		write("Add");
+		clickOn("#commentArea");
+		write("hello");
+		clickOn("#post");
+		/////////////////////////////////////////////
 		clickOn("#tree");
 		clickOn("Mission");
 		clickOn("Goal");
@@ -160,7 +164,7 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("Assessment Process");
 		clickOn("Results");
 		
-		assertEquals(getTextTextArea("#contentsArea"), "Add some good content here");
+		assertEquals("Add", getTextTextArea("#contentsArea")) ;
 		
 		//Check add branch
 		TreeView thisTree = (TreeView) lookup("#tree").query();
@@ -195,9 +199,9 @@ public class PlanViewTest extends ApplicationTest{
 		doubleClickOn("Assessment Process");
 		clickOn("Results");
 		clickOn("#contentsArea");
-		write("Add some good content here");
+		write("Add");
 		
-		assertEquals(getTextTextArea("#contentsArea"), "Add some good content here");
+		assertEquals("Add", getTextTextArea("#contentsArea"));
 		clickOn("#homepageButton");
 		clickOn("#checkSave");
 		
@@ -217,7 +221,7 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("Results");
 		
 		
-		assertEquals(getTextTextArea("#contentsArea"), "Add some good content here");
+		assertEquals( "Add", getTextTextArea("#contentsArea"));
 		
 		
 		//Check save button
@@ -236,7 +240,7 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("Mission");
 		clickOn("#contentsArea");
 		
-		assertEquals(getTextTextArea("#contentsArea"), "Check save");
+		assertEquals("Check save", getTextTextArea("#contentsArea"));
 		
 		clickOn("#logoutButton");
 		
@@ -263,21 +267,10 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("#tree");
 		clickOn("Mission");
 		
-		assertEquals(getTextTextArea("#contentsArea"), "Check save");
+		assertEquals("Check save", getTextTextArea("#contentsArea"));
 		
 	}
-	
-	@Test
-	public void testComments()
-	{
-		clickOn("Mission");
-		doubleClickOn("Mission");
-		doubleClickOn("Goal");
-		clickOn("#commentsArea");
-		write("hello");
-		clickOn("Mission");
-		clickOn("Goal");
-	}
+
 	
 
 

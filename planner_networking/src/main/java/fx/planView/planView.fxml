@@ -133,7 +133,7 @@
                               <HBox prefHeight="95.0" prefWidth="391.0">
                                  <children>
                                     <Label id="contents" fx:id="contents" prefHeight="21.0" prefWidth="114.0" text="Contents:" />
-                                    <TextArea fx:id="contentsArea" prefHeight="67.0" prefWidth="264.0">
+                                    <TextArea fx:id="contentsArea" onKeyReleased="#changeContent" prefHeight="67.0" prefWidth="264.0">
                                        <HBox.margin>
                                           <Insets bottom="10.0" />
                                        </HBox.margin>

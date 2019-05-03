@@ -97,7 +97,7 @@ public class PlanViewController
 		if (comment != null)
 		{
 			String newComment = (user.getText()) + ": " + comment;
-			this.testClient.getCurrNode().getComments().add(newComment);
+			currentNode.getComments().add(newComment);
 
 			setComments();
 		}
@@ -138,6 +138,7 @@ public class PlanViewController
 					v.getChildren().add(l);
 				}
 				scroll.setContent(v);
+				scroll.setDisable(false);
 
 			}
 		} 
@@ -296,6 +297,7 @@ public class PlanViewController
 			saveBtn.setDisable(true);
 
 			commentArea.setDisable(true);
+			scroll.setDisable(true);
 
 			contentsArea.setText("");
 
@@ -325,6 +327,8 @@ public class PlanViewController
 			nodeLabel.setText(currentNode.getName());
 
 			setContents(currentNode.getData());
+			System.out.println("\n\ncurrentNode data: "+currentNode.getData());
+			
 			commentArea.setDisable(false);
 			setComments();
 
@@ -432,7 +436,9 @@ public class PlanViewController
 
 		saveBtn.setDisable(false);
 		String contentValue = contentsArea.getText();
+		System.out.println("\n\ntext is: "+contentValue);
 		currentNode.setData(contentValue);
+		System.out.println("\n\ntext in node: "+currentNode.getData());
 
 	}
 
