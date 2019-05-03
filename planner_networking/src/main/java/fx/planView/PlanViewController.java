@@ -108,10 +108,14 @@ public class PlanViewController
 	{
 		ls.clear();
 		commentArea.clear();
-		if (currentNode.getComments().size() > 0)
+		com = currentNode.getComments();
+		
+		System.out.println("currentNode: "+currentNode);
+		
+		if (com.size() > 0)
 		{
-			com = currentNode.getComments();
-
+			
+			
 			for (int i = 0; i < com.size(); i++)
 			{
 				// String currString = com;
@@ -139,6 +143,7 @@ public class PlanViewController
 		} 
 		else
 		{
+			
 			VBox v = new VBox();
 			scroll.setContent(v);
 		}

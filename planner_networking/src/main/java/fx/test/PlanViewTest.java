@@ -151,7 +151,7 @@ public class PlanViewTest extends ApplicationTest{
 		
 		
 		//Checking changing content
-		clickOn("#contents");
+		clickOn("#contentsArea");
 		write("Add some good content here");
 		clickOn("#tree");
 		clickOn("Mission");
@@ -160,7 +160,7 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("Assessment Process");
 		clickOn("Results");
 		
-		assertEquals(getTextTextArea("#contents"), "Add some good content here");
+		assertEquals(getTextTextArea("#contentsArea"), "Add some good content here");
 		
 		//Check add branch
 		TreeView thisTree = (TreeView) lookup("#tree").query();
@@ -194,10 +194,10 @@ public class PlanViewTest extends ApplicationTest{
 		doubleClickOn("Learning Objective");
 		doubleClickOn("Assessment Process");
 		clickOn("Results");
-		clickOn("#contents");
+		clickOn("#contentsArea");
 		write("Add some good content here");
 		
-		assertEquals(getTextTextArea("#contents"), "Add some good content here");
+		assertEquals(getTextTextArea("#contentsArea"), "Add some good content here");
 		clickOn("#homepageButton");
 		clickOn("#checkSave");
 		
@@ -217,12 +217,12 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("Results");
 		
 		
-		assertEquals(getTextTextArea("#contents"), "Add some good content here");
+		assertEquals(getTextTextArea("#contentsArea"), "Add some good content here");
 		
 		
 		//Check save button
 		clickOn("Mission");
-		clickOn("#contents");
+		clickOn("#contentsArea");
 		write("Check save");
 		clickOn("#saveBtn");
 		clickOn("#homepageButton");
@@ -234,9 +234,9 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("#planSubBtn");
 		clickOn("#tree");
 		clickOn("Mission");
-		clickOn("#contents");
+		clickOn("#contentsArea");
 		
-		assertEquals(getTextTextArea("#contents"), "Check save");
+		assertEquals(getTextTextArea("#contentsArea"), "Check save");
 		
 		clickOn("#logoutButton");
 		
@@ -249,7 +249,7 @@ public class PlanViewTest extends ApplicationTest{
 		doubleClickOn("Mission");
 		
 		
-		clickOn("#contents");
+		clickOn("#contentsArea");
 		write(" Exit");
 		
 		clickOn("#homepageButton");
@@ -263,8 +263,20 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("#tree");
 		clickOn("Mission");
 		
-		assertEquals(getTextTextArea("#contents"), "Check save");
+		assertEquals(getTextTextArea("#contentsArea"), "Check save");
 		
+	}
+	
+	@Test
+	public void testComments()
+	{
+		clickOn("Mission");
+		doubleClickOn("Mission");
+		doubleClickOn("Goal");
+		clickOn("#commentsArea");
+		write("hello");
+		clickOn("Mission");
+		clickOn("Goal");
 	}
 	
 
