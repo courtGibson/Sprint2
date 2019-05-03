@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import software_masters.planner_networking.PlanNode;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -177,22 +178,33 @@ public class ChoosePlanController
 		{
 			String planYear = newPlanYearText.getText();
 			System.out.println(planYear);
-			testClient.getCurrPlanFile().setYear(planYear);
 			
+			
+			
+			for(int i = 0; i<10; i++)
+			{
+				
+			Stage stage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/fx/contentCompare/contentChange.fxml"));
 			this.mainView = loader.load();
 			
 			contCompareController cont = loader.getController();
 			
+			cont.setPrimaryStage(stage);
+			Scene s = new Scene(mainView);
+			stage.setScene(s);
+			stage.show();
 			
-			cont.setPrimaryStage(primaryStage);
+			}
 			
+			
+		
 		
 			
 		
 			
-			primaryStage.getScene().setRoot(mainView);
+			
 			
 			
 		}
@@ -275,8 +287,23 @@ public class ChoosePlanController
 	
 	public void compare(PlanFile one, PlanFile two)
 	{
-		
-		
+		if(one.getYear() == two.getYear())
+		{
+			// comparebox with all the same
+			
+			
+		}
+		else
+		{
+			
+			// use set tree from hard code project
+			
+			//iterate through tree
+			// use method developed in design doc
+			
+			
+			
+		}
 		
 	}
 	
