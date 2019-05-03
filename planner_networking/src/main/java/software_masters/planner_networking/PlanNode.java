@@ -230,7 +230,13 @@ public class PlanNode implements Serializable
 	
 	public ArrayList<String> compare(PlanNode other)
 	{
-		if(this.getName() != other.getName())
+		if(this.getName().equals(other.getName()))
+		{
+			System.out.println("heya");
+			
+			
+		}
+		else
 		{
 			
 			String note = this.getName() + " has a different name than " + other.getName();
