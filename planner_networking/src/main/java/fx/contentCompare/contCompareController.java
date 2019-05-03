@@ -67,6 +67,11 @@ public class contCompareController
 		this.primaryStage = primaryStage;
 	}
 
-	
+	public void setDifference(String difference)
+	{
+		this.compDisplay.setText(difference);
+		
+		
+	}
 
 }

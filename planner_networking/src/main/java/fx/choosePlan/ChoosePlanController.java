@@ -291,33 +291,55 @@ public class ChoosePlanController
 	{
 		if(one.getYear() == two.getYear())
 		{
-			// comparebox with all the same
+			Stage stage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/fx/contentCompare/contentChange.fxml"));
+			BorderPane backing = loader.load();
+		
+			contCompareController cont = loader.getController();
+			cont.setDifference("They are the same plan");
+			cont.setPrimaryStage(stage);
+			Scene s = new Scene(backing, 100, 100);
+			stage.setScene(s);
+			stage.show();
 			
 			
 		}
 		else
 		{
 			
+			
+			
+			
 			for(int i = 0; i<10; i++)
 			{
 				
-			Stage stage = new Stage();
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("/fx/contentCompare/contentChange.fxml"));
-			this.mainView = loader.load();
-			
-			contCompareController cont = loader.getController();
-			
-			cont.setPrimaryStage(stage);
-			Scene s = new Scene(mainView);
-			stage.setScene(s);
-			stage.show();
+
 			
 			}
 			
 			
 			
 		}
+		
+	}
+	
+	public void makeBox(String text) throws IOException
+	{
+		
+		Stage stage = new Stage();
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/fx/contentCompare/contentChange.fxml"));
+		BorderPane backing = loader.load();
+	
+		contCompareController cont = loader.getController();
+		cont.setDifference(text);
+		cont.setPrimaryStage(stage);
+		Scene s = new Scene(backing, 100, 100);
+		stage.setScene(s);
+		
+		stage.show();
+		
 		
 	}
 	
