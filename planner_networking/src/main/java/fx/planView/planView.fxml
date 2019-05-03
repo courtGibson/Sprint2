@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane onMouseMoved="#buildTree" prefHeight="552.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.planView.PlanViewController">
+<BorderPane onMouseMoved="#buildTree" prefHeight="552.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.planView.PlanViewController">
    <top>
       <Pane prefHeight="84.0" prefWidth="738.0" BorderPane.alignment="CENTER">
          <children>
@@ -159,7 +159,7 @@
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Button fx:id="post" mnemonicParsing="false" onAction="#postComment" prefHeight="31.0" prefWidth="169.0" text="Post New Comment" translateX="20.0" />
-                                    <Button fx:id="delete" mnemonicParsing="false" text="Delete Comment" translateX="50.0" />
+                                    <Button fx:id="delete" mnemonicParsing="false" onAction="#deleteComment" text="Delete Comment" translateX="50.0" />
                                  </children>
                               </HBox>
                            </children>

@@ -17,6 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -34,36 +35,39 @@ public class PlanViewController
 	BorderPane mainView;
 	Client testClient;
 	PlanNode currentNode;
-	
+	ArrayList<Label> ls = new ArrayList<Label>();
+	ArrayList<String> com;
+	String selectedCom;
+
 	Boolean builtTree = false;
-	
-	@FXML 
+
+	@FXML
 	private Button logoutButton;
-	
+
 	@FXML
 	private Label nodeLabel;
-	
-	@FXML 
+
+	@FXML
 	private Button homepageButton;
-	
+
 	@FXML
 	private TreeView tree;
 
 	@FXML
 	TextArea contentsArea;
-	
+
 	@FXML
 	TextArea commentArea;
-	
+
 	@FXML
 	Button post;
-	
+
 	@FXML
 	Button delete;
-	
+
 	@FXML
 	Label user;
-	
+
 	@FXML
 	Label dept;
 
@@ -75,23 +79,72 @@ public class PlanViewController
 		return user;
 	}
 
+	public void deleteComment()
+	{
+		int index = com.indexOf(selectedCom);
+		if (index >= 0)
+		{
+			com.remove(index);
+		}
+		setComments();
+
+	}
+
 	public void postComment()
 	{
 		String comment = commentArea.getText();
-		
-		if(comment != null)
+
+		if (comment != null)
 		{
-			String newComment = (user.getText())+": "+comment;
-			 this.testClient.getCurrNode().getComments().add(newComment);
-			 addNewComment(newComment);
+			String newComment = (user.getText()) + ": " + comment;
+			this.testClient.getCurrNode().getComments().add(newComment);
+
+			setComments();
 		}
-		
-		
-		
-		
+
 	}
-	
-	
+
+	private void setComments()
+	{
+		ls.clear();
+		commentArea.clear();
+		if (currentNode.getComments().size() > 0)
+		{
+			com = currentNode.getComments();
+
+			for (int i = 0; i < com.size(); i++)
+			{
+				// String currString = com;
+				Label curr = new Label(com.get(i));
+				curr.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>()
+				{
+					public void handle(MouseEvent m)
+					{
+						curr.setStyle("-fx-background-color: yellow");
+						selectedCom = curr.getText();
+					};
+				});
+
+				ls.add(curr);
+
+				VBox v = new VBox();
+
+				for (Label l : ls)
+				{
+					v.getChildren().add(l);
+				}
+				scroll.setContent(v);
+
+			}
+		} 
+		else
+		{
+			VBox v = new VBox();
+			scroll.setContent(v);
+		}
+
+	}
+
 	/**
 	 * @param user the user to set
 	 */
@@ -118,40 +171,40 @@ public class PlanViewController
 
 	public Client getTestClient()
 	{
-	
+
 		return testClient;
 	}
 
 	public void setTestClient(Client testClient)
 	{
-	
+
 		this.testClient = testClient;
 	}
 
 	public Stage getPrimaryStage()
 	{
-	
+
 		return primaryStage;
 	}
 
 	public void setPrimaryStage(Stage primaryStage)
 	{
-	
+
 		this.primaryStage = primaryStage;
 	}
 
 	public BorderPane getMainView()
 	{
-	
+
 		return mainView;
 	}
 
 	public void setMainView(BorderPane mainView)
 	{
-	
+
 		this.mainView = mainView;
 	}
-	
+
 	@FXML
 	Button saveBtn;
 	@FXML
@@ -160,141 +213,127 @@ public class PlanViewController
 	Button addBtn;
 	@FXML
 	ScrollPane scroll;
-	
+
 	private Object PlanNode;
-	
+
 	// lets never touch this again... it works
-	public void logout() throws IOException {
+	public void logout() throws IOException
+	{
 		System.out.println("logout");
-		
+
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
-		//this.mainView = loader.load();
-		//assertThat(mainView!=null);
+		// this.mainView = loader.load();
+		// assertThat(mainView!=null);
 		BorderPane newMain = loader.load();
-		
+
 		LoginViewController cont = loader.getController();
 		cont.setMainView(newMain);
 		cont.setTestClient(testClient);
 		cont.setPrimaryStage(primaryStage);
-		
+
 		primaryStage.setUserData(cont);
 		primaryStage.getScene().setRoot(newMain);
-		
+
 	}
-	
-	public void homepage() throws IOException {
+
+	public void homepage() throws IOException
+	{
 		System.out.println("homepage");
-		
-		if(saveBtn.isDisabled())
+
+		if (saveBtn.isDisabled())
 		{
-		
+
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
 			this.mainView = loader.load();
-		
+
 			HomePageViewController cont = loader.getController();
 			cont.setTestClient(testClient);
 			cont.setPrimaryStage(primaryStage);
 			this.testClient = cont.getTestClient();
-			
-			
+
 			cont.setDept(dept.getText());
 			cont.setUser(user.getText());
-		
-		
+
 			primaryStage.getScene().setRoot(mainView);
 		}
-		
+
 		else
 		{
-			
-			
+
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/fx/checkSave/checkSave.fxml"));
-			//this.mainView = loader.load();
+			// this.mainView = loader.load();
 			BorderPane newMain = loader.load();
-		
+
 			CheckSaveController cont = loader.getController();
 			cont.setTestClient(testClient);
 			cont.setPrimaryStage(primaryStage);
 			cont.setDept(dept.getText());
 			cont.setUser(user.getText());
-		
+
 			primaryStage.setWidth(500);
 			primaryStage.getScene().setRoot(newMain);
 		}
-			
-			
-			
-			
-			
-		
-		
-		
-		
-		
-		
+
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public void buildTree() throws RemoteException {
-		
-		
-		if(!builtTree) {
-			
+	public void buildTree() throws RemoteException
+	{
+
+		if (!builtTree)
+		{
+
 			removeBtn.setDisable(true);
 			addBtn.setDisable(true);
 			saveBtn.setDisable(true);
 
-			setComments();
-		
+			commentArea.setDisable(true);
+
 			contentsArea.setText("");
 
 			TreeItem<PlanNode> theRoot = makeTree();
 
 			tree.setRoot(theRoot);
 
-			
 			tree.getSelectionModel().selectedItemProperty()
-	        .addListener((observable, oldValue, newValue) -> handleTreeClick((TreeItem<PlanNode>) newValue));
+					.addListener((observable, oldValue, newValue) -> handleTreeClick((TreeItem<PlanNode>) newValue));
 
 			builtTree = true;
 
 		}
 	}
-	
+
 	private void handleTreeClick(TreeItem<PlanNode> newValue)
 	{
-		try {
+		try
+		{
 
-		removeBtn.setDisable(false);
+			removeBtn.setDisable(false);
 
-		addBtn.setDisable(false);
+			addBtn.setDisable(false);
 
-		this.currentNode = newValue.getValue();
-	
-		
-		nodeLabel.setText(currentNode.getName());
-		
-		setContents(currentNode.getData());
+			this.currentNode = newValue.getValue();
+
+			nodeLabel.setText(currentNode.getName());
+
+			setContents(currentNode.getData());
+			commentArea.setDisable(false);
+			setComments();
+
+		} catch (Exception E)
+		{
+
 		}
-		catch (Exception E){
-			
-		}
-		
-		
-		
+
 	}
-	
 
 	public TreeItem<PlanNode> makeTree() throws RemoteException
 	{
 
 		TreeItem<PlanNode> rootItem = getProducts(testClient.getCurrPlanFile().getPlan().getRoot());
-
-		
-		
 
 		return rootItem;
 
@@ -306,17 +345,17 @@ public class PlanViewController
 
 		// This will be the final ArrayList passed back to FXTreeView.java for build
 		// (should only hold Mission for centre)
-		//ArrayList<TreeItem<PlanNode>> FinalNodeList = new ArrayList<TreeItem<PlanNode>>();
+		// ArrayList<TreeItem<PlanNode>> FinalNodeList = new
+		// ArrayList<TreeItem<PlanNode>>();
 
 		TreeItem<PlanNode> currentTreeItem = new TreeItem<PlanNode>(root);
 
-		//FinalNodeList.add(currentTreeItem);
+		// FinalNodeList.add(currentTreeItem);
 
 		getKids(root, currentTreeItem);
 
 		return currentTreeItem;
 	}
-	
 
 	private void getKids(PlanNode parentNode, TreeItem<PlanNode> parentTreeItem)
 	{
@@ -336,91 +375,60 @@ public class PlanViewController
 		}
 
 	}
-	
-	
-	private void setComments()
-	{
-		ArrayList<String> com = this.testClient.getCurrNode().getComments();
-		
-		ArrayList<Label> ls = new ArrayList<Label>();
-		
-		for (int i = 0; i<com.size(); i++)
-		{
-			//String currString = com;
-			Label curr = new Label(com.get(i));
-			ls.add(curr);
-			scroll.getChildrenUnmodifiable().add(curr);
-		}
-		
-		
-		
-	}
-	
-	private void addNewComment(String c)
-	{
-		
-	}
-	
-	
+
 	public void removeNode() throws RemoteException
 	{
-		
-		
+
 		this.testClient.setCurrNode(currentNode);
-		
+
 		this.testClient.removeBranch();
-		
-		
+
 		builtTree = false;
 		buildTree();
-		
+
 		saveBtn.setDisable(false);
 		removeBtn.setDisable(true);
 		addBtn.setDisable(true);
 
-			
 	}
-	
+
 	public void addNode() throws RemoteException
 	{
 		this.testClient.setCurrNode(currentNode);
 		this.testClient.addBranch();
-		
-		
+
 		builtTree = false;
 		buildTree();
 		saveBtn.setDisable(false);
 		removeBtn.setDisable(true);
 		addBtn.setDisable(true);
-		
-		
-		
+
 	}
-	
-	public void save() throws IllegalArgumentException, RemoteException 
+
+	public void save() throws IllegalArgumentException, RemoteException
 	{
 		this.testClient.setCurrNode(currentNode);
 		this.testClient.pushPlan(testClient.getCurrPlanFile());
 		removeBtn.setDisable(true);
 		addBtn.setDisable(true);
 		saveBtn.setDisable(true);
-		
+
 	}
 
-	public void setContents(String stringContent) {
-		
-		contents.setText(stringContent);
+	public void setContents(String stringContent)
+	{
+
+		contentsArea.setText(stringContent);
+
 	}
-	
-	
-	public void changeContent() {
-		
+
+	public void changeContent()
+	{
+
 		saveBtn.setDisable(false);
-		String contentValue = contents.getText();
+		String contentValue = contentsArea.getText();
 		currentNode.setData(contentValue);
-		
+
 	}
-	
-	
 
 }
