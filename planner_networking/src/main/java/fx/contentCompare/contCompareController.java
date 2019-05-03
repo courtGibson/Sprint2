@@ -67,6 +67,6 @@ public class contCompareController
 		this.primaryStage = primaryStage;
 	}
 
-
+	
 
 }

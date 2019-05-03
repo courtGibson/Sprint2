@@ -79,10 +79,7 @@ public class HomePageViewController
         
         ArrayList<PlanFile> plans = testClient.getPlans();
         
-       /* for (PlanFile p :plans)
-        {
-        	list.add(p.getYear());
-        }*/
+
  
         // Now add observability by wrapping it with ObservableList.
         ObservableList<String> thisArray = FXCollections.observableList(list);
@@ -96,9 +93,7 @@ public class HomePageViewController
 		//menu.getItems().addAll(thisArray);
 		 
 		//Label selected = new Label("Select plan");
-       
-		 
-		  
+
         //selected.setText(menu.getValue().getPlan().getName()+menu.getValue().getYear()); 
             
 	if (count==0)

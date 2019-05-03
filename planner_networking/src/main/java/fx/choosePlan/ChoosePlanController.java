@@ -7,10 +7,14 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.List;
 
 import fx.contentCompare.contCompareController;
 import fx.planView.PlanViewController;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +22,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import software_masters.planner_networking.PlanNode;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
@@ -44,17 +49,17 @@ public class ChoosePlanController
 	public Client testClient;
 	
 	
-	
+	int count = 0;
 	
 	Stage primaryStage;
-	// to commit
+	
 	public void setTestClient(Client testClient)
 	{
 		this.testClient = testClient;
 		
 	}
-	
-	
+	@FXML
+	private ComboBox<String> menu;
 	// make the FXML stuff
 	
 	@FXML
@@ -195,7 +200,46 @@ public class ChoosePlanController
 		
 	}
 
+	public void makeMenu() throws RemoteException
+	{	
+		//
+		
+		//ObservableList<String> thisArray = new ObservableList<String>();
 
+		// Use Java Collections to create the List.
+        List<String> list = new ArrayList<String>();
+        
+        ArrayList<PlanFile> plans = testClient.getPlans();
+        
+
+ 
+        // Now add observability by wrapping it with ObservableList.
+        ObservableList<String> thisArray = FXCollections.observableList(list);
+		
+        //System.out.println("we are here");
+        for (PlanFile p : plans)
+        {
+        	thisArray.add(p.getYear());
+        }
+		 
+		//menu.getItems().addAll(thisArray);
+		 
+		//Label selected = new Label("Select plan");
+
+        //selected.setText(menu.getValue().getPlan().getName()+menu.getValue().getYear()); 
+            
+	if (count==0)
+	{
+		
+		 menu.setItems(thisArray);
+		 count ++;
+	}
+      
+		 
+		 
+  
+	
+	}
 
 	/**
 	 * @return the plan
@@ -220,6 +264,19 @@ public class ChoosePlanController
 	public void setPrimaryStage(Stage primaryStage)
 	{
 		this.primaryStage = primaryStage;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	public void compare(PlanFile one, PlanFile two)
+	{
+		
+		
 		
 	}
 	
