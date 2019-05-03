@@ -120,6 +120,7 @@ public class PlanViewController
 			{
 				// String currString = com;
 				Label curr = new Label(com.get(i));
+				curr.setId("comment"+i);
 				curr.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>()
 				{
 					public void handle(MouseEvent m)

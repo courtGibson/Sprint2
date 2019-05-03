@@ -156,6 +156,20 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("#commentArea");
 		write("hello");
 		clickOn("#post");
+		clickOn("#commentArea");
+		write("comment");
+		clickOn("#post");
+		clickOn("#commentArea");
+		write("type");
+		clickOn("#post");
+		
+		assertEquals(getTextLabel("#comment0"), "user: hello");
+		assertEquals(getTextLabel("#comment1"), "user: comment");
+		assertEquals(getTextLabel("#comment2"), "user: type");
+		clickOn("#comment1");
+		clickOn("#delete");
+		clickOn("#comment0");
+		clickOn("#delete");
 		/////////////////////////////////////////////
 		clickOn("#tree");
 		clickOn("Mission");
@@ -165,7 +179,7 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("Results");
 		
 		assertEquals("Add", getTextTextArea("#contentsArea")) ;
-		
+		assertEquals(getTextLabel("#comment0"), "user: type");
 		//Check add branch
 		TreeView thisTree = (TreeView) lookup("#tree").query();
 		assertEquals(thisTree.getRoot().getChildren().size(), 1);
