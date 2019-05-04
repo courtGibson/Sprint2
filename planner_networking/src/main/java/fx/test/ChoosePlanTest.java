@@ -138,6 +138,21 @@ public class ChoosePlanTest extends ApplicationTest
 
 	}
 	
+	
+	@Test
+	public void testCompare()
+	{
+		clickOn("#compButton");
+		clickOn("#menu");
+		
+		clickOn("2017");
+		clickOn("#planSubBtn");
+		assertEquals(getLabelText("#compDisplay"), "2019Goal has this data: help, while Goal has that data: null");
+		
+		clickOn("#okButton");
+		
+		
+	}
 	@Test
 	public void testLabels()
 	{
