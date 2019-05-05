@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,16 +36,33 @@ public class LangEnglish implements Language
 		try 
 		{
 			prop.load(ip);
+			ip.close();
 		} 
 		catch (IOException e) 
 		{
 			e.printStackTrace();
 		}
 		
+		
+		FileOutputStream out = new FileOutputStream("First.properties");
+		
 		for (int i = 0; i < keys.size(); i++)
 		{
 			prop.setProperty(keys.get(i), newWords.get(i));
 		}
+		try {
+			prop.store(out, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		
 	}
 
@@ -98,19 +116,32 @@ public class LangEnglish implements Language
 			}
 		
 	}
-	
-	
-	public Properties getProp() 
-	{
-		return prop;
-	}
 
 	
 	public static void main(String[] args) throws FileNotFoundException 
 	{
 		LangEnglish e = new LangEnglish();
-		
+		String newW = e.getNewWord("editingTools.text");
+		System.out.println("new: "+newW);
 	
 
+	}
+
+
+
+	@Override
+	public Properties getProp() 
+	{
+		return prop;
+	}
+
+
+
+	@Override
+	public String getNewWord(String keyWord) 
+	{
+		String word = prop.getProperty(keyWord);
+		System.out.println("word: "+word);
+		return word;
 	}
 }

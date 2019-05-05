@@ -3,6 +3,7 @@ package software_masters.planner_networking;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public interface Language 
 {
@@ -15,4 +16,7 @@ public interface Language
 	
 	void setWords();
 	
+	public Properties getProp();
+	
+	public String getNewWord(String keyWord);
 }
