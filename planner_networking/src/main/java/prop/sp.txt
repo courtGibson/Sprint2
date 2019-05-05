@@ -1,0 +1,35 @@
+Selección de Servidor
+Anfitrión Local:
+Otro:
+Seleccione el Idioma:
+Enviar
+Hay cambios no guardados.
+¿Te gustaría ahorrar antes de salir?
+Salvar
+Salida
+Iniciar Sesión
+Nombre de Usuario:
+Contraseña:
+Plan Seleccionado:
+Ver Plan
+Hacer nuevo plan con el plan seleccionado como plantilla.
+Nuevo Año del Plan:
+Comparar con:
+Seleccione Plan
+Departamento:
+Página de Inicio
+Planes de Departamento
+Seleccione Plan
+Enviar Selección
+Cerrar Sesión
+Nombre del Plan
+Vista del Plan
+Nombre del Nodo
+Contenido:
+Comentarios:
+Nuevo Comentario:
+Publicar Nuevo Comentario
+Eliminar Comentario
+Herramientas de Edición
+Retirar
+Añadir

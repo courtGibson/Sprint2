@@ -3,3 +3,33 @@ Local Host:
 Other:
 Select Language:
 Submit
+There are unsaved changes.
+Would you like to save before exiting?
+Save
+Exit
+Login
+Username:
+Password:
+Selected Plan:
+View Plan
+Make new plan with selected plan as the template
+New plan year: 
+Compare to:
+Select Plan
+Department: 
+Home Page
+Department Plans
+Select Plan
+Submit Selection
+Logout
+Plan name
+Plan View
+Node Name
+Contents:
+Comments:
+New Comment: 
+Post New Comment
+Delete Comment
+Editing Tools
+Remove
+Add

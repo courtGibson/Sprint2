@@ -21,7 +21,7 @@
                <children>
                   <HBox prefHeight="66.0" prefWidth="174.0">
                      <children>
-                        <Label text="Username: " translateX="10.0" translateY="20.0" underline="true">
+                        <Label text="%username.text" translateX="10.0" translateY="20.0" underline="true">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -34,7 +34,7 @@
                   </HBox>
                   <HBox prefHeight="59.0" prefWidth="204.0">
                      <children>
-                        <Label text="Department: " translateY="20.0" underline="true">
+                        <Label text="%department.text" translateY="20.0" underline="true">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
@@ -46,17 +46,17 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button id="homepageButton" fx:id="homepageButton" mnemonicParsing="false" onAction="#homepage" text="Home Page" translateX="120.0" translateY="20.0" />
+                        <Button id="homepageButton" fx:id="homepageButton" mnemonicParsing="false" onAction="#homepage" text="%homePage.text" translateX="120.0" translateY="20.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button id="logoutButton" fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" text="Logout" translateX="120.0" translateY="20.0" />
+                        <Button id="logoutButton" fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" text="%logout.text" translateX="120.0" translateY="20.0" />
                      </children>
                   </HBox>
                </children>
             </HBox>
-            <Label id="treeViewLabel" fx:id="treeLabel" layoutX="66.0" layoutY="62.0" text="Plan name" translateZ="-100.0">
+            <Label id="treeViewLabel" fx:id="treeLabel" layoutX="66.0" layoutY="62.0" text="%planName.text" translateZ="-100.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -72,7 +72,7 @@
    <right>
       <VBox id="rightVBox" fx:id="rightVBox" prefHeight="388.0" prefWidth="139.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="TOP_CENTER" contentDisplay="CENTER" text="Editing Tools" translateX="15.0">
+            <Label alignment="TOP_CENTER" contentDisplay="CENTER" text="%editingTools.text" translateX="15.0">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
@@ -82,18 +82,18 @@
                <padding>
                   <Insets top="10.0" />
                </padding></Label>
-            <Button id="removeBtn" fx:id="removeBtn" mnemonicParsing="false" onAction="#removeNode" text="Remove" translateX="25.0">
+            <Button id="removeBtn" fx:id="removeBtn" mnemonicParsing="false" onAction="#removeNode" text="%remove.text" translateX="25.0">
                <VBox.margin>
                   <Insets bottom="50.0" />
                </VBox.margin></Button>
-            <Button id="addBtn" fx:id="addBtn" mnemonicParsing="false" onAction="#addNode" text="Add" translateX="25.0">
+            <Button id="addBtn" fx:id="addBtn" mnemonicParsing="false" onAction="#addNode" text="%add.text" translateX="25.0">
                <VBox.margin>
                   <Insets bottom="50.0" />
                </VBox.margin>
                <padding>
                   <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
                </padding></Button>
-            <Button id="saveBtn" fx:id="saveBtn" mnemonicParsing="false" onAction="#save" text="Save" translateX="25.0">
+            <Button id="saveBtn" fx:id="saveBtn" mnemonicParsing="false" onAction="#save" text="%save.text" translateX="25.0">
                <padding>
                   <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
                </padding></Button>
@@ -103,7 +103,7 @@
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <top>
-            <Label text="Plan View" underline="true" BorderPane.alignment="CENTER">
+            <Label text="%planView.text" underline="true" BorderPane.alignment="CENTER">
                <font>
                   <Font size="28.0" />
                </font>
@@ -114,7 +114,7 @@
                <top>
                   <HBox prefHeight="62.0" prefWidth="392.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label id="nodeLabel" fx:id="nodeLabel" contentDisplay="CENTER" text="Node Name" translateX="150.0" translateY="15.0">
+                        <Label id="nodeLabel" fx:id="nodeLabel" contentDisplay="CENTER" text="%nodeName.text" translateX="150.0" translateY="15.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -132,7 +132,7 @@
                            <children>
                               <HBox prefHeight="95.0" prefWidth="391.0">
                                  <children>
-                                    <Label id="contents" fx:id="contents" prefHeight="21.0" prefWidth="114.0" text="Contents:" />
+                                    <Label id="contents" fx:id="contents" prefHeight="21.0" prefWidth="114.0" text="%contents.text" />
                                     <TextArea fx:id="contentsArea" onKeyReleased="#changeContent" prefHeight="67.0" prefWidth="264.0">
                                        <HBox.margin>
                                           <Insets bottom="10.0" />
@@ -142,7 +142,7 @@
                               </HBox>
                               <HBox prefHeight="103.0" prefWidth="391.0">
                                  <children>
-                                    <Label prefHeight="21.0" prefWidth="117.0" text="Comments:" />
+                                    <Label prefHeight="21.0" prefWidth="117.0" text="%comments.text" />
                                     <ScrollPane fx:id="scroll" prefHeight="104.0" prefWidth="261.0">
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
@@ -152,14 +152,14 @@
                               </HBox>
                               <HBox prefHeight="84.0" prefWidth="391.0">
                                  <children>
-                                    <Label prefHeight="21.0" prefWidth="119.0" text="New Comment: " translateY="10.0" />
+                                    <Label prefHeight="21.0" prefWidth="119.0" text="%newComment.text" translateY="10.0" />
                                     <TextArea fx:id="commentArea" prefHeight="80.0" prefWidth="260.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="post" mnemonicParsing="false" onAction="#postComment" prefHeight="31.0" prefWidth="169.0" text="Post New Comment" translateX="20.0" />
-                                    <Button fx:id="delete" mnemonicParsing="false" onAction="#deleteComment" text="Delete Comment" translateX="50.0" />
+                                    <Button fx:id="post" mnemonicParsing="false" onAction="#postComment" prefHeight="31.0" prefWidth="169.0" text="%postNew.text" translateX="20.0" />
+                                    <Button fx:id="delete" mnemonicParsing="false" onAction="#deleteComment" text="%deleteComment.text" translateX="50.0" />
                                  </children>
                               </HBox>
                            </children>

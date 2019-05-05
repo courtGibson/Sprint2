@@ -9,15 +9,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-public class LangEngish implements Language 
+public class LangEnglish implements Language 
 {
 	ArrayList<String> keys;
 	ArrayList<String> newWords;
+	Properties prop;
 
-	public LangEngish() 
+	public LangEnglish() throws FileNotFoundException 
 	{
+		keys = new ArrayList<String>();
+		newWords = new ArrayList<String>();
 		setKeys();
 		setWords();
+		setKeyWords(keys, newWords);
 	}
 
 
@@ -25,8 +29,8 @@ public class LangEngish implements Language
 	@Override
 	public void setKeyWords(ArrayList<String> keys, ArrayList<String> newWords) throws FileNotFoundException
 	{
-		Properties prop = new Properties();
-		FileInputStream ip = new FileInputStream("../prop/en.properties");
+		prop = new Properties();
+		FileInputStream ip = new FileInputStream("src/main/java/prop/en.properties");
 		
 		try 
 		{
@@ -44,17 +48,21 @@ public class LangEngish implements Language
 		
 	}
 
+
+
+
 	@Override
 	public void setKeys() 
 	{
 		try {
-				File file = new File("../prop/keys.txt");
+				File file = new File("src/main/java/prop/keys.txt");
 				FileReader fileReader = new FileReader(file);
 				BufferedReader bufferedReader = new BufferedReader(fileReader);
 				//StringBuffer stringBuffer = new StringBuffer();
 				String line;
 				while ((line = bufferedReader.readLine()) != null) 
 				{
+					System.out.println(line);
 					keys.add(line);
 				}
 				fileReader.close();
@@ -72,7 +80,7 @@ public class LangEngish implements Language
 	public void setWords()
 	{
 		try {
-				File file = new File("../prop/en.txt");
+				File file = new File("src/main/java/prop/en.txt");
 				FileReader fileReader = new FileReader(file);
 				BufferedReader bufferedReader = new BufferedReader(fileReader);
 				//StringBuffer stringBuffer = new StringBuffer();
@@ -92,4 +100,17 @@ public class LangEngish implements Language
 	}
 	
 	
+	public Properties getProp() 
+	{
+		return prop;
+	}
+
+	
+	public static void main(String[] args) throws FileNotFoundException 
+	{
+		LangEnglish e = new LangEnglish();
+		
+	
+
+	}
 }

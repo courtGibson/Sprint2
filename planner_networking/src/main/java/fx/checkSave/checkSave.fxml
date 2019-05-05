@@ -15,8 +15,8 @@
          <children>
             <HBox layoutX="100.0" layoutY="77.0" prefHeight="100.0" prefWidth="254.0">
                <children>
-                  <Button id="checkSave" fx:id="checkSave" mnemonicParsing="false" onAction="#save" prefHeight="55.0" prefWidth="103.0" text="Save" />
-                  <Button id="checkExit" fx:id="checkExit" mnemonicParsing="false" onAction="#exit" prefHeight="56.0" prefWidth="105.0" text="Exit">
+                  <Button id="checkSave" fx:id="checkSave" mnemonicParsing="false" onAction="#save" prefHeight="55.0" prefWidth="103.0" text="%save.text" />
+                  <Button id="checkExit" fx:id="checkExit" mnemonicParsing="false" onAction="#exit" prefHeight="56.0" prefWidth="105.0" text="%exit.text">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin>
@@ -29,7 +29,7 @@
    <top>
       <VBox prefHeight="142.0" prefWidth="455.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
          <children>
-            <Label contentDisplay="CENTER" text="There are unsaved changes." translateX="90.0">
+            <Label contentDisplay="CENTER" text="%unsaved.text" translateX="90.0">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
@@ -37,7 +37,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="30.0" prefWidth="420.0" text="Would you like to save before exiting?" translateX="22.0">
+            <Label prefHeight="30.0" prefWidth="420.0" text="%exiting.text" translateX="22.0">
                <font>
                   <Font size="20.0" />
                </font>

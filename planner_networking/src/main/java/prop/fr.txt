@@ -1,0 +1,35 @@
+Sélection du Serveur
+Hôte Local:
+Autre:
+Choisir la Langue:
+Soumettre
+Il y a des modifications non enregistrées.
+Voulez-vous sauvegarder avant de quitter?
+Sauvegarder
+Sortie
+S'Identifier
+Nom D'Utilisateur:
+Mot de Passe:
+Plan Sélectionné:
+Voir le Plan
+Créer un nouveau plan avec le plan sélectionné comme modèle
+Nouvelle année de planification:
+Comparer Aux:
+Sélectionnez le Plan
+Département:
+Page D'Accueil
+Plans de Département
+Sélectionnez le Plan
+Soumettre la Sélection
+Connectez - Out
+Nom du Plan
+Vue en Plan
+Nom du Noeud
+Contenu:
+Commentaires:
+Nouveau Commentaire:
+Publier un Nouveau Commentaire
+Supprimer le Commentaire
+Outils D'édition
+Retirer
+Ajouter
