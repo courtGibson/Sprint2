@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.comments.commentController">
+   <top>
+      <Label id="commentLabel" fx:id="commentLabel" prefHeight="94.0" prefWidth="330.0" text="Comment here" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <GridPane prefHeight="173.0" prefWidth="148.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <RadioButton id="removeComment" fx:id="removeComment" mnemonicParsing="false" prefHeight="18.0" prefWidth="170.0" text="Remove Comment" GridPane.rowIndex="1" />
+                  <RadioButton id="addCommen" fx:id="addComment" mnemonicParsing="false" text="Add Comment" GridPane.rowIndex="2" />
+                <Button mnemonicParsing="false" onAction="#setLabel" prefHeight="27.0" prefWidth="150.0" text="Display Comment" />
+               </children>
+            </GridPane>
+         </center>
+         <bottom>
+            <TextField id="commentText" fx:id="commentText" promptText="Enter Comment" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+   </center>
+   <bottom>
+      <Button id="submitButton" fx:id="submitButton" mnemonicParsing="false" onAction="#submit" text="Submit" BorderPane.alignment="CENTER" />
+   </bottom>
+   <left>
+      <ComboBox id="commentMenu" fx:id="commentMenu" onMouseClicked="#makeMenu" prefHeight="27.0" prefWidth="139.0" promptText="Comments" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>

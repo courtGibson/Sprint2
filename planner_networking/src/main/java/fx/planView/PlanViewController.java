@@ -3,12 +3,16 @@ package fx.planView;
 import java.io.IOException;
 import java.rmi.RemoteException;
 
+import javafx.scene.layout.VBox;
 import fx.checkSave.CheckSaveController;
+import fx.comments.commentController;
+import fx.contentCompare.contCompareController;
 import fx.homePageView.HomePageViewController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -37,6 +41,9 @@ public class PlanViewController
 	
 	@FXML 
 	private Button logoutButton;
+	
+	@FXML 
+	private Button comment;
 	
 	@FXML
 	private Label nodeLabel;
@@ -341,13 +348,37 @@ public class PlanViewController
 		
 	}
 	
+	
+	
+	public void commentChange() throws IOException
+	{
+
+		this.testClient.setCurrNode(currentNode);
+		Stage stage = new Stage();
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/fx/comments/commentView.fxml"));
+		BorderPane view = loader.load();
+	
+		commentController cont = loader.getController();
+		cont.setCurrent(this);
+		cont.setPrimaryStage(stage);
+		Scene s = new Scene(view);
+		stage.setScene(s);
+		
+		stage.showAndWait();
+	
+		
+	}
+	
 	public void save() throws IllegalArgumentException, RemoteException 
 	{
 		this.testClient.setCurrNode(currentNode);
 		this.testClient.pushPlan(testClient.getCurrPlanFile());
+		System.out.println(testClient.getCurrPlanFile().getYear());
 		removeBtn.setDisable(true);
 		addBtn.setDisable(true);
 		saveBtn.setDisable(true);
+		this.testClient.getServer().save();
 		
 	}
 

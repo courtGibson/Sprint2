@@ -44,12 +44,12 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button id="homepageButton" fx:id="homepageButton" mnemonicParsing="false" onAction="#homepage" text="Home Page" translateX="120.0" translateY="20.0" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Button id="logoutButton" fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" text="Logout" translateX="120.0" translateY="20.0" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button id="logoutButton" fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" text="Logout" translateX="120.0" translateY="20.0" />
+                           </children>
+                        </HBox>
+                        <Button id="homepageButton" fx:id="homepageButton" mnemonicParsing="false" onAction="#homepage" prefHeight="27.0" prefWidth="224.0" text="Home Page" translateX="120.0" translateY="20.0" />
                      </children>
                   </HBox>
                </children>
@@ -95,6 +95,14 @@
                <padding>
                   <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
                </padding></Button>
+            <Button id="comment" fx:id="comment" mnemonicParsing="false" onAction="#commentChange" prefHeight="27.0" prefWidth="104.0" text="Comment" translateX="25.0">
+               <padding>
+                  <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </right>

@@ -46,7 +46,7 @@ import software_masters.planner_networking.ServerImplementation;
 
 public class ChoosePlanController
 {
-	public PlanFile plan;
+	
 	public Client testClient;
 	
 	
@@ -255,23 +255,7 @@ public class ChoosePlanController
 	
 	}
 
-	/**
-	 * @return the plan
-	 */
-	public PlanFile getPlan()
-	{
-		return plan;
-	}
 
-
-
-	/**
-	 * @param plan the plan to set
-	 */
-	public void setPlan(PlanFile plan)
-	{
-		this.plan = plan;
-	}
 
 
 
@@ -306,7 +290,7 @@ public class ChoosePlanController
 			
 			for(int i = 0; i<notes.size(); i++)
 			{
-				this.makeBox(one.getYear() + notes.get(i));
+				this.makeBox(one.getYear() + " "+ notes.get(i));
 
 			
 			}
@@ -322,7 +306,7 @@ public class ChoosePlanController
 	public ArrayList<String> recursiveCompare(PlanNode og, PlanNode other) throws IOException
 	{
 		
-		for(int i =0 ; i < og.getChildren().size(); i++)
+		for(int i = 0 ; i < og.getChildren().size(); i++)
 		{
 			
 			if(other.getChildren().get(i) != null)
@@ -370,7 +354,7 @@ public class ChoosePlanController
 		contCompareController cont = loader.getController();
 		cont.setDifference(text);
 		cont.setPrimaryStage(stage);
-		Scene s = new Scene(view, 300, 300);
+		Scene s = new Scene(view);
 		stage.setScene(s);
 		
 		stage.show();

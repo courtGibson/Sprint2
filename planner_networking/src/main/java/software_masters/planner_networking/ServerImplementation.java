@@ -150,12 +150,12 @@ public class ServerImplementation implements Server
 
 		if (dept.containsPlan(plan.getYear()))
 		{
-			PlanFile oldPlan = dept.getPlan(plan.getYear());
-			if (!oldPlan.isCanEdit())// checks planFile is editable
+			dept.removePlan(plan.getYear());
+			/*if (!oldPlan.isCanEdit())// checks planFile is editable
 			{
 				throw new IllegalArgumentException("Not allowed to edit this plan");
 			}
-
+			*/
 		}
 		dept.addPlan(plan.getYear(), plan);
 
@@ -299,7 +299,7 @@ public class ServerImplementation implements Server
 
 	public void save()
 	{
-		String filename = "PlannerServer.serv";
+		String filename = "Server.serv";
 		XMLEncoder encoder = null;
 		try
 		{
@@ -309,6 +309,7 @@ public class ServerImplementation implements Server
 			System.out.println("ERROR: While Creating or Opening the File " + filename);
 		}
 		encoder.writeObject(this);
+		System.out.println("here and saving");
 		encoder.close();
 
 	}

@@ -303,6 +303,52 @@ public class PlanViewTest extends ApplicationTest{
 		return thisLabel.textProperty().get();
 
 	}
+	
+	public void testComments()
+	{
+		navigateToPage();
+		
+		clickOn("Mission");
+		clickOn("#comment");
+		
+		clickOn("#addComment");
+		
+		clickOn("#commentText");
+		
+		write("This is a Comment");
+		
+		clickOn("#submitButton");
+		clickOn("Mission");
+		clickOn("#comment");
+		
+		clickOn("#addComment");
+		
+		clickOn("#commentText");
+		
+		write("This is a second Comment");
+		
+		clickOn("#submitButton");
+		
+		clickOn("Mission");
+		assertEquals(testClient.getCurrNode().getComments().size(), 2);
+		clickOn("#comment");
+		
+		clickOn("#commentMenu");
+		
+		clickOn("This is a Comment");
+		
+		clickOn("#displayButton");
+		
+		assertEquals(getTextTextArea("#commentLabel"), "This is a Comment");
+		
+		clickOn("#removeComment");
+		
+		clickOn("#submitButton");
+		clickOn("Mission");
+		assertEquals(testClient.getCurrNode().getComments().size(), 1);
+		
+		
+	}
 
 
 }

@@ -42,7 +42,7 @@ public class HomePageViewController
 	Stage primaryStage;
 	BorderPane mainView;
 	
-	PlanFile selectedPlan;
+	//PlanFile selectedPlan;
 	
 	@FXML
 	private ComboBox<String> menu;
@@ -129,7 +129,7 @@ public class HomePageViewController
 		
 		testClient.getPlan(menu.getValue());
 		
-		selectedPlan = testClient.getCurrPlanFile();
+		//selectedPlan = testClient.getCurrPlanFile();
 		
 		
 	}

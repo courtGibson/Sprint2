@@ -214,7 +214,7 @@ public class PlanNode implements Serializable
 	 */
 	public void addNote(String child)
 	{
-		System.out.println(child);
+		
 		this.comments.add(child);
 	}
 
