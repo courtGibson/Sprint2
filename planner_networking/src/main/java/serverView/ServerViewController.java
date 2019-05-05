@@ -5,28 +5,37 @@ import java.rmi.AccessException;
 import java.rmi.NoSuchObjectException;
 
 import javafx.stage.WindowEvent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import loginView.LoginViewController;
 import software_masters.planner_networking.Client;
 //import software_masters.planner_networking.EventHandler;
 import software_masters.planner_networking.Main;
+import software_masters.planner_networking.PlanFile;
 import software_masters.planner_networking.Server;
 import software_masters.planner_networking.ServerImplementation;
+import software_masters.planner_networking.Language;
+import software_masters.planner_networking.LangEnglish;
 
 
 //import software_masters.planner_networking.WindowEvent;
@@ -37,7 +46,8 @@ public class ServerViewController
 	Stage primaryStage;
 	BorderPane mainView;
 	Client testClient;
-	
+	Language l = new LangEnglish();
+	int count = 0;
 	
 	public Client getTestClient()
 	{
@@ -98,6 +108,34 @@ public class ServerViewController
 	
 	@FXML
 	public Label error;
+	
+	@FXML
+	public ComboBox<String> selection;
+	
+	
+	@FXML
+	public Text servSelect;
+	@FXML
+	public Text localHost;
+	@FXML
+	public Text other;
+	@FXML
+	public Label selectLang;
+	
+	
+	
+	public void setNewText()
+	{
+		
+		servSelect.setText(l.getNewWord("serverSelection.text"));
+		localHost.setText(l.getNewWord("locolHost.text"));
+		other.setText(l.getNewWord("other.text"));
+		selectLang.setText(l.getNewWord("selectLanguage.text"));
+		ServerSubmitButton.setText(l.getNewWord("submit.text"));
+
+		
+	}
+	
 	
 	
 	private void connect(String hostName) throws Exception
@@ -166,6 +204,59 @@ public class ServerViewController
 		
 	}
 	
+	public void setLanguage()
+	{
+		String lang = selection.getValue();
+		
+		if(lang == "Spanish")
+		{
+			// language = new spanish
+		}
+		else if(lang == "French")
+		{
+			// language  = new french
+		}
+		
+		setNewText();
+	}
+	
+
+	
+	public void makeMenu() throws RemoteException
+	{	
+		//
+		
+		//ObservableList<String> thisArray = new ObservableList<String>();
+
+		// Use Java Collections to create the List.
+        List<String> list = new ArrayList<String>();
+        
+        list.add("Default: English");
+        list.add("Spanish");
+        list.add("French");
+        
+ 
+        // Now add observability by wrapping it with ObservableList.
+        ObservableList<String> thisArray = FXCollections.observableList(list);
+		
+        //System.out.println("we are here");
+        for (String s : list)
+        {
+        	thisArray.add(s);
+        }
+
+            
+	if (count==0)
+	{
+		 selection.setItems(thisArray);
+		 count ++;
+	}
+      
+		 
+		 
+  
+	
+	}
 
 
 	private void getConnected(Client testClient) throws Exception

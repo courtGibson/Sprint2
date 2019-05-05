@@ -16,16 +16,27 @@ public class LangEnglish implements Language
 	ArrayList<String> newWords;
 	Properties prop;
 
-	public LangEnglish() throws FileNotFoundException 
+	public LangEnglish()
 	{
 		keys = new ArrayList<String>();
 		newWords = new ArrayList<String>();
+		try 
+		{
+			start();
+		} catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+
+
+	@Override
+	public void start() throws FileNotFoundException
+	{
 		setKeys();
 		setWords();
 		setKeyWords(keys, newWords);
 	}
-
-
 
 	@Override
 	public void setKeyWords(ArrayList<String> keys, ArrayList<String> newWords) throws FileNotFoundException

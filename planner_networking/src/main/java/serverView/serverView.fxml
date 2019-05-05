@@ -16,9 +16,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serverView.ServerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#setNewText" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serverView.ServerViewController">
    <top>
-      <Text id="serverTitle" fx:id="serverTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="%serverSelection.text" underline="true" BorderPane.alignment="CENTER">
+      <Text id="serverTitle" fx:id="servSelect" strokeType="OUTSIDE" strokeWidth="0.0" text="%serverSelection.text" underline="true" BorderPane.alignment="CENTER">
          <font>
             <Font size="39.0" />
          </font>
@@ -40,7 +40,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text id="localText" fx:id="localText" strokeType="OUTSIDE" strokeWidth="0.0" text="%localHost.text" wrappingWidth="385.46142578125" GridPane.rowIndex="1">
+                  <Text id="localText" fx:id="localHost" strokeType="OUTSIDE" strokeWidth="0.0" text="%localHost.text" wrappingWidth="385.46142578125" GridPane.rowIndex="1">
                      <font>
                         <Font size="35.0" />
                      </font>
@@ -71,7 +71,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
-                        <Text id="otherText" fx:id="otherText" strokeType="OUTSIDE" strokeWidth="0.0" text="%other.text">
+                        <Text id="otherText" fx:id="other" strokeType="OUTSIDE" strokeWidth="0.0" text="%other.text">
                            <font>
                               <Font size="35.0" />
                            </font>
@@ -95,12 +95,12 @@
             </GridPane>
             <HBox prefHeight="45.0" prefWidth="640.0">
                <children>
-                  <Label prefHeight="39.0" prefWidth="290.0" text="%selectLanguage.text" translateX="30.0" translateY="15.0">
+                  <Label fx:id="selectLang" prefHeight="39.0" prefWidth="290.0" text="%selectLanguage.text" translateX="30.0" translateY="15.0">
                      <font>
                         <Font size="31.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="31.0" prefWidth="171.0" promptText="Default: English" translateX="150.0" translateY="25.0" />
+                  <ComboBox onAction="#setLanguage" onMouseClicked="#makeMenu" prefHeight="31.0" prefWidth="171.0" promptText="Default: English" translateX="150.0" translateY="25.0" />
                </children>
             </HBox>
             <Label id="errorLabel" fx:id="error" opacity="0.0" text="Please enter a valid server." textFill="#e54109" translateX="180.0" translateY="40.0">

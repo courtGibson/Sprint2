@@ -19,4 +19,6 @@ public interface Language
 	public Properties getProp();
 	
 	public String getNewWord(String keyWord);
+	
+	public void start() throws FileNotFoundException;
 }

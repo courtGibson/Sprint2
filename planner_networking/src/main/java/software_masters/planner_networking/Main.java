@@ -1,7 +1,11 @@
 package software_masters.planner_networking;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -20,9 +24,13 @@ public class Main extends Application
 		this.primaryStage = primaryStage;
 		
 		FXMLLoader loader = new FXMLLoader();
+		Locale locale = Locale.forLanguageTag("en-US");
+		
+		ResourceBundle labels = ResourceBundle.getBundle("Bundle_en.properties", locale);
+
 		loader.setLocation(Main.class.getResource("/serverView/serverView.fxml"));
 		mainView = loader.load();
-
+		
 		
 		ServerViewController cont = loader.getController();
 		cont.setMainView(mainView);
