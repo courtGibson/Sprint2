@@ -26,10 +26,10 @@ public class Main extends Application
 		FXMLLoader loader = new FXMLLoader();
 		Locale locale = Locale.forLanguageTag("en-US");
 		
-		ResourceBundle labels = ResourceBundle.getBundle("Bundle_en.properties", locale);
+		ResourceBundle labels = ResourceBundle.getBundle("prop/en", locale);
 
 		loader.setLocation(Main.class.getResource("/serverView/serverView.fxml"));
-		mainView = loader.load();
+		mainView = loader.load(getClass().getResource("/serverView/serverView.fxml"),labels);
 		
 		
 		ServerViewController cont = loader.getController();

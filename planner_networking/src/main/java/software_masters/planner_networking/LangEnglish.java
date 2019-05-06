@@ -55,7 +55,8 @@ public class LangEnglish implements Language
 		}
 		
 		
-		FileOutputStream out = new FileOutputStream("First.properties");
+		FileOutputStream out = new FileOutputStream("src/main/java/prop/en.properties");
+		System.out.println("out: "+out);
 		
 		for (int i = 0; i < keys.size(); i++)
 		{
@@ -64,13 +65,13 @@ public class LangEnglish implements Language
 		try {
 			prop.store(out, null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		try {
 			out.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 

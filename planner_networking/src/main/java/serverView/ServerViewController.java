@@ -116,11 +116,9 @@ public class ServerViewController
 	@FXML
 	public Text servSelect;
 	@FXML
-	public Text localHost;
-	@FXML
-	public Text other;
-	@FXML
 	public Label selectLang;
+	@FXML
+	public Text localHost;
 	
 	
 	
@@ -129,7 +127,7 @@ public class ServerViewController
 		
 		servSelect.setText(l.getNewWord("serverSelection.text"));
 		localHost.setText(l.getNewWord("locolHost.text"));
-		other.setText(l.getNewWord("other.text"));
+		OtherServerButton.setText(l.getNewWord("other.text"));
 		selectLang.setText(l.getNewWord("selectLanguage.text"));
 		ServerSubmitButton.setText(l.getNewWord("submit.text"));
 

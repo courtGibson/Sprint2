@@ -1,5 +1,5 @@
 serverSelection.text
-locolHost.text
+localHost.text
 other.text
 selectLanguage.text
 submit.text
