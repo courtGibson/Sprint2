@@ -218,13 +218,15 @@ public class ServerViewController
 		if(lang == "Spanish")
 		{
 			// language = new spanish
+			setNewText();
 		}
 		else if(lang == "French")
 		{
 			// language  = new french
+			setNewText();
 		}
 		
-		setNewText();
+		
 	}
 	
 
@@ -236,28 +238,36 @@ public class ServerViewController
 		//ObservableList<String> thisArray = new ObservableList<String>();
 
 		// Use Java Collections to create the List.
-        ArrayList<String> list = new ArrayList<String>();
-        
-        list.add("Default: English");
-        list.add("Spanish");
-        list.add("French");
-        
- 
-        // Now add observability by wrapping it with ObservableList.
-        ObservableList<String> thisArray = FXCollections.observableList(list);
-		
-        //System.out.println("we are here");
-        for (int i = 0; i<list.size(); i++)
-        {
-        	//System.out.println(list.get(i));
-        	thisArray.add(list.get(i));
-        }
-
-            
 		if (count==0)
 		{
-			 selection.setItems(thisArray);
-			 count ++;
+	        ArrayList<String> list = new ArrayList<String>();
+	        
+	        list.add("Default: English");
+	        list.add("Spanish");
+	        list.add("French");
+	        
+	 
+	        // Now add observability by wrapping it with ObservableList.
+	        ObservableList<String> thisArray = FXCollections.observableList(list);
+			
+	        //System.out.println("we are here");
+	       // for (int i = 0; i<list.size(); i++)
+	       // {
+	        	//System.out.println(list.get(i));
+	        // }
+	        
+	        
+	        	thisArray.add(list.get(0));
+	        	thisArray.add(list.get(1));
+	        	thisArray.add(list.get(2));
+	        	
+	        	System.out.println("thisArray: "+thisArray.get(0));
+	
+	
+	           // System.out.println("selection: "+selection.getPromptText());
+			
+				 selection.setItems(thisArray);
+				 count ++;
 		}
       
 		 
