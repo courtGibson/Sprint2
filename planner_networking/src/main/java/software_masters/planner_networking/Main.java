@@ -1,5 +1,6 @@
 package software_masters.planner_networking;
 
+import java.util.Enumeration;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -27,9 +28,17 @@ public class Main extends Application
 		Locale locale = Locale.forLanguageTag("en-US");
 		
 		ResourceBundle labels = ResourceBundle.getBundle("prop/en", locale);
+		
+		/*System.out.println("labels: "+labels);
+		for (Enumeration<String> e = labels.getKeys(); e.hasMoreElements();)
+		{
+			 System.out.println("Keys: "+e.nextElement());
+		}*/
+		      
 
 		loader.setLocation(Main.class.getResource("/serverView/serverView.fxml"));
-		mainView = loader.load(getClass().getResource("/serverView/serverView.fxml"),labels);
+		loader.setResources(labels);
+		mainView = loader.load();//getClass().getResource("/serverView/serverView.fxml"),labels);
 		
 		
 		ServerViewController cont = loader.getController();

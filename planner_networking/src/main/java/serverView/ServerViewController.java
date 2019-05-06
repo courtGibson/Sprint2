@@ -42,6 +42,13 @@ import software_masters.planner_networking.LangEnglish;
 
 public class ServerViewController
 {
+	
+	
+	public ServerViewController() 
+	{
+		System.out.println("hello from ServerViewController");
+	}
+
 	//main view needs to be local, change everywhere
 	Stage primaryStage;
 	BorderPane mainView;
@@ -119,6 +126,8 @@ public class ServerViewController
 	public Label selectLang;
 	@FXML
 	public Text localHost;
+	@FXML
+	public Text other;
 	
 	
 	
@@ -127,7 +136,7 @@ public class ServerViewController
 		
 		servSelect.setText(l.getNewWord("serverSelection.text"));
 		localHost.setText(l.getNewWord("locolHost.text"));
-		OtherServerButton.setText(l.getNewWord("other.text"));
+		other.setText(l.getNewWord("other.text"));
 		selectLang.setText(l.getNewWord("selectLanguage.text"));
 		ServerSubmitButton.setText(l.getNewWord("submit.text"));
 
@@ -227,7 +236,7 @@ public class ServerViewController
 		//ObservableList<String> thisArray = new ObservableList<String>();
 
 		// Use Java Collections to create the List.
-        List<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<String>();
         
         list.add("Default: English");
         list.add("Spanish");
@@ -238,17 +247,18 @@ public class ServerViewController
         ObservableList<String> thisArray = FXCollections.observableList(list);
 		
         //System.out.println("we are here");
-        for (String s : list)
+        for (int i = 0; i<list.size(); i++)
         {
-        	thisArray.add(s);
+        	//System.out.println(list.get(i));
+        	thisArray.add(list.get(i));
         }
 
             
-	if (count==0)
-	{
-		 selection.setItems(thisArray);
-		 count ++;
-	}
+		if (count==0)
+		{
+			 selection.setItems(thisArray);
+			 count ++;
+		}
       
 		 
 		 

@@ -56,7 +56,7 @@ public class LangEnglish implements Language
 		
 		
 		FileOutputStream out = new FileOutputStream("src/main/java/prop/en.properties");
-		System.out.println("out: "+out);
+		//System.out.println("out: "+out);
 		
 		for (int i = 0; i < keys.size(); i++)
 		{
@@ -92,7 +92,7 @@ public class LangEnglish implements Language
 				String line;
 				while ((line = bufferedReader.readLine()) != null) 
 				{
-					System.out.println(line);
+					//System.out.println(line);
 					keys.add(line);
 				}
 				fileReader.close();
@@ -134,7 +134,7 @@ public class LangEnglish implements Language
 	{
 		LangEnglish e = new LangEnglish();
 		String newW = e.getNewWord("editingTools.text");
-		System.out.println("new: "+newW);
+		//System.out.println("new: "+newW);
 	
 
 	}
@@ -153,7 +153,7 @@ public class LangEnglish implements Language
 	public String getNewWord(String keyWord) 
 	{
 		String word = prop.getProperty(keyWord);
-		System.out.println("word: "+word);
+		//System.out.println("word: "+word);
 		return word;
 	}
 }
