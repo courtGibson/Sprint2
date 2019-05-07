@@ -32,7 +32,7 @@
                               <Button fx:id="logout" mnemonicParsing="false" onAction="#logout" text="%logout.text" translateX="60.0" translateY="5.0" />
                            </children>
                         </HBox>
-                        <Text fx:id="planB" strokeType="OUTSIDE" strokeWidth="0.0" text="Plan Year" translateX="120.0" translateY="45.0">
+                        <Text fx:id="planB" strokeType="OUTSIDE" strokeWidth="0.0" text="Plan Year" translateX="200.0" translateY="45.0">
                            <font>
                               <Font size="16.0" />
                            </font>
