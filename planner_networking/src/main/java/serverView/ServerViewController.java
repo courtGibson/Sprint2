@@ -15,6 +15,8 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,7 +59,8 @@ public class ServerViewController
 	BorderPane mainView;
 	Client testClient;
 	Language l = new LangEnglish();
-	
+	String langTag = "en-US";
+	String propBund = "prop/en";
 	
 	public Client getTestClient()
 	{
@@ -153,7 +156,7 @@ public class ServerViewController
 		
 		if (hostName.equals("127.0.0.1"))
 		{
-			registry = LocateRegistry.createRegistry(1077);
+			registry = LocateRegistry.createRegistry(1078);
 	
 			ServerImplementation server = ServerImplementation.load();
 			
@@ -163,7 +166,7 @@ public class ServerViewController
 		}
 		else
 		{
-			registry = LocateRegistry.getRegistry(hostName, 1077);
+			registry = LocateRegistry.getRegistry(hostName, 1078);
 			ServerImplementation server = ServerImplementation.load();
 			
 			actualServer = server;
@@ -221,16 +224,22 @@ public class ServerViewController
 		if(lang == "Spanish")
 		{
 			l = new LangSpanish();
+			langTag = "sp-SP";
+			String propBund = "prop/sp";
 			setNewText();
 		}
 		else if(lang == "French")
 		{
 			l = new LangFrench();
+			langTag = "fr-FR";
+			String propBund = "prop/fr";
 			setNewText();
 		}
 		else if(lang == "Default: English")
 		{
 			l = new LangEnglish();
+			langTag = "en-US";
+			String propBund = "prop/en";
 			setNewText();
 		}
 		
@@ -299,13 +308,20 @@ public class ServerViewController
 
 		this.testClient = testClient;
 		
+		
 		FXMLLoader loader = new FXMLLoader();
+		Locale locale = Locale.forLanguageTag(langTag);
+		
+		ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+
 		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
-		//this.mainView = loader.load();
-		//assertThat(mainView!=null);
+		loader.setResources(labels);
+
 		BorderPane newMain = loader.load();
 		
 		LoginViewController cont = loader.getController();
+		cont.setLangTag(langTag);
+		cont.setPropBund(propBund);
 		cont.setMainView(newMain);
 		cont.setTestClient(testClient);
 		cont.setPrimaryStage(primaryStage);

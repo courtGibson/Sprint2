@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import fx.choosePlan.ChoosePlanController;
 import javafx.collections.FXCollections;
@@ -30,7 +32,9 @@ import software_masters.planner_networking.PlanFile;
 
 public class HomePageViewController
 {
-	
+	String langTag;
+	String propBund;
+
 	public Client testClient;
 	
 	@FXML 
@@ -55,6 +59,18 @@ public class HomePageViewController
 	
 	@FXML
 	Label dept;
+	
+	
+	public void setLangTag(String tag)
+	{
+		langTag = tag;
+	}
+	
+	public void setPropBund(String bund)
+	{
+		propBund = bund;
+	}
+	
 	
 	public void setDept(String deptName)
 	{
@@ -113,15 +129,22 @@ public class HomePageViewController
 	
 	}
 	
-	public void logout() throws IOException {
+	public void logout() throws IOException 
+	{
 		System.out.println("logout");
 		
 		FXMLLoader loader = new FXMLLoader();
+		Locale locale = Locale.forLanguageTag(langTag);
+		
+		ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+
 		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
-		//this.mainView = loader.load();
+		loader.setResources(labels);
 		BorderPane newMain = loader.load();
 		
 		LoginViewController cont = loader.getController();
+		cont.setLangTag(langTag);
+		cont.setPropBund(propBund);
 		cont.setTestClient(this.testClient);
 		cont.setPrimaryStage(primaryStage);
 		
@@ -146,10 +169,18 @@ public class HomePageViewController
 		System.out.println("button click");
 		
 		FXMLLoader loader = new FXMLLoader();
+		Locale locale = Locale.forLanguageTag(langTag);
+		
+		ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+
 		loader.setLocation(Main.class.getResource("/fx/choosePlan/choosePlan.fxml"));
+		loader.setResources(labels);
+
 		this.mainView = loader.load();
 		
 		ChoosePlanController cont = loader.getController();
+		cont.setLangTag(langTag);
+		cont.setPropBund(propBund);
 		cont.setTestClient(this.testClient);
 		cont.setPrimaryStage(primaryStage);
 

@@ -7,6 +7,8 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import fx.planView.PlanViewController;
 import javafx.application.Application;
@@ -41,7 +43,8 @@ public class ChoosePlanController
 {
 	public PlanFile plan;
 	public Client testClient;
-	
+	String langTag;
+	String propBund;
 	
 	
 	
@@ -51,6 +54,15 @@ public class ChoosePlanController
 	{
 		this.testClient = testClient;
 		
+	}
+	public void setLangTag(String tag)
+	{
+		langTag = tag;
+	}
+	
+	public void setPropBund(String bund)
+	{
+		propBund = bund;
 	}
 	
 	
@@ -107,11 +119,17 @@ public class ChoosePlanController
 			
 			System.out.println("hello");
 			FXMLLoader loader = new FXMLLoader();
+			Locale locale = Locale.forLanguageTag(langTag);
+			
+			ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+
 			loader.setLocation(Main.class.getResource("/fx/planView/planView.fxml"));
-			//this.mainView = loader.load();
+			loader.setResources(labels);
 			BorderPane newMain = loader.load();
 			
 			PlanViewController cont = loader.getController();
+			cont.setLangTag(langTag);
+			cont.setPropBund(propBund);
 			cont.setTestClient(testClient);
 			
 			cont.setPrimaryStage(primaryStage);
@@ -138,10 +156,18 @@ public class ChoosePlanController
 			testClient.getCurrPlanFile().setYear(planYear);
 			
 			FXMLLoader loader = new FXMLLoader();
+			Locale locale = Locale.forLanguageTag(langTag);
+			
+			ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+
 			loader.setLocation(Main.class.getResource("/fx/planView/planView.fxml"));
+			loader.setResources(labels);
+
 			this.mainView = loader.load();
 			
 			PlanViewController cont = loader.getController();
+			cont.setLangTag(langTag);
+			cont.setPropBund(propBund);
 			cont.setTestClient(testClient);
 			
 			

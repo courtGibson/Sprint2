@@ -1,6 +1,8 @@
 package loginView;
 
 import java.rmi.RemoteException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import fx.homePageView.HomePageViewController;
 import javafx.event.ActionEvent;
@@ -25,8 +27,20 @@ public class LoginViewController
 	Stage primaryStage;
 	BorderPane mainView;
 	Client testClient;
+	String langTag;
+	String propBund;
 
 	Server server;
+	
+	public void setLangTag(String tag)
+	{
+		langTag = tag;
+	}
+	
+	public void setPropBund(String bund)
+	{
+		propBund = bund;
+	}
 	
 	public void setServer(Server server)
 	{
@@ -167,11 +181,17 @@ public class LoginViewController
 		this.testClient = testClient;
 		
 		FXMLLoader loader = new FXMLLoader();
+		Locale locale = Locale.forLanguageTag(langTag);
+		
+		ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+
 		loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
-		//this.mainView = loader.load();
+		loader.setResources(labels);
 		BorderPane newMain = loader.load();
 		
 		HomePageViewController cont = loader.getController();
+		cont.setLangTag(langTag);
+		cont.setPropBund(propBund);
 		cont.setUser(username);
 
 		String deptName = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();

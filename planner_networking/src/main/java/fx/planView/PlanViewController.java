@@ -38,6 +38,8 @@ public class PlanViewController
 	ArrayList<Label> ls = new ArrayList<Label>();
 	ArrayList<String> com;
 	String selectedCom;
+	String langTag;
+	String propBund;
 
 	Boolean builtTree = false;
 
@@ -78,7 +80,16 @@ public class PlanViewController
 	{
 		return user;
 	}
-
+	
+	public void setLangTag(String tag)
+	{
+		langTag = tag;
+	}
+	
+	public void setPropBund(String bund)
+	{
+		propBund = bund;
+	}
 	public void deleteComment()
 	{
 		int index = com.indexOf(selectedCom);
