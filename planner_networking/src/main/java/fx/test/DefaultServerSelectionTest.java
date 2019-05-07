@@ -128,6 +128,16 @@ public class DefaultServerSelectionTest extends ApplicationTest
 	{
 		//Text s = lookup("#servSelection").queryText()
 		//checkRBText("#servSelect", "Server Selection");
+		System.out.println("servSelect1: "+lookup("#servSelect"));
+		System.out.println("servSelect2: "+lookup("#servSelect").queryText());
+		String t = mainView.lookup("#servSelect").getAccessibleText();
+		//System.out.println("servSelect3: "+t.contains("Server Selection"));
+		//System.out.println("servSelect3: "+mainView.lookup("#servSelect").getText());
+
+		System.out.println("servSelect4: "+lookup("#servSelect").queryAs(Text.class));
+		//System.out.println("servSelect: "+lookup("#servSelect").queryAs(Text.class)).hasText("Local Host:");
+		
+		
 		assertThat(lookup("#servSelect").queryText()).hasText("Server Selection");
 		assertThat(lookup("#localHost").queryAs(Text.class)).hasText("Local Host:");
 		assertThat(lookup("#other").queryAs(Text.class)).hasText("Other:");
