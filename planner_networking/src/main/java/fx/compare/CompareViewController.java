@@ -207,12 +207,16 @@ public class CompareViewController
 			tree1.getSelectionModel().selectedItemProperty()
 					.addListener((observable, oldValue, newValue) -> handleTreeClick((TreeItem<PlanNode>) newValue));
 			
+			planA.setText(originalPlan.getYear());
+			
 			TreeItem<PlanNode> theRoot2 = makeTree(comparePlan);
 
 			tree2.setRoot(theRoot2);
 
 			tree2.getSelectionModel().selectedItemProperty()
 					.addListener((observable, oldValue, newValue) -> handleTreeClick((TreeItem<PlanNode>) newValue));
+			
+			planB.setText(comparePlan.getYear());
 
 			builtTree = true;
 			
@@ -225,6 +229,30 @@ public class CompareViewController
 	{
 		int lenCh1 = root1.getChildren().size();
 		int lenCh2 = root2.getChildren().size();
+		System.out.println("lenCh1: "+lenCh1);
+		System.out.println("lenCh2: "+lenCh2);
+		
+		String r1 = root1.getValue().getData();
+		String r2 = root2.getValue().getData();
+		
+		if(r1==null && r2==null)
+		 {
+			 //do nothing
+		 }
+		 else if((r1==null && r2!=null) || (r1!=null && r2==null) || !r1.equals(r2))
+		{
+			ImageView im1 = new ImageView();
+			 im1.setImage(treeItemImage);
+			 im1.setFitHeight(20);
+			 im1.setFitWidth(20);
+			 ImageView im2 = new ImageView();
+			 im2.setImage(treeItemImage);
+			 im2.setFitHeight(20);
+			 im2.setFitWidth(20);
+			 
+			 root1.setGraphic(im1);
+			 root2.setGraphic(im2);
+		}
 		
 		if (lenCh1 < lenCh2)
 		{
@@ -236,7 +264,11 @@ public class CompareViewController
 				 
 				//Node n1 = root1.getChildren().get(i).g;
 				 
-				 if(!d1.equals(d2))
+				 if(d1==null && d2==null)
+				 {
+					 //do nothing
+				 }
+				 else if((d1==null && d2!=null) || (d1!=null && d2==null) || !d1.equals(d2))
 				 {
 					 /*TreeCell<TreeItem> cell1 = findCellByItem(root1.getChildren().get(i), tree1);
 
@@ -247,12 +279,12 @@ public class CompareViewController
 					 //System.out.println("yellow color set");*/
 					 ImageView im1 = new ImageView();
 					 im1.setImage(treeItemImage);
-					 im1.setFitHeight(30);
-					 im1.setFitWidth(30);
+					 im1.setFitHeight(20);
+					 im1.setFitWidth(20);
 					 ImageView im2 = new ImageView();
 					 im2.setImage(treeItemImage);
-					 im2.setFitHeight(30);
-					 im2.setFitWidth(30);
+					 im2.setFitHeight(20);
+					 im2.setFitWidth(20);
 					 
 					 root1.getChildren().get(i).setGraphic(im1);
 					 root2.getChildren().get(i).setGraphic(im2);
@@ -262,12 +294,12 @@ public class CompareViewController
 				 
 			}
 			
-			for (int i = lenCh1; i < lenCh2; i++)
+			for (int i = lenCh1-1; i < lenCh2; i++)
 			{
 				ImageView im1 = new ImageView();
 				im1.setImage(treeItemImage);
-				im1.setFitHeight(30);
-				im1.setFitWidth(30);
+				im1.setFitHeight(20);
+				im1.setFitWidth(20);
 				 root1.getChildren().get(i).setGraphic(im1);
 				//root2.getChildren().get(i).getGraphic().setStyle("-fx-background-color: orange");
 				//System.out.println("orange color set");
@@ -281,7 +313,11 @@ public class CompareViewController
 				 String d1 = root1.getChildren().get(i).getValue().getData();
 				 String d2 = root2.getChildren().get(i).getValue().getData();
 				 
-				 if(!d1.equals(d2))
+				 if(d1==null && d2==null)
+				 {
+					 //do nothing
+				 }
+				 else if((d1==null && d2!=null) || (d1!=null && d2==null) || !d1.equals(d2))
 				 {
 					 /*TreeCell<PlanNode> cell1 = findCellByItem(root1.getChildren().get(i), tree1);
 
@@ -291,12 +327,12 @@ public class CompareViewController
 					 cell2.setStyle("-fx-background-color: yellow");*/
 					 ImageView im1 = new ImageView();
 					 im1.setImage(treeItemImage);
-					 im1.setFitHeight(30);
-					 im1.setFitWidth(30);
+					 im1.setFitHeight(20);
+					 im1.setFitWidth(20);
 					 ImageView im2 = new ImageView();
 					 im2.setImage(treeItemImage);
-					 im2.setFitHeight(30);
-					 im2.setFitWidth(30);
+					 im2.setFitHeight(20);
+					 im2.setFitWidth(20);
 					 
 					 root1.getChildren().get(i).setGraphic(im1);
 					 root2.getChildren().get(i).setGraphic(im2);
@@ -306,12 +342,12 @@ public class CompareViewController
 				 
 			}
 			
-			for (int i = lenCh2; i < lenCh1; i++)
+			for (int i = lenCh2-1; i < lenCh1; i++)
 			{
 				ImageView im1 = new ImageView();
 				im1.setImage(treeItemImage);
-				im1.setFitHeight(30);
-				im1.setFitWidth(30);
+				im1.setFitHeight(20);
+				im1.setFitWidth(20);
 				root1.getChildren().get(i).setGraphic(im1);
 				//TreeCell<TreeItem> cell = findCellByItem(root1.getChildren().get(i), tree1);
 				//cell.setStyle("-fx-background-color: orange");
@@ -326,20 +362,27 @@ public class CompareViewController
 			{
 				 String d1 = root1.getChildren().get(i).getValue().getData();
 				 String d2 = root2.getChildren().get(i).getValue().getData();
-				 
-				 if(!d1.equals(d2))
+				 System.out.println("d1: "+d1);
+				 System.out.println("d2: "+d2);
+				
+				 if(d1==null && d2==null)
 				 {
+					 //do nothing
+				 }
+				 else if((d1==null && d2!=null) || (d1!=null && d2==null) || !d1.equals(d2))
+				 {
+					 
 					 //TreeCell<TreeItem> cell1 = findCellByItem(root1.getChildren().get(i), tree1);
 
 					 //TreeCell<TreeItem> cell2 = findCellByItem(root1.getChildren().get(i), tree1);
 					 ImageView im1 = new ImageView();
 					 im1.setImage(treeItemImage);
-					 im1.setFitHeight(30);
-					 im1.setFitWidth(30);
+					 im1.setFitHeight(20);
+					 im1.setFitWidth(20);
 					 ImageView im2 = new ImageView();
 					 im2.setImage(treeItemImage);
-					 im2.setFitHeight(30);
-					 im2.setFitWidth(30);
+					 im2.setFitHeight(20);
+					 im2.setFitWidth(20);
 					 
 					 root1.getChildren().get(i).setGraphic(im1);
 					 root2.getChildren().get(i).setGraphic(im2);
@@ -348,6 +391,7 @@ public class CompareViewController
 					 //cell1.setStyle("-fx-background-color: yellow");
 					 //cell2.setStyle("-fx-background-color: yellow");
 				 }
+				
 				 
 				 compareTrees(root1.getChildren().get(i), root2.getChildren().get(i));
 				 
@@ -358,15 +402,6 @@ public class CompareViewController
 		
 	}
 	
-	
-	public static TreeCell<PlanNode> findCellByItem(TreeItem<PlanNode> treeItem, TreeView<PlanNode> treeView) 
-	{
-		System.out.println("Tree cell: "+treeView.lookupAll(".tree-cell"));
-	    return (TreeCell) treeView.lookupAll(".tree-cell").stream()
-	            .filter(n -> ((TreeCell) n).getTreeItem() == treeItem)
-	            .findFirst()
-	            .orElse(null);
-	}
 	
 	
 	
