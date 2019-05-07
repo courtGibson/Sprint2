@@ -17,6 +17,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -44,6 +46,7 @@ public class CompareViewController
 	Stage primaryStage;
 	PlanFile originalPlan;
 	PlanFile comparePlan;
+	private  Image treeItemImage = new Image(Main.class.getResourceAsStream("/fx/compare/redX.png"));
 	
 
 	String dept;
@@ -233,15 +236,26 @@ public class CompareViewController
 				 
 				//Node n1 = root1.getChildren().get(i).g;
 				 
-				 if(d1 != d2)
+				 if(!d1.equals(d2))
 				 {
-					 TreeCell<TreeItem> cell1 = findCellByItem(root1.getChildren().get(i), tree1);
+					 /*TreeCell<TreeItem> cell1 = findCellByItem(root1.getChildren().get(i), tree1);
 
 					 TreeCell<TreeItem> cell2 = findCellByItem(root1.getChildren().get(i), tree1);
 					 //System.out.println("root1 graphic: "+root1.getChildren().get(i).getGraphic());
 					 cell1.setStyle("-fx-background-color: yellow");
 					 cell2.setStyle("-fx-background-color: yellow");
-					 //System.out.println("yellow color set");
+					 //System.out.println("yellow color set");*/
+					 ImageView im1 = new ImageView();
+					 im1.setImage(treeItemImage);
+					 im1.setFitHeight(30);
+					 im1.setFitWidth(30);
+					 ImageView im2 = new ImageView();
+					 im2.setImage(treeItemImage);
+					 im2.setFitHeight(30);
+					 im2.setFitWidth(30);
+					 
+					 root1.getChildren().get(i).setGraphic(im1);
+					 root2.getChildren().get(i).setGraphic(im2);
 				 }
 				 
 				 compareTrees(root1.getChildren().get(i), root2.getChildren().get(i));
@@ -250,8 +264,13 @@ public class CompareViewController
 			
 			for (int i = lenCh1; i < lenCh2; i++)
 			{
-				root2.getChildren().get(i).getGraphic().setStyle("-fx-background-color: orange");
-				System.out.println("orange color set");
+				ImageView im1 = new ImageView();
+				im1.setImage(treeItemImage);
+				im1.setFitHeight(30);
+				im1.setFitWidth(30);
+				 root1.getChildren().get(i).setGraphic(im1);
+				//root2.getChildren().get(i).getGraphic().setStyle("-fx-background-color: orange");
+				//System.out.println("orange color set");
 			}
 		}
 		else if(lenCh1 > lenCh2)
@@ -262,14 +281,25 @@ public class CompareViewController
 				 String d1 = root1.getChildren().get(i).getValue().getData();
 				 String d2 = root2.getChildren().get(i).getValue().getData();
 				 
-				 if(d1 != d2)
+				 if(!d1.equals(d2))
 				 {
-					 TreeCell<PlanNode> cell1 = findCellByItem(root1.getChildren().get(i), tree1);
+					 /*TreeCell<PlanNode> cell1 = findCellByItem(root1.getChildren().get(i), tree1);
 
 					 TreeCell<TreeItem> cell2 = findCellByItem(root1.getChildren().get(i), tree1);
 					 //System.out.println("root1 graphic: "+root1.getChildren().get(i).getGraphic());
 					 cell1.setStyle("-fx-background-color: yellow");
-					 cell2.setStyle("-fx-background-color: yellow");
+					 cell2.setStyle("-fx-background-color: yellow");*/
+					 ImageView im1 = new ImageView();
+					 im1.setImage(treeItemImage);
+					 im1.setFitHeight(30);
+					 im1.setFitWidth(30);
+					 ImageView im2 = new ImageView();
+					 im2.setImage(treeItemImage);
+					 im2.setFitHeight(30);
+					 im2.setFitWidth(30);
+					 
+					 root1.getChildren().get(i).setGraphic(im1);
+					 root2.getChildren().get(i).setGraphic(im2);
 				 }
 				 
 				 compareTrees(root1.getChildren().get(i), root2.getChildren().get(i));
@@ -278,8 +308,13 @@ public class CompareViewController
 			
 			for (int i = lenCh2; i < lenCh1; i++)
 			{
-				TreeCell<TreeItem> cell = findCellByItem(root1.getChildren().get(i), tree1);
-				cell.setStyle("-fx-background-color: orange");
+				ImageView im1 = new ImageView();
+				im1.setImage(treeItemImage);
+				im1.setFitHeight(30);
+				im1.setFitWidth(30);
+				root1.getChildren().get(i).setGraphic(im1);
+				//TreeCell<TreeItem> cell = findCellByItem(root1.getChildren().get(i), tree1);
+				//cell.setStyle("-fx-background-color: orange");
 				// System.out.println("orange color set");
 			}
 		}
@@ -292,14 +327,26 @@ public class CompareViewController
 				 String d1 = root1.getChildren().get(i).getValue().getData();
 				 String d2 = root2.getChildren().get(i).getValue().getData();
 				 
-				 if(d1 != d2)
+				 if(!d1.equals(d2))
 				 {
-					 TreeCell<TreeItem> cell1 = findCellByItem(root1.getChildren().get(i), tree1);
+					 //TreeCell<TreeItem> cell1 = findCellByItem(root1.getChildren().get(i), tree1);
 
-					 TreeCell<TreeItem> cell2 = findCellByItem(root1.getChildren().get(i), tree1);
+					 //TreeCell<TreeItem> cell2 = findCellByItem(root1.getChildren().get(i), tree1);
+					 ImageView im1 = new ImageView();
+					 im1.setImage(treeItemImage);
+					 im1.setFitHeight(30);
+					 im1.setFitWidth(30);
+					 ImageView im2 = new ImageView();
+					 im2.setImage(treeItemImage);
+					 im2.setFitHeight(30);
+					 im2.setFitWidth(30);
+					 
+					 root1.getChildren().get(i).setGraphic(im1);
+					 root2.getChildren().get(i).setGraphic(im2);
+					 
 					 //System.out.println("root1 graphic: "+root1.getChildren().get(i).getGraphic());
-					 cell1.setStyle("-fx-background-color: yellow");
-					 cell2.setStyle("-fx-background-color: yellow");
+					 //cell1.setStyle("-fx-background-color: yellow");
+					 //cell2.setStyle("-fx-background-color: yellow");
 				 }
 				 
 				 compareTrees(root1.getChildren().get(i), root2.getChildren().get(i));
