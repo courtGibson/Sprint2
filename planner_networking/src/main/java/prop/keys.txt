@@ -33,3 +33,4 @@ deleteComment.text
 editingTools.text
 remove.text
 add.text
+loginError.text

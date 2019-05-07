@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import software_masters.planner_networking.Account;
 import software_masters.planner_networking.Client;
@@ -47,6 +48,7 @@ public class LoginViewController
 	public void setLanguage(Language lan)
 	{
 		l = lan;
+		setNewText();
 	}
 	
 	public void setServer(Server server)
@@ -111,15 +113,20 @@ public class LoginViewController
 	
 	@FXML
 	private Label error;
+	@FXML
+	private Text login;
+	@FXML
+	private Text user;
+	@FXML
+	private Text pass;
 	
 	
 	public void setNewText()
 	{
 		
-		servSelect.setText(l.getNewWord("serverSelection.text"));
-		localHost.setText(l.getNewWord("localHost.text"));
-		other.setText(l.getNewWord("other.text"));
-		selectLang.setText(l.getNewWord("selectLanguage.text"));
+		login.setText(l.getNewWord("login.text"));
+		user.setText(l.getNewWord("username.text"));
+		pass.setText(l.getNewWord("password.text"));
 		LoginSubmitButton.setText(l.getNewWord("submit.text"));
 
 		
@@ -172,7 +179,7 @@ public class LoginViewController
 		{
 			error.setOpacity(1);
 			error.setTranslateX(150);
-			error.setText("Your username or password is incorrect.");
+			error.setText(l.getNewWord("loginError.text"));
 			//onButtonSubmit();
 		}
 		
