@@ -36,6 +36,8 @@ import software_masters.planner_networking.Server;
 import software_masters.planner_networking.ServerImplementation;
 import software_masters.planner_networking.Language;
 import software_masters.planner_networking.LangEnglish;
+import software_masters.planner_networking.LangFrench;
+import software_masters.planner_networking.LangSpanish;
 
 
 //import software_masters.planner_networking.WindowEvent;
@@ -217,12 +219,17 @@ public class ServerViewController
 		
 		if(lang == "Spanish")
 		{
-			// language = new spanish
+			l = new LangSpanish();
 			setNewText();
 		}
 		else if(lang == "French")
 		{
-			// language  = new french
+			l = new LangFrench();
+			setNewText();
+		}
+		else if(lang == "Default: English")
+		{
+			l = new LangEnglish();
 			setNewText();
 		}
 		
