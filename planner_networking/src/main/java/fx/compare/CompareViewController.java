@@ -25,7 +25,10 @@ public class CompareViewController
 	Stage primaryStage;
 	
 	@FXML
-	public ComboBox<String> compareMenu;
+	public Text planA;
+	
+	@FXML
+	public Text planB;
 	
 	@FXML
 	public Button homePage;
@@ -36,6 +39,11 @@ public class CompareViewController
 	@FXML
 	public Text comparePlans;
 	
+	public void setPlans(String pA, String pB)
+	{
+		planA.setText(pA);
+		planB.setText(pB);
+	}
 	
 	public void setTestClient(Client testClient)
 	{
@@ -58,13 +66,19 @@ public class CompareViewController
 		setNewText();
 	}
 	
+	public void setPrimaryStage(Stage primaryStage)
+	{
+
+		this.primaryStage = primaryStage;
+	}
+
 	public void setNewText()
 	{
 	
-		compareMenu.setPromptText(l.getNewWord("selectedPlan.text"));
-		homePage.setText(l.getNewWord("viewPlan.text"));
-		logout.setText(l.getNewWord("makeNewPlan.text"));
-		comparePlans.setText(l.getNewWord("newPlanYear.text"));
+		homePage.setText(l.getNewWord("homePage.text"));
+		logout.setText(l.getNewWord("logout.text"));
+		comparePlans.setText(l.getNewWord("comparePlan.text"));
+
 	
 	}
 
