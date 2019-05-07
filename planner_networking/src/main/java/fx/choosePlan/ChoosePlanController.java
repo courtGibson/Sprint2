@@ -287,6 +287,8 @@ public class ChoosePlanController
 			cont.setPropBund(propBund);
 			cont.setLanguage(l);
 			cont.setPlans(plan, comparePlan);
+			cont.setDept(dept);
+			cont.setUser(user);
 
 			cont.setTestClient(testClient);
 			

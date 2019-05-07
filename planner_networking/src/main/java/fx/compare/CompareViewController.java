@@ -32,6 +32,7 @@ public class CompareViewController
 		
 	}
 	
+	BorderPane mainView;
 	public PlanFile plan;
 	public Client testClient;
 	String langTag;
@@ -40,6 +41,12 @@ public class CompareViewController
 	Stage primaryStage;
 	PlanFile originalPlan;
 	PlanFile comparePlan;
+	
+
+	Label dept;
+	
+
+	Label user;
 	
 	@FXML
 	public Text planA;
@@ -270,5 +277,22 @@ public class CompareViewController
 		}
 
 	}
+	
+	/**
+	 * @param dept the dept to set
+	 */
+	public void setDept(String deptName)
+	{
+		dept.setText(deptName);
+	}
+	
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(String userName)
+	{
+		user.setText(userName);
+	}
+
 
 }
