@@ -379,6 +379,7 @@ public class PlanViewController
 		stage.showAndWait();
 	
 		
+		
 	}
 	
 	public void save() throws IllegalArgumentException, RemoteException 
