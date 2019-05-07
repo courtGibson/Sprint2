@@ -7,8 +7,10 @@ import java.util.ResourceBundle;
 
 import fx.checkSave.CheckSaveController;
 import fx.homePageView.HomePageViewController;
+import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -189,7 +191,7 @@ public class CompareViewController
 	
 	public void buildTree() throws RemoteException
 	{
-		System.out.println("\n\nHello from build tree");
+		//System.out.println("\n\nHello from build tree");
 		if (!builtTree)
 		{
 
@@ -209,8 +211,96 @@ public class CompareViewController
 					.addListener((observable, oldValue, newValue) -> handleTreeClick((TreeItem<PlanNode>) newValue));
 
 			builtTree = true;
+			
+			compareTrees(theRoot, theRoot2);
 
 		}
+	}
+	
+	private void compareTrees(TreeItem<PlanNode> root1, TreeItem<PlanNode> root2)
+	{
+		int lenCh1 = root1.getChildren().size();
+		int lenCh2 = root2.getChildren().size();
+		
+		if (lenCh1 < lenCh2)
+		{
+			System.out.println("lenCh1 < lenCh2");
+			for (int i = 0; i<lenCh1; i++)
+			{
+				 String d1 = root1.getChildren().get(i).getValue().getData();
+				 String d2 = root2.getChildren().get(i).getValue().getData();
+				 
+				//Node n1 = root1.getChildren().get(i).g;
+				 
+				 if(d1 != d2)
+				 {
+					 //System.out.println("root1: "+root1.getChildren().get(i));
+					 //System.out.println("root1 graphic: "+root1.getChildren().get(i).getGraphic());
+					 ((Node) n1).setStyle("-fx-background-color: yellow");
+					 root2.getChildren().get(i).getGraphic().setStyle("-fx-background-color: yellow");
+					 System.out.println("yellow color set");
+				 }
+				 
+				 compareTrees(root1.getChildren().get(i), root2.getChildren().get(i));
+				 
+			}
+			
+			for (int i = lenCh1; i < lenCh2; i++)
+			{
+				root2.getChildren().get(i).getGraphic().setStyle("-fx-background-color: orange");
+				System.out.println("orange color set");
+			}
+		}
+		else if(lenCh1 > lenCh2)
+		{
+			System.out.println("lenCh1 > lenCh2");
+			for (int i = 0; i<lenCh2; i++)
+			{
+				 String d1 = root1.getChildren().get(i).getValue().getData();
+				 String d2 = root2.getChildren().get(i).getValue().getData();
+				 
+				 if(d1 != d2)
+				 {
+					 System.out.println("root1: "+root1.getChildren().get(i));
+					 System.out.println("root1 graphic: "+root1.getChildren().get(i).getGraphic());
+					 root1.getChildren().get(i).getGraphic().setStyle("-fx-background-color: yellow");
+					 root2.getChildren().get(i).getGraphic().setStyle("-fx-background-color: yellow");
+					 System.out.println("yelow color set");
+				 }
+				 
+				 compareTrees(root1.getChildren().get(i), root2.getChildren().get(i));
+				 
+			}
+			
+			for (int i = lenCh2; i < lenCh1; i++)
+			{
+				root1.getChildren().get(i).getGraphic().setStyle("-fx-background-color: orange");
+				 System.out.println("orange color set");
+			}
+		}
+		else
+		{
+			
+			System.out.println("lenCh1 == lenCh2");
+			for (int i = 0; i<lenCh1; i++)
+			{
+				 String d1 = root1.getChildren().get(i).getValue().getData();
+				 String d2 = root2.getChildren().get(i).getValue().getData();
+				 
+				 if(d1 != d2)
+				 {
+					 root1.getChildren().get(i).setStyle("color: orange");
+					 root2.getChildren().get(i).getGraphic().setStyle("-color: yellow");
+					 System.out.println("yellow color set");
+				 }
+				 
+				 compareTrees(root1.getChildren().get(i), root2.getChildren().get(i));
+				 
+			}
+		}
+		
+
+		
 	}
 	
 	private void handleTreeClick(TreeItem<PlanNode> newValue)
@@ -280,7 +370,10 @@ public class CompareViewController
 		for (int i = 0; i < parentNode.getChildren().size(); i++)
 		{
 			TreeItem<PlanNode> newChild = new TreeItem<PlanNode>(parentNode.getChildren().get(i));
-
+			
+			
+			
+			System.out.println("new graphic: "+newChild.getGraphic());
 			parentTreeItem.getChildren().add(newChild);
 			getKids(parentNode.getChildren().get(i), newChild);
 
