@@ -141,10 +141,12 @@ public class DefaultServerSelectionTest extends ApplicationTest
 		
 		assertThat(lookup("#servSelect").queryText()).hasText("Server Selection");
 		assertThat(lookup("#localHost").queryAs(Text.class)).hasText("Local Host:");
-		assertThat(lookup("#other").queryAs(Text.class)).hasText("Other:");
 		assertThat(lookup("#selectLang").queryAs(Label.class)).hasText("Select Language:");
-		assertThat(lookup("#ServerSubmitButton").queryAs(Text.class)).hasText("Submit");
+		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Submit"));
+		
 
+		assertThat(lookup("#other").queryAs(Text.class)).hasText("Other:");
+		
 		clickOn("#selection");
 		clickOn("Spanish");
 		
