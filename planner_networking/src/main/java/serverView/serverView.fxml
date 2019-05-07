@@ -71,7 +71,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
-                        <Text id="otherText" fx:id="other" strokeType="OUTSIDE" strokeWidth="0.0" text="%other.text">
+                        <Text id="other" fx:id="other" strokeType="OUTSIDE" strokeWidth="0.0" text="%other.text">
                            <font>
                               <Font size="35.0" />
                            </font>
