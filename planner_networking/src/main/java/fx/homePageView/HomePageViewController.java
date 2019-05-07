@@ -27,6 +27,7 @@ import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import loginView.LoginViewController;
 import software_masters.planner_networking.Client;
+import software_masters.planner_networking.Language;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.PlanFile;
 
@@ -34,6 +35,8 @@ public class HomePageViewController
 {
 	String langTag;
 	String propBund;
+	Language l;
+
 
 	public Client testClient;
 	
@@ -70,6 +73,12 @@ public class HomePageViewController
 	{
 		propBund = bund;
 	}
+	
+	public void setLanguage(Language lan)
+	{
+		l = lan;
+	}
+	
 	
 	
 	public void setDept(String deptName)
@@ -145,6 +154,8 @@ public class HomePageViewController
 		LoginViewController cont = loader.getController();
 		cont.setLangTag(langTag);
 		cont.setPropBund(propBund);
+		cont.setLanguage(l);
+
 		cont.setTestClient(this.testClient);
 		cont.setPrimaryStage(primaryStage);
 		
@@ -181,6 +192,8 @@ public class HomePageViewController
 		ChoosePlanController cont = loader.getController();
 		cont.setLangTag(langTag);
 		cont.setPropBund(propBund);
+		cont.setLanguage(l);
+
 		cont.setTestClient(this.testClient);
 		cont.setPrimaryStage(primaryStage);
 

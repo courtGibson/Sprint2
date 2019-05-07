@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import software_masters.planner_networking.Account;
 import software_masters.planner_networking.Client;
 import software_masters.planner_networking.Department;
+import software_masters.planner_networking.Language;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.Server;
 
@@ -29,6 +30,7 @@ public class LoginViewController
 	Client testClient;
 	String langTag;
 	String propBund;
+	Language l;
 
 	Server server;
 	
@@ -40,6 +42,11 @@ public class LoginViewController
 	public void setPropBund(String bund)
 	{
 		propBund = bund;
+	}
+	
+	public void setLanguage(Language lan)
+	{
+		l = lan;
 	}
 	
 	public void setServer(Server server)
@@ -104,6 +111,19 @@ public class LoginViewController
 	
 	@FXML
 	private Label error;
+	
+	
+	public void setNewText()
+	{
+		
+		servSelect.setText(l.getNewWord("serverSelection.text"));
+		localHost.setText(l.getNewWord("localHost.text"));
+		other.setText(l.getNewWord("other.text"));
+		selectLang.setText(l.getNewWord("selectLanguage.text"));
+		LoginSubmitButton.setText(l.getNewWord("submit.text"));
+
+		
+	}
 	
 	
 	@FXML
@@ -192,6 +212,7 @@ public class LoginViewController
 		HomePageViewController cont = loader.getController();
 		cont.setLangTag(langTag);
 		cont.setPropBund(propBund);
+		cont.setLanguage(l);
 		cont.setUser(username);
 
 		String deptName = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();

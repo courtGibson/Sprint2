@@ -322,6 +322,7 @@ public class ServerViewController
 		LoginViewController cont = loader.getController();
 		cont.setLangTag(langTag);
 		cont.setPropBund(propBund);
+		cont.setLanguage(l);
 		cont.setMainView(newMain);
 		cont.setTestClient(testClient);
 		cont.setPrimaryStage(primaryStage);

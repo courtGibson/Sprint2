@@ -2,6 +2,8 @@ package fx.checkSave;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import fx.homePageView.HomePageViewController;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import software_masters.planner_networking.Client;
+import software_masters.planner_networking.Language;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.PlanFile;
 
@@ -34,6 +37,11 @@ public class CheckSaveController
 	
 	String user;
 	String dept;
+	String langTag;
+	String propBund;
+	Language l;
+
+
 	
 	
 	
@@ -45,6 +53,21 @@ public class CheckSaveController
 	public String getUser()
 	{
 		return user;
+	}
+	
+	public void setLangTag(String tag)
+	{
+		langTag = tag;
+	}
+	
+	public void setPropBund(String bund)
+	{
+		propBund = bund;
+	}
+	
+	public void setLanguage(Language lan)
+	{
+		l = lan;
 	}
 
 	/**
@@ -79,11 +102,19 @@ public class CheckSaveController
 			
 			
 			FXMLLoader loader = new FXMLLoader();
+			Locale locale = Locale.forLanguageTag(langTag);
+			
+			ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+
 			loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
-			//this.mainView = loader.load();
+			loader.setResources(labels);
 			BorderPane newMain = loader.load();
 			
 			HomePageViewController cont = loader.getController();
+			cont.setLangTag(langTag);
+			cont.setPropBund(propBund);
+			cont.setLanguage(l);
+
 
 
 

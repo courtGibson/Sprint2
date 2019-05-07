@@ -3,6 +3,8 @@ package fx.planView;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import fx.checkSave.CheckSaveController;
 import fx.homePageView.HomePageViewController;
@@ -25,6 +27,7 @@ import javafx.stage.Stage;
 import loginView.LoginViewController;
 import software_masters.planner_networking.Client;
 import software_masters.planner_networking.FXTreeView;
+import software_masters.planner_networking.Language;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.PlanFile;
 import software_masters.planner_networking.PlanNode;
@@ -40,6 +43,7 @@ public class PlanViewController
 	String selectedCom;
 	String langTag;
 	String propBund;
+	Language l;
 
 	Boolean builtTree = false;
 
@@ -90,6 +94,12 @@ public class PlanViewController
 	{
 		propBund = bund;
 	}
+	
+	public void setLanguage(Language lan)
+	{
+		l = lan;
+	}
+	
 	public void deleteComment()
 	{
 		int index = com.indexOf(selectedCom);
@@ -240,12 +250,21 @@ public class PlanViewController
 		System.out.println("logout");
 
 		FXMLLoader loader = new FXMLLoader();
+		Locale locale = Locale.forLanguageTag(langTag);
+		
+		ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+
 		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
 		// this.mainView = loader.load();
-		// assertThat(mainView!=null);
+		loader.setResources(labels);
+
 		BorderPane newMain = loader.load();
 
 		LoginViewController cont = loader.getController();
+		cont.setLangTag(langTag);
+		cont.setPropBund(propBund);
+		cont.setLanguage(l);
+
 		cont.setMainView(newMain);
 		cont.setTestClient(testClient);
 		cont.setPrimaryStage(primaryStage);
@@ -263,10 +282,20 @@ public class PlanViewController
 		{
 
 			FXMLLoader loader = new FXMLLoader();
+			Locale locale = Locale.forLanguageTag(langTag);
+			
+			ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+
 			loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
+			loader.setResources(labels);
+
 			this.mainView = loader.load();
 
 			HomePageViewController cont = loader.getController();
+			cont.setLangTag(langTag);
+			cont.setPropBund(propBund);
+			cont.setLanguage(l);
+
 			cont.setTestClient(testClient);
 			cont.setPrimaryStage(primaryStage);
 			this.testClient = cont.getTestClient();
@@ -281,11 +310,19 @@ public class PlanViewController
 		{
 
 			FXMLLoader loader = new FXMLLoader();
+			Locale locale = Locale.forLanguageTag(langTag);
+			
+			ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+
 			loader.setLocation(Main.class.getResource("/fx/checkSave/checkSave.fxml"));
-			// this.mainView = loader.load();
+			loader.setResources(labels);
 			BorderPane newMain = loader.load();
 
 			CheckSaveController cont = loader.getController();
+			cont.setLangTag(langTag);
+			cont.setPropBund(propBund);
+			cont.setLanguage(l);
+
 			cont.setTestClient(testClient);
 			cont.setPrimaryStage(primaryStage);
 			cont.setDept(dept.getText());

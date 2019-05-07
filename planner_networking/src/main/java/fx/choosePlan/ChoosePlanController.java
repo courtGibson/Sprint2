@@ -32,6 +32,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import software_masters.planner_networking.Centre;
 import software_masters.planner_networking.Client;
+import software_masters.planner_networking.Language;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.Plan;
 import software_masters.planner_networking.PlanFile;
@@ -45,7 +46,8 @@ public class ChoosePlanController
 	public Client testClient;
 	String langTag;
 	String propBund;
-	
+	Language l;
+
 	
 	
 	Stage primaryStage;
@@ -63,6 +65,11 @@ public class ChoosePlanController
 	public void setPropBund(String bund)
 	{
 		propBund = bund;
+	}
+	
+	public void setLanguage(Language lan)
+	{
+		l = lan;
 	}
 	
 	
@@ -130,6 +137,8 @@ public class ChoosePlanController
 			PlanViewController cont = loader.getController();
 			cont.setLangTag(langTag);
 			cont.setPropBund(propBund);
+			cont.setLanguage(l);
+
 			cont.setTestClient(testClient);
 			
 			cont.setPrimaryStage(primaryStage);
@@ -168,6 +177,8 @@ public class ChoosePlanController
 			PlanViewController cont = loader.getController();
 			cont.setLangTag(langTag);
 			cont.setPropBund(propBund);
+			cont.setLanguage(l);
+
 			cont.setTestClient(testClient);
 			
 			
