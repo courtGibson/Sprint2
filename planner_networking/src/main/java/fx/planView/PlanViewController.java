@@ -27,6 +27,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import loginView.LoginViewController;
 import software_masters.planner_networking.Client;
+import software_masters.planner_networking.Department;
 import software_masters.planner_networking.FXTreeView;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.PlanFile;
@@ -427,6 +428,8 @@ public class PlanViewController
 	public void changeBudget()
 	{
 		String oldBudget = this.currentNode.getBudget().toString();
+		
+		
 		try
 		{
 			String newBudget = budgetField.getText();
@@ -453,7 +456,15 @@ public class PlanViewController
 	
 	public void checkBudget(Double newBudget, Double oldBudget)
 	{
-		
+		if(this.currentNode.getParent() == null)
+		{
+			
+			
+			
+		}
+			
+			
+			
 		ArrayList<PlanNode> children = this.currentNode.getParent().getChildren();
 		Double parentBudget = this.currentNode.getParent().getBudget();
 		Double ammount = 0.0;
@@ -486,7 +497,40 @@ public class PlanViewController
 		
 	}
 	
+	public void changePlanBudget(Double newBudget, Double oldBudget) throws RemoteException
+	{
+		ArrayList<PlanFile> plans = this.testClient.getPlans();		
+		Double dept = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getBudget();
+		Double ammount = 0.0;
+		for(int i = 0 ; i < plans.size() ; i++)
+		{
+			 ammount = ammount + plans.get(i).getBudget();
+			
+			
+		}
+		ammount = ammount - oldBudget;
+		ammount = ammount + newBudget;
+		if(ammount < dept)
+		{
+			
+			this.currentNode.setBudget(newBudget);
+			this.testClient.getCurrPlanFile().setBudget(newBudget);
+			this.budgetField.setText(newBudget.toString());
+			
+		}
+		else
+		{
+			this.budgetField.setText(oldBudget.toString());
 	
+			
+		}
+		
+		
+		
+		
+		
+		
+	}
 	
 
 }
