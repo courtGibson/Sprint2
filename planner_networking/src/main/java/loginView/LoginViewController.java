@@ -165,7 +165,10 @@ public class LoginViewController
 	{
 
 		this.testClient = testClient;
-		
+		//testClient.getServer().setDeptBudget(testClient.getCookie(), 25.00);
+		Department dept = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment();
+		System.out.println("testign");
+		System.out.println(dept.getBudget());
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
 		//this.mainView = loader.load();
@@ -175,9 +178,11 @@ public class LoginViewController
 		cont.setUser(username);
 
 		String deptName = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();
+
+		cont.setTestClient(testClient);
 		System.out.println("deptName: "+deptName);
 		cont.setDept(deptName);
-		cont.setTestClient(testClient);
+		
 		
 		cont.setUser(username);
 		

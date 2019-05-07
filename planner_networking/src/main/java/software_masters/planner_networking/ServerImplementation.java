@@ -94,7 +94,7 @@ public class ServerImplementation implements Server
 	 * java.lang.String)
 	 */
 
-	public PlanFile getPlan(String year, String cookie)
+	public PlanFile getPlan(String year, String cookie) throws IllegalArgumentException, RemoteException
 	{
 		cookieChecker(cookie);// checks that cookie is valid
 
@@ -136,7 +136,7 @@ public class ServerImplementation implements Server
 	 * planner_networking.PlanFile, java.lang.String)
 	 */
 
-	public void savePlan(PlanFile plan, String cookie)
+	public void savePlan(PlanFile plan, String cookie) throws RemoteException
 	{
 		cookieChecker(cookie);// checks that cookie is valid
 
@@ -160,7 +160,18 @@ public class ServerImplementation implements Server
 		dept.addPlan(plan.getYear(), plan);
 
 	}
-
+	
+	
+	public void setDeptBudget(String cookie, Double money) throws RemoteException
+	{
+		cookieChecker(cookie);
+		
+		Account userAccount = this.cookieMap.get(cookie);
+		Department dept = userAccount.getDepartment();
+		
+		dept.setBudget(money);
+		userAccount.setDepartment(dept);
+	}
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -224,7 +235,7 @@ public class ServerImplementation implements Server
 	 * java.lang.String, boolean, java.lang.String)
 	 */
 
-	public void flagPlan(String departmentName, String year, boolean canEdit, String cookie)
+	public void flagPlan(String departmentName, String year, boolean canEdit, String cookie) throws RemoteException
 	{
 		cookieChecker(cookie);// checks that cookie is valid and that user is admin
 		adminChecker(cookie);
@@ -248,7 +259,7 @@ public class ServerImplementation implements Server
 	 * java.lang.String)
 	 */
 
-	public void addDepartment(String departmentName, String cookie)
+	public void addDepartment(String departmentName, String cookie) throws RemoteException
 	{
 		cookieChecker(cookie);// checks that cookie is valid and that user is admin
 		adminChecker(cookie);
@@ -299,7 +310,7 @@ public class ServerImplementation implements Server
 
 	public void save()
 	{
-		String filename = "Server.serv";
+		String filename = "PlannerServer.serv";
 		XMLEncoder encoder = null;
 		try
 		{

@@ -148,5 +148,7 @@ public interface Server extends Remote
 	 * @param planTemplateMap the planTemplateMap to set
 	 */
 	void setPlanTemplateMap(ConcurrentHashMap<String, PlanFile> planTemplateMap) throws RemoteException;
-
+	
+	
+	void setDeptBudget(String cookie, Double money) throws RemoteException;;
 }

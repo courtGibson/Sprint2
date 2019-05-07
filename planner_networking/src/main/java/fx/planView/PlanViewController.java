@@ -2,6 +2,7 @@ package fx.planView;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import javafx.scene.layout.VBox;
 import fx.checkSave.CheckSaveController;
@@ -16,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.KeyEvent;
@@ -47,6 +49,12 @@ public class PlanViewController
 	
 	@FXML
 	private Label nodeLabel;
+	
+	@FXML
+	private TextField budgetField;
+	
+	@FXML
+	private Button budgetButton;
 	
 	@FXML 
 	private Button homepageButton;
@@ -253,6 +261,9 @@ public class PlanViewController
 		nodeLabel.setText(currentNode.getName());
 		
 		setContents(currentNode.getData());
+		
+		setBudget();
+		
 		}
 		catch (Exception E){
 			
@@ -387,6 +398,21 @@ public class PlanViewController
 		contents.setText(stringContent);
 	}
 	
+	public void setBudget()
+	{
+		Double check = this.currentNode.getBudget();
+		
+		if(check == null)
+		{
+			System.out.println("node has no budget");
+			this.currentNode.setBudget(0.0);
+			System.out.println("node has no budget and its fixed");
+		}
+		String budget = this.currentNode.getBudget().toString();
+		System.out.println(budget);
+		this.budgetField.setText(budget);
+	}
+	
 	
 	public void changeContent() {
 		
@@ -395,6 +421,70 @@ public class PlanViewController
 		currentNode.setData(contentValue);
 		
 	}
+	
+	
+	public void changeBudget()
+	{
+		String oldBudget = this.currentNode.getBudget().toString();
+		try
+		{
+			String newBudget = budgetField.getText();
+			
+			Double newBudgetDouble = Double.parseDouble(newBudget);
+			
+			checkBudget(newBudgetDouble, this.currentNode.getBudget());
+			
+			
+			
+			
+			
+		}
+		catch (NumberFormatException e)
+		{
+			this.budgetField.setText(oldBudget);
+			
+			
+		}
+		
+		
+	}
+	
+	
+	public void checkBudget(Double newBudget, Double oldBudget)
+	{
+		
+		ArrayList<PlanNode> children = this.currentNode.getParent().getChildren();
+		Double parentBudget = this.currentNode.getParent().getBudget();
+		Double ammount = 0.0;
+		for(int i = 0 ; i < children.size() ; i++)
+		{
+			 ammount = ammount + children.get(i).getBudget();
+			
+			
+		}
+		ammount = ammount - oldBudget;
+		ammount = ammount + newBudget;
+		System.out.println(ammount);
+		if(ammount < parentBudget)
+		{
+			
+			this.currentNode.setBudget(newBudget);
+			this.budgetField.setText(newBudget.toString());
+			
+		}
+		else
+		{
+			this.budgetField.setText(oldBudget.toString());
+	
+			
+		}
+			
+			
+			
+		
+		
+	}
+	
 	
 	
 

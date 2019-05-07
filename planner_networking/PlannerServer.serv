@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_211" class="java.beans.XMLDecoder">
+<java version="1.8.0_201" class="java.beans.XMLDecoder">
  <object class="software_masters.planner_networking.ServerImplementation" id="ServerImplementation0">
   <void id="ConcurrentHashMap0" property="cookieMap">
    <void id="Account0" method="get">
     <string>0</string>
     <void id="Department0" property="department">
-     <void property="planFileMap">
+     <void property="budget">
+      <double>25.0</double>
+     </void>
+     <void id="ConcurrentHashMap1" property="planFileMap">
+      <void method="get">
+       <string>2019</string>
+       <void property="budget">
+        <double>10.0</double>
+       </void>
+      </void>
       <void method="put">
        <string>2017</string>
        <object class="software_masters.planner_networking.PlanFile">

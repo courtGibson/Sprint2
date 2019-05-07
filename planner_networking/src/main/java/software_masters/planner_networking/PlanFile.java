@@ -7,14 +7,14 @@ import java.rmi.RemoteException;
  * @author lee.kendall
  * @author wesley murray
  */
-public class PlanFile implements Serializable // extends UnicastRemoteObject
+public class PlanFile implements Serializable, budget // extends UnicastRemoteObject
 {
 
 	private static final long serialVersionUID = 8679415216780269027L;
 	private String year;
 	private boolean canEdit;
 	private Plan plan;
-
+	private Double budget;
 	/**
 	 * @param year
 	 * @param canEdit
@@ -116,6 +116,24 @@ public class PlanFile implements Serializable // extends UnicastRemoteObject
 		} else if (!year.equals(other.year))
 			return false;
 		return true;
+	}
+
+	@Override
+	public Double getBudget()
+	{
+		return budget;
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	@Override
+	public void setBudget(Double money)
+	{
+		this.budget = money;
+		this.getPlan().getRoot().setBudget(money);
+		
 	}
 
 }

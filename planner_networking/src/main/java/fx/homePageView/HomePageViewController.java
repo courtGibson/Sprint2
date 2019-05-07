@@ -56,9 +56,10 @@ public class HomePageViewController
 	@FXML
 	Label dept;
 	
-	public void setDept(String deptName)
+	public void setDept(String deptName) throws RemoteException
 	{
-		dept.setText(deptName);
+		Double money = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getBudget();
+		dept.setText(deptName + " " + money.toString());
 	}
 	
 	

@@ -4,6 +4,7 @@
 package software_masters.planner_networking;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,10 +14,14 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author wesley murray
  */
 
-public class Department implements Serializable
+public class Department implements Serializable,  budget
 {
 	
 	String deptName;
+	
+	
+	Double budget;
+	
 	
 	public void setDeptName(String name)
 	{
@@ -37,7 +42,7 @@ public class Department implements Serializable
 	 */
 	private ConcurrentHashMap<String, PlanFile> planFileMap;
 
-	public Department()
+	public Department()  throws RemoteException
 	{
 		planFileMap = new ConcurrentHashMap<String, PlanFile>();
 	}
@@ -49,7 +54,7 @@ public class Department implements Serializable
 	 * @return plan corresponding to the passed year
 	 * @throws IllegalArgumentException
 	 */
-	public PlanFile getPlan(String year) throws IllegalArgumentException
+	public PlanFile getPlan(String year) throws IllegalArgumentException, RemoteException
 	{
 		if (planFileMap.containsKey(year))
 		{
@@ -65,7 +70,7 @@ public class Department implements Serializable
 	 * @param year of planFile to be added
 	 * @param plan
 	 */
-	public void addPlan(String year, PlanFile plan)
+	public void addPlan(String year, PlanFile plan)  throws RemoteException
 	{
 		planFileMap.put(year, plan);
 	}
@@ -74,7 +79,7 @@ public class Department implements Serializable
 	 * Removes planFile from department hash given a year
 	 * @param year of planFile to be removed
 	 */
-	public void removePlan(String year)
+	public void removePlan(String year)  throws RemoteException
 	{
 		planFileMap.remove(year);
 	}
@@ -84,7 +89,7 @@ public class Department implements Serializable
 	 * @param year
 	 * @return
 	 */
-	public boolean containsPlan(String year)
+	public boolean containsPlan(String year)  throws RemoteException
 	{
 		return this.planFileMap.containsKey(year);
 	}
@@ -92,7 +97,7 @@ public class Department implements Serializable
 	/**
 	 * @return the planFileMap
 	 */
-	public ConcurrentHashMap<String, PlanFile> getPlanFileMap()
+	public ConcurrentHashMap<String, PlanFile> getPlanFileMap()  throws RemoteException
 	{
 		return planFileMap;
 	}
@@ -100,7 +105,7 @@ public class Department implements Serializable
 	/**
 	 * @param planFileMap the planFileMap to set
 	 */
-	public void setPlanFileMap(ConcurrentHashMap<String, PlanFile> planFileMap)
+	public void setPlanFileMap(ConcurrentHashMap<String, PlanFile> planFileMap)  throws RemoteException
 	{
 		this.planFileMap = planFileMap;
 	}
@@ -111,7 +116,7 @@ public class Department implements Serializable
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
-	public int hashCode()
+	public int hashCode() 
 	{
 		final int prime = 31;
 		int result = 1;
@@ -156,6 +161,23 @@ public class Department implements Serializable
 				return false;
 		}
 		return true;
+	}
+
+	@Override
+	public Double getBudget() 
+	{
+		
+		return this.budget;
+		
+	}
+
+	@Override
+	public void setBudget(Double budget)
+	{
+		
+		
+		this.budget = budget;
+		
 	}
 
 }

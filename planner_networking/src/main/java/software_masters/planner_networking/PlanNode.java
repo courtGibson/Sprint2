@@ -14,7 +14,7 @@ import java.rmi.RemoteException;
  * @author lee and wesley
  */
 
-public class PlanNode implements Serializable
+public class PlanNode implements Serializable, budget
 {
 	private static final long serialVersionUID = 5908372020728915437L;
 	private PlanNode parent;
@@ -22,6 +22,9 @@ public class PlanNode implements Serializable
 	private String data;
 	private ArrayList<PlanNode> children = new ArrayList<PlanNode>();
 	private ArrayList<String> comments = new ArrayList<String>();
+	
+	
+	private Double budget;
 
 	// constructor is data is not known
 	/**
@@ -262,6 +265,23 @@ public class PlanNode implements Serializable
 		
 		
 		return comments;
+	}
+
+	@Override
+	public Double getBudget()
+	{
+		return budget;
+		
+		
+	}
+
+
+
+	@Override
+	public void setBudget(Double money)
+	{
+		this.budget = money;
+		
 	}
 
 }

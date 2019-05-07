@@ -114,8 +114,7 @@ public class ChoosePlanController
 		
 		if(viewPlanRBtn.isSelected())
 		{
-			
-			System.out.println("hello");
+	
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/fx/planView/planView.fxml"));
 			//this.mainView = loader.load();
