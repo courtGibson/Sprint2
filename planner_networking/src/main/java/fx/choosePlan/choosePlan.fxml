@@ -60,10 +60,10 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                      <children>
                         <Label fx:id="compare" prefHeight="21.0" prefWidth="156.0" text="%compareTo.text" />
-                        <ComboBox fx:id="compareMenu" prefHeight="31.0" prefWidth="132.0" promptText="%selectComparePlan.text" />
+                        <ComboBox fx:id="compareMenu" onAction="#selectPlan" onMouseClicked="#makeMenu" prefHeight="31.0" prefWidth="132.0" promptText="%selectComparePlan.text" />
                      </children>
                   </HBox>
-                  <RadioButton mnemonicParsing="false" translateX="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <RadioButton fx:id="compareBtn" mnemonicParsing="false" translateX="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
             <Button fx:id="planSubBtn" layoutX="188.0" layoutY="231.0" mnemonicParsing="false" onAction="#choosePlanType" prefHeight="36.0" prefWidth="78.0" text="%submit.text" />

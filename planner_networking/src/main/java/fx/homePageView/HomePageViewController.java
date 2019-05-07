@@ -41,10 +41,10 @@ public class HomePageViewController
 	public Client testClient;
 	
 	@FXML 
-	private Button planSubmitButton;
+	public Button planSubmitButton;
 	
 	@FXML 
-	private Button logoutButton;
+	public Button logoutButton;
 
 	Stage primaryStage;
 	BorderPane mainView;
@@ -52,7 +52,7 @@ public class HomePageViewController
 	PlanFile selectedPlan;
 	
 	@FXML
-	private ComboBox<String> menu;
+	public ComboBox<String> menu;
 	
 	int count = 0;
 	
@@ -107,7 +107,7 @@ public class HomePageViewController
 	
 		planSubmitButton.setText(l.getNewWord("submitSelection.text"));
 		userText.setText(l.getNewWord("username.text"));
-		menu.setPromptText(l.getNewWord("password.text"));
+		menu.setPromptText(l.getNewWord("selectedPlan.text"));
 		planSubmitButton.setText(l.getNewWord("submit.text"));
 		deptText.setText(l.getNewWord("department.text"));
 		logoutButton.setText(l.getNewWord("logout.text"));

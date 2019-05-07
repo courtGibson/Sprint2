@@ -28,10 +28,10 @@ public class CheckSaveController
 	BorderPane mainView;
 	
 	@FXML
-	private Button checkSave;
+	public Button checkSave;
 	
 	@FXML
-	private Button checkExit;	
+	public Button checkExit;	
 	
 	boolean send;
 	

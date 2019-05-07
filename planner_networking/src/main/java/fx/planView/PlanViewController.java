@@ -48,16 +48,16 @@ public class PlanViewController
 	Boolean builtTree = false;
 
 	@FXML
-	private Button logoutButton;
+	public Button logoutButton;
 
 	@FXML
-	private Label nodeLabel;
+	public Label nodeLabel;
 
 	@FXML
-	private Button homepageButton;
+	public Button homepageButton;
 
 	@FXML
-	private TreeView tree;
+	public TreeView tree;
 
 	@FXML
 	TextArea contentsArea;

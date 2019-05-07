@@ -119,16 +119,16 @@ public class ServerViewController
 	
 	
 	@FXML
-	private RadioButton DefaultServerButton;
+	public RadioButton DefaultServerButton;
 	
 	@FXML
-	private RadioButton OtherServerButton;
+	public RadioButton OtherServerButton;
 	
 	@FXML 
-	private TextField OtherServerTextField;
+	public TextField OtherServerTextField;
 	
 	@FXML
-	private Button ServerSubmitButton;
+	public Button ServerSubmitButton;
 	
 	private static Server testServer;
 	

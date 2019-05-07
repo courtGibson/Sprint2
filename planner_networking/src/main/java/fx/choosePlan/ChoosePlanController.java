@@ -9,11 +9,16 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import fx.compare.CompareViewController;
 import fx.planView.PlanViewController;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,30 +84,35 @@ public class ChoosePlanController
 	// make the FXML stuff
 	
 	@FXML
-	private RadioButton viewPlanRBtn;
+	public RadioButton viewPlanRBtn;
 	
 	@FXML
-	private RadioButton newPlanRBtn;
+	public RadioButton newPlanRBtn;
 	
 	@FXML
-	private TextField newPlanYearText;
+	public TextField newPlanYearText;
 	
 	BorderPane mainView;
 	
 	@FXML
-	private Button planSubBtn;
+	public Button planSubBtn;
 	
 	@FXML
-	private Label viewPlanLabel;
+	public Label viewPlanLabel;
 	
 	@FXML
-	private Label newPlanLabel;
+	public Label newPlanLabel;
 	
 	@FXML
-	private Label planYearLabel;
+	public Label planYearLabel;
 	@FXML
-	private Label compare;
+	public Label compare;
+	@FXML
+	public RadioButton compareBtn;
 	
+	PlanFile comparePlan;
+	
+	int count = 0;
 
 	String user;
 	
@@ -111,7 +121,7 @@ public class ChoosePlanController
 	@FXML
 	Label selectedPlan;
 	@FXML 
-	private ComboBox<String> compareMenu;
+	public ComboBox<String> compareMenu;
 	
 	public void setDept(String deptName)
 	{
@@ -136,6 +146,48 @@ public class ChoosePlanController
 		compare.setText(l.getNewWord("compareTo.text"));
 		compareMenu.setPromptText(l.getNewWord("selectComparePlan.text"));
 
+	}
+	
+	public void makeMenu() throws RemoteException
+	{	
+		//
+		
+		//ObservableList<String> thisArray = new ObservableList<String>();
+
+		// Use Java Collections to create the List.
+        List<String> list = new ArrayList<String>();
+        
+        ArrayList<PlanFile> plans = testClient.getPlans();
+        
+     
+        // Now add observability by wrapping it with ObservableList.
+        ObservableList<String> thisArray = FXCollections.observableList(list);
+		
+        //System.out.println("we are here");
+        for (PlanFile p : plans)
+        {
+        	thisArray.add(p.getYear());
+        }
+		 
+	
+            
+	if (count==0)
+	{
+		 compareMenu.setItems(thisArray);
+		 count ++;
+	}
+
+	
+	}
+	
+	public void selectPlan() throws IllegalArgumentException, RemoteException
+	{
+		
+		testClient.getPlan(compareMenu.getValue());
+		
+		comparePlan = testClient.getCurrPlanFile();
+		
+		
 	}
 	
 	public void choosePlanType() throws IOException
@@ -181,7 +233,7 @@ public class ChoosePlanController
 			
 			
 		}
-		else // newPlanButton selected
+		else if(newPlanRBtn.isSelected())// newPlanButton selected
 		{
 			String planYear = newPlanYearText.getText();
 			System.out.println(planYear);
@@ -217,11 +269,30 @@ public class ChoosePlanController
 		
 			
 			primaryStage.getScene().setRoot(mainView);
+	
+		}
+		else if(compareBtn.isSelected())
+		{
+			FXMLLoader loader = new FXMLLoader();
+			Locale locale = Locale.forLanguageTag(langTag);
 			
+			ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+
+			loader.setLocation(Main.class.getResource("/fx/compare/compareView.fxml"));
+			loader.setResources(labels);
+			BorderPane newMain = loader.load();
+			
+			CompareViewController cont = loader.getController();
+			cont.setLangTag(langTag);
+			cont.setPropBund(propBund);
+			cont.setLanguage(l);
+
+			cont.setTestClient(testClient);
+			
+			cont.setPrimaryStage(primaryStage);
 
 			
-			
-			
+			primaryStage.getScene().setRoot(newMain);
 		}
 		
 		

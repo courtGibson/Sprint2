@@ -34,3 +34,4 @@ editingTools.text
 remove.text
 add.text
 loginError.text
+comparePlan.text

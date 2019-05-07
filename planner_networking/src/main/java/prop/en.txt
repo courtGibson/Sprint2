@@ -34,3 +34,5 @@ Editing Tools
 Remove
 Add
 Your username or password is incorrect.
+Compare Plans
+

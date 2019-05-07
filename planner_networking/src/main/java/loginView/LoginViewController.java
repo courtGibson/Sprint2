@@ -103,22 +103,22 @@ public class LoginViewController
 
 	
 	@FXML
-	private TextField UsernameTextField;
+	public TextField UsernameTextField;
 	
 	@FXML 
-	private TextField PasswordTextField;
+	public TextField PasswordTextField;
 	
 	@FXML 
-	private Button LoginSubmitButton;
+	public Button LoginSubmitButton;
 	
 	@FXML
-	private Label error;
+	public Label error;
 	@FXML
-	private Text login;
+	public Text login;
 	@FXML
-	private Text user;
+	public Text user;
 	@FXML
-	private Text pass;
+	public Text pass;
 	
 	
 	public void setNewText()

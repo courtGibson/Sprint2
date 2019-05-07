@@ -34,3 +34,4 @@ Herramientas de Edición
 Retirar
 Añadir
 Su nombre de usuario o contraseña es incorrecta.
+Comparar planes
