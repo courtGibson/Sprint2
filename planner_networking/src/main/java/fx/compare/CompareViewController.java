@@ -75,7 +75,7 @@ public class CompareViewController
 	{
 		originalPlan = pA;
 		comparePlan = pB;
-		System.out.println("planA: "+pA);
+		//System.out.println("planA: "+pA);
 
 	}
 	
@@ -229,8 +229,8 @@ public class CompareViewController
 	{
 		int lenCh1 = root1.getChildren().size();
 		int lenCh2 = root2.getChildren().size();
-		System.out.println("lenCh1: "+lenCh1);
-		System.out.println("lenCh2: "+lenCh2);
+		//System.out.println("lenCh1: "+lenCh1);
+		//System.out.println("lenCh2: "+lenCh2);
 		
 		String r1 = root1.getValue().getData();
 		String r2 = root2.getValue().getData();
@@ -256,7 +256,7 @@ public class CompareViewController
 		
 		if (lenCh1 < lenCh2)
 		{
-			System.out.println("lenCh1 < lenCh2");
+			//System.out.println("lenCh1 < lenCh2");
 			for (int i = 0; i<lenCh1; i++)
 			{
 				 String d1 = root1.getChildren().get(i).getValue().getData();
@@ -307,7 +307,7 @@ public class CompareViewController
 		}
 		else if(lenCh1 > lenCh2)
 		{
-			System.out.println("lenCh1 > lenCh2");
+			//System.out.println("lenCh1 > lenCh2");
 			for (int i = 0; i<lenCh2; i++)
 			{
 				 String d1 = root1.getChildren().get(i).getValue().getData();
@@ -357,13 +357,13 @@ public class CompareViewController
 		else
 		{
 			
-			System.out.println("lenCh1 == lenCh2");
+			//System.out.println("lenCh1 == lenCh2");
 			for (int i = 0; i<lenCh1; i++)
 			{
 				 String d1 = root1.getChildren().get(i).getValue().getData();
 				 String d2 = root2.getChildren().get(i).getValue().getData();
-				 System.out.println("d1: "+d1);
-				 System.out.println("d2: "+d2);
+				// System.out.println("d1: "+d1);
+				// System.out.println("d2: "+d2);
 				
 				 if(d1==null && d2==null)
 				 {
@@ -417,7 +417,7 @@ public class CompareViewController
 			nodeLabel.setText(currentNode.getName());
 
 			//setContents(currentNode.getData());
-			System.out.println("\n\ncurrentNode data: "+currentNode.getData());
+			//System.out.println("\n\ncurrentNode data: "+currentNode.getData());
 			
 
 		} catch (Exception E)
@@ -475,7 +475,7 @@ public class CompareViewController
 			
 			
 			
-			System.out.println("new graphic: "+newChild.getGraphic());
+			//System.out.println("new graphic: "+newChild.getGraphic());
 			parentTreeItem.getChildren().add(newChild);
 			getKids(parentNode.getChildren().get(i), newChild);
 
