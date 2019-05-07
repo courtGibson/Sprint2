@@ -57,7 +57,7 @@
                   <Font size="35.0" />
                </font>
             </Label>
-            <Button id="submit" fx:id="submit" layoutX="209.0" layoutY="290.0" mnemonicParsing="false" onAction="#submit" text="%submitSelection.text" />
+            <Button id="submit" fx:id="planSubmitButton" layoutX="209.0" layoutY="290.0" mnemonicParsing="false" onAction="#submit" text="%submitSelection.text" />
             <Label fx:id="deptPlans" layoutX="202.0" layoutY="141.0" text="%deptPlans.text">
                <font>
                   <Font size="18.0" />

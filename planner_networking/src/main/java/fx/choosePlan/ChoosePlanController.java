@@ -70,6 +70,7 @@ public class ChoosePlanController
 	public void setLanguage(Language lan)
 	{
 		l = lan;
+		setNewText();
 	}
 	
 	
@@ -113,6 +114,21 @@ public class ChoosePlanController
 	public void setUser(String userName)
 	{
 		this.user = userName;
+	}
+	
+	
+	public void setNewText()
+	{
+	
+		planSubmitButton.setText(l.getNewWord("submitSelection.text"));
+		userText.setText(l.getNewWord("username.text"));
+		menu.setPromptText(l.getNewWord("password.text"));
+		planSubmitButton.setText(l.getNewWord("submit.text"));
+		deptText.setText(l.getNewWord("department.text"));
+		logoutButton.setText(l.getNewWord("logout.text"));
+		homePage.setText(l.getNewWord("homePage.text"));
+		deptPlans.setText(l.getNewWord("deptPlans.text"));
+
 	}
 	
 	public void choosePlanType() throws IOException
