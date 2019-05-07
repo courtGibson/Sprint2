@@ -62,6 +62,14 @@ public class HomePageViewController
 	
 	@FXML
 	Label dept;
+	@FXML
+	Label deptText;
+	@FXML
+	Label userText;
+	@FXML
+	Label homePage;
+	@FXML
+	Label deptPlans;
 	
 	
 	public void setLangTag(String tag)
@@ -77,6 +85,7 @@ public class HomePageViewController
 	public void setLanguage(Language lan)
 	{
 		l = lan;
+		setNewText();
 	}
 	
 	
@@ -92,6 +101,20 @@ public class HomePageViewController
 		user.setText(userName);
 	}
 	
+	
+	public void setNewText()
+	{
+	
+		planSubmitButton.setText(l.getNewWord("submitSelection.text"));
+		userText.setText(l.getNewWord("username.text"));
+		menu.setPromptText(l.getNewWord("password.text"));
+		planSubmitButton.setText(l.getNewWord("submit.text"));
+		deptText.setText(l.getNewWord("department.text"));
+		logoutButton.setText(l.getNewWord("logout.text"));
+		homePage.setText(l.getNewWord("homePage.text"));
+		deptPlans.setText(l.getNewWord("deptPlans.text"));
+
+	}
 	
 	public void makeMenu() throws RemoteException
 	{	
