@@ -189,24 +189,30 @@ public class CompareViewController
 	
 	public void buildTree() throws RemoteException
 	{
-
+		System.out.println("\n\nHello from build tree");
 		if (!builtTree)
 		{
 
 
-
-			TreeItem<PlanNode> theRoot = makeTree();
+			TreeItem<PlanNode> theRoot = makeTree(originalPlan);
 
 			tree1.setRoot(theRoot);
 
 			tree1.getSelectionModel().selectedItemProperty()
+					.addListener((observable, oldValue, newValue) -> handleTreeClick((TreeItem<PlanNode>) newValue));
+			
+			TreeItem<PlanNode> theRoot2 = makeTree(comparePlan);
+
+			tree2.setRoot(theRoot2);
+
+			tree2.getSelectionModel().selectedItemProperty()
 					.addListener((observable, oldValue, newValue) -> handleTreeClick((TreeItem<PlanNode>) newValue));
 
 			builtTree = true;
 
 		}
 	}
-
+	
 	private void handleTreeClick(TreeItem<PlanNode> newValue)
 	{
 		try
@@ -218,7 +224,7 @@ public class CompareViewController
 
 			nodeLabel.setText(currentNode.getName());
 
-			setContents(currentNode.getData());
+			//setContents(currentNode.getData());
 			System.out.println("\n\ncurrentNode data: "+currentNode.getData());
 			
 
@@ -236,10 +242,10 @@ public class CompareViewController
 
 	}
 
-	public TreeItem<PlanNode> makeTree() throws RemoteException
+	public TreeItem<PlanNode> makeTree(PlanFile p) throws RemoteException
 	{
 
-		TreeItem<PlanNode> rootItem = getProducts(testClient.getCurrPlanFile().getPlan().getRoot());
+		TreeItem<PlanNode> rootItem = getProducts(p.getPlan().getRoot());
 
 		return rootItem;
 

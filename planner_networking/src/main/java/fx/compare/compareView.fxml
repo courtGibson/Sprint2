@@ -10,7 +10,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.compare.CompareViewController">
    <center>
-      <BorderPane prefHeight="529.0" prefWidth="675.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
+      <BorderPane onMouseMoved="#buildTree" prefHeight="529.0" prefWidth="675.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
