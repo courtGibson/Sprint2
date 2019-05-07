@@ -425,10 +425,10 @@ public class PlanViewController
 	}
 	
 	
-	public void changeBudget()
+	public void changeBudget() throws RemoteException
 	{
 		String oldBudget = this.currentNode.getBudget().toString();
-		
+		this.testClient.setCurrNode(currentNode);
 		
 		try
 		{
@@ -454,15 +454,17 @@ public class PlanViewController
 	}
 	
 	
-	public void checkBudget(Double newBudget, Double oldBudget)
+	public void checkBudget(Double newBudget, Double oldBudget) throws RemoteException
 	{
 		if(this.currentNode.getParent() == null)
 		{
 			
-			
+			changePlanBudget(newBudget, oldBudget);
 			
 		}
+		else{
 			
+		
 			
 			
 		ArrayList<PlanNode> children = this.currentNode.getParent().getChildren();
@@ -477,7 +479,7 @@ public class PlanViewController
 		ammount = ammount - oldBudget;
 		ammount = ammount + newBudget;
 		System.out.println(ammount);
-		if(ammount < parentBudget)
+		if(ammount <= parentBudget)
 		{
 			
 			this.currentNode.setBudget(newBudget);
@@ -491,7 +493,7 @@ public class PlanViewController
 			
 		}
 			
-			
+		}
 			
 		
 		
@@ -504,13 +506,22 @@ public class PlanViewController
 		Double ammount = 0.0;
 		for(int i = 0 ; i < plans.size() ; i++)
 		{
-			 ammount = ammount + plans.get(i).getBudget();
+			System.out.println(i);
+			
+			if(plans.get(i).getBudget() == null)
+			{
+				plans.get(i).setBudget(0.0);
+				
+				
+			}
+
+			ammount = ammount + plans.get(i).getBudget();
 			
 			
 		}
 		ammount = ammount - oldBudget;
 		ammount = ammount + newBudget;
-		if(ammount < dept)
+		if(ammount <= dept)
 		{
 			
 			this.currentNode.setBudget(newBudget);
