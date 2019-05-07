@@ -45,10 +45,11 @@ import software_masters.planner_networking.LangSpanish;
 public class ServerViewController
 {
 	
-	
+	int count;
 	public ServerViewController() 
 	{
-		System.out.println("hello from ServerViewController");
+		//System.out.println("hello from ServerViewController");
+		count = 0;
 	}
 
 	//main view needs to be local, change everywhere
@@ -56,7 +57,7 @@ public class ServerViewController
 	BorderPane mainView;
 	Client testClient;
 	Language l = new LangEnglish();
-	int count = 0;
+	
 	
 	public Client getTestClient()
 	{
@@ -137,7 +138,7 @@ public class ServerViewController
 	{
 		
 		servSelect.setText(l.getNewWord("serverSelection.text"));
-		localHost.setText(l.getNewWord("locolHost.text"));
+		localHost.setText(l.getNewWord("localHost.text"));
 		other.setText(l.getNewWord("other.text"));
 		selectLang.setText(l.getNewWord("selectLanguage.text"));
 		ServerSubmitButton.setText(l.getNewWord("submit.text"));
@@ -263,12 +264,21 @@ public class ServerViewController
 	        	//System.out.println(list.get(i));
 	        // }
 	        
-	        
-	        	thisArray.add(list.get(0));
+	        if(!selection.getItems().contains(list.get(0)))
+	        {
+	        	//thisArray.add(list.get(0));
+	        }
+	        else if(!selection.getItems().contains(list.get(1)))
+	        {
 	        	thisArray.add(list.get(1));
+	        }
+	        else if(!selection.getItems().contains(list.get(2)))
+	        {
 	        	thisArray.add(list.get(2));
+	        }
 	        	
-	        	System.out.println("thisArray: "+thisArray.get(0));
+	        	
+	        	//System.out.println("thisArray: "+thisArray.get(0));
 	
 	
 	           // System.out.println("selection: "+selection.getPromptText());
