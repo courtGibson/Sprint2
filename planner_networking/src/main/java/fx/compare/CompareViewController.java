@@ -236,7 +236,7 @@ public class CompareViewController
 				 {
 					 //System.out.println("root1: "+root1.getChildren().get(i));
 					 //System.out.println("root1 graphic: "+root1.getChildren().get(i).getGraphic());
-					 ((Node) n1).setStyle("-fx-background-color: yellow");
+					 root1.getChildren().get(i).getGraphic().setStyle("-fx-background-color: yellow");
 					 root2.getChildren().get(i).getGraphic().setStyle("-fx-background-color: yellow");
 					 System.out.println("yellow color set");
 				 }
