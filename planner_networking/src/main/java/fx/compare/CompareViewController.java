@@ -289,7 +289,7 @@ public class CompareViewController
 				 
 				 if(d1 != d2)
 				 {
-					 root1.getChildren().get(i).setStyle("color: orange");
+					 root1.getChildren().get(i).getGraphic().setStyle("color: orange");
 					 root2.getChildren().get(i).getGraphic().setStyle("-color: yellow");
 					 System.out.println("yellow color set");
 				 }
