@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import org.assertj.core.api.Assertions;
 import org.junit.After;
@@ -26,6 +28,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import serverView.ServerViewController;
 import software_masters.planner_networking.Client;
+import software_masters.planner_networking.LangEnglish;
+import software_masters.planner_networking.Language;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.Server;
 import software_masters.planner_networking.ServerImplementation;
@@ -42,6 +46,9 @@ public class DefaultServerSelectionTest extends ApplicationTest
 	private Stage primaryStage;
 	BorderPane mainView;
 	ServerViewController cont;
+	String langTag = "en-US";
+	String propBund = "prop/en";
+	Language l = new LangEnglish();
 	
 
 	
@@ -50,11 +57,21 @@ public class DefaultServerSelectionTest extends ApplicationTest
 	{
 		this.primaryStage = primaryStage;
 		FXMLLoader loader = new FXMLLoader();
+		Locale locale = Locale.forLanguageTag(langTag);
+		
+		ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+
 		loader.setLocation(Main.class.getResource("/serverView/serverView.fxml"));
+		loader.setResources(labels);
+
 		mainView = loader.load();
 
 		
 		ServerViewController cont = loader.getController();
+		cont.setLangTag(langTag);
+		cont.setPropBund(propBund);
+		cont.setLanguage(l);
+
 		cont.setMainView(mainView);
 		cont.setPrimaryStage(primaryStage);
 		
@@ -105,6 +122,24 @@ public class DefaultServerSelectionTest extends ApplicationTest
 		assertThat(cont.getTestClient().getCookie() != null);
 		
 	}
+	
+	@Test
+	public void checkLanguage()
+	{
+		//Text s = lookup("#servSelection").queryText()
+		//checkRBText("#servSelect", "Server Selection");
+		assertThat(lookup("#servSelect").queryText()).hasText("Server Selection");
+		assertThat(lookup("#localHost").queryAs(Text.class)).hasText("Local Host:");
+		assertThat(lookup("#other").queryAs(Text.class)).hasText("Other:");
+		assertThat(lookup("#selectLang").queryAs(Label.class)).hasText("Select Language:");
+		assertThat(lookup("#ServerSubmitButton").queryAs(Text.class)).hasText("Submit");
+
+		clickOn("#selection");
+		clickOn("Spanish");
+		
+		
+	}
+	
 	
 
 	

@@ -67,6 +67,22 @@ public class ServerViewController
 	
 		return testClient;
 	}
+	
+	public void setLangTag(String tag)
+	{
+		langTag = tag;
+	}
+	
+	public void setPropBund(String bund)
+	{
+		propBund = bund;
+	}
+	
+	public void setLanguage(Language lan)
+	{
+		l = lan;
+		setNewText();
+	}
 
 	public void setTestClient(Client testClient)
 	{
