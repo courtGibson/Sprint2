@@ -29,7 +29,7 @@
    <top>
       <VBox prefHeight="142.0" prefWidth="455.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
          <children>
-            <Label contentDisplay="CENTER" text="%unsaved.text" translateX="90.0">
+            <Label fx:id="unsaved" contentDisplay="CENTER" text="%unsaved.text" translateX="90.0">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
@@ -37,7 +37,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="30.0" prefWidth="420.0" text="%exiting.text" translateX="22.0">
+            <Label fx:id="exiting" prefHeight="30.0" prefWidth="420.0" text="%exiting.text" translateX="22.0">
                <font>
                   <Font size="20.0" />
                </font>

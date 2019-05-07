@@ -9,6 +9,7 @@ import fx.homePageView.HomePageViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import software_masters.planner_networking.Client;
@@ -40,6 +41,12 @@ public class CheckSaveController
 	String langTag;
 	String propBund;
 	Language l;
+	
+	@FXML
+	Label unsaved;
+	
+	@FXML
+	Label exiting;
 
 
 	
@@ -68,6 +75,7 @@ public class CheckSaveController
 	public void setLanguage(Language lan)
 	{
 		l = lan;
+		setNewText();
 	}
 
 	/**
@@ -94,6 +102,16 @@ public class CheckSaveController
 		this.dept = dept;
 	}
 
+	public void setNewText()
+	{
+	
+		unsaved.setText(l.getNewWord("unsaved.text"));
+		exiting.setText(l.getNewWord("exiting.text"));
+		checkSave.setText(l.getNewWord("save.text"));
+		checkExit.setText(l.getNewWord("exit.text"));
+
+	}
+	
 	public void exit() throws IOException
 	{
 		
