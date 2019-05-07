@@ -54,11 +54,11 @@ public class CompareViewController
 	@FXML
 	public Text planB;
 	
-	@FXML
-	public Button homePage;
+    @FXML
+    private Button homePage;
 	
 	@FXML
-	public Button logout;
+	private Button logout;
 	
 	@FXML
 	public Text comparePlans;
@@ -108,6 +108,7 @@ public class CompareViewController
 	
 	}
 	
+	@FXML
 	public void logout() throws IOException
 	{
 		System.out.println("logout");
@@ -137,6 +138,7 @@ public class CompareViewController
 
 	}
 
+	@FXML
 	public void homepage() throws IOException
 	{
 		System.out.println("homepage");

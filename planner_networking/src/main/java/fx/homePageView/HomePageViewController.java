@@ -214,6 +214,7 @@ public class HomePageViewController
 		
 		ChoosePlanController cont = loader.getController();
 		cont.setLangTag(langTag);
+		System.out.println("\n\nlangTag: "+langTag);
 		cont.setPropBund(propBund);
 		cont.setLanguage(l);
 

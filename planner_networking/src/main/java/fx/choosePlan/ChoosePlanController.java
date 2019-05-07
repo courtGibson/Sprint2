@@ -280,6 +280,7 @@ public class ChoosePlanController
 
 			loader.setLocation(Main.class.getResource("/fx/compare/compareView.fxml"));
 			loader.setResources(labels);
+			
 			BorderPane newMain = loader.load();
 			
 			CompareViewController cont = loader.getController();
