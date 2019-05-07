@@ -43,10 +43,12 @@ public class CompareViewController
 	PlanFile comparePlan;
 	
 
-	Label dept;
+	String dept;
+	String user;
 	
 
-	Label user;
+	String planAYear;
+	String planBYear;
 	
 	@FXML
 	public Text planA;
@@ -67,8 +69,8 @@ public class CompareViewController
 	{
 		originalPlan = pA;
 		comparePlan = pB;
-		planA.setText(pA.getYear());
-		planB.setText(pB.getYear());
+		System.out.println("planA: "+pA);
+
 	}
 	
 	public void setTestClient(Client testClient)
@@ -163,8 +165,8 @@ public class CompareViewController
 			cont.setPrimaryStage(primaryStage);
 			this.testClient = cont.getTestClient();
 
-			cont.setDept(dept.getText());
-			cont.setUser(user.getText());
+			cont.setDept(dept);
+			cont.setUser(user);
 
 			primaryStage.getScene().setRoot(mainView);
 
@@ -285,7 +287,7 @@ public class CompareViewController
 	 */
 	public void setDept(String deptName)
 	{
-		dept.setText(deptName);
+		dept = deptName;
 	}
 	
 	/**
@@ -293,7 +295,7 @@ public class CompareViewController
 	 */
 	public void setUser(String userName)
 	{
-		user.setText(userName);
+		user = userName;
 	}
 
 

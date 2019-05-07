@@ -217,6 +217,7 @@ public class HomePageViewController
 		System.out.println("\n\nlangTag: "+langTag);
 		cont.setPropBund(propBund);
 		cont.setLanguage(l);
+		cont.setPlan(selectedPlan);
 
 		cont.setTestClient(this.testClient);
 		cont.setPrimaryStage(primaryStage);
