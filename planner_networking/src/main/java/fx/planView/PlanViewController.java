@@ -73,9 +73,33 @@ public class PlanViewController
 
 	@FXML
 	Label user;
+	@FXML 
+	Label userText;
+	@FXML
+	Label deptText;
 
 	@FXML
 	Label dept;
+	
+	@FXML
+	Label planName;
+	
+	@FXML
+	Label planView;
+	
+	@FXML
+	Label contentsText;
+	
+	@FXML
+	Label commentsText;
+	
+	@FXML
+	Label newComText;
+
+	@FXML
+	Label editingTools;
+
+	
 
 	/**
 	 * @return the user
@@ -98,6 +122,29 @@ public class PlanViewController
 	public void setLanguage(Language lan)
 	{
 		l = lan;
+		setNewText();
+	}
+	
+	
+	public void setNewText()
+	{
+	
+		userText.setText(l.getNewWord("username.text"));
+		deptText.setText(l.getNewWord("department.text"));
+		planName.setText(l.getNewWord("planName.text"));
+		planView.setText(l.getNewWord("planView.text"));
+		contentsText.setText(l.getNewWord("contents.text"));
+		commentsText.setText(l.getNewWord("comments.text"));
+		newComText.setText(l.getNewWord("newComment.text"));
+		post.setText(l.getNewWord("postNew.text"));
+		delete.setText(l.getNewWord("deleteComment.text"));
+		homepageButton.setText(l.getNewWord("homePage.text"));
+		logoutButton.setText(l.getNewWord("logout.text"));
+		editingTools.setText(l.getNewWord("editingTools.text"));
+		removeBtn.setText(l.getNewWord("remove.text"));
+		addBtn.setText(l.getNewWord("add.text"));
+		saveBtn.setText(l.getNewWord("save.text"));
+
 	}
 	
 	public void deleteComment()

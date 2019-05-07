@@ -1,6 +1,8 @@
 package fx.choosePlan;
 
 import java.io.IOException;
+import javafx.scene.control.ComboBox;
+
 import java.rmi.AccessException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -98,12 +100,18 @@ public class ChoosePlanController
 	
 	@FXML
 	private Label planYearLabel;
+	@FXML
+	private Label compare;
 	
 
 	String user;
 	
 
 	String dept;
+	@FXML
+	Label selectedPlan;
+	@FXML 
+	private ComboBox<String> compareMenu;
 	
 	public void setDept(String deptName)
 	{
@@ -120,14 +128,13 @@ public class ChoosePlanController
 	public void setNewText()
 	{
 	
-		planSubmitButton.setText(l.getNewWord("submitSelection.text"));
-		userText.setText(l.getNewWord("username.text"));
-		menu.setPromptText(l.getNewWord("password.text"));
-		planSubmitButton.setText(l.getNewWord("submit.text"));
-		deptText.setText(l.getNewWord("department.text"));
-		logoutButton.setText(l.getNewWord("logout.text"));
-		homePage.setText(l.getNewWord("homePage.text"));
-		deptPlans.setText(l.getNewWord("deptPlans.text"));
+		selectedPlan.setText(l.getNewWord("selectedPlan.text"));
+		viewPlanLabel.setText(l.getNewWord("viewPlan.text"));
+		newPlanLabel.setText(l.getNewWord("makeNewPlan.text"));
+		planYearLabel.setText(l.getNewWord("newPlanYear.text"));
+		planSubBtn.setText(l.getNewWord("submit.text"));
+		compare.setText(l.getNewWord("compareTo.text"));
+		compareMenu.setPromptText(l.getNewWord("selectComparePlan.text"));
 
 	}
 	

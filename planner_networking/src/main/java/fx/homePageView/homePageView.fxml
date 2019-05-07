@@ -12,9 +12,9 @@
    <top>
       <HBox prefHeight="65.0" prefWidth="738.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="66.0" prefWidth="201.0" style="-fx-background-color: lightgrey;">
+            <HBox prefHeight="65.0" prefWidth="268.0" style="-fx-background-color: lightgrey;">
                <children>
-                  <Label fx:id="userText" prefHeight="22.0" prefWidth="108.0" text="%username.text" translateX="10.0" translateY="20.0" underline="true">
+                  <Label fx:id="userText" prefHeight="22.0" prefWidth="154.0" text="%username.text" translateX="10.0" translateY="20.0" underline="true">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -26,9 +26,9 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="66.0" prefWidth="268.0" style="-fx-background-color: lightgrey;">
+            <HBox prefHeight="65.0" prefWidth="339.0" style="-fx-background-color: lightgrey;">
                <children>
-                  <Label fx:id="deptText" contentDisplay="CENTER" prefHeight="22.0" prefWidth="121.0" text="%department.text" translateY="20.0" underline="true">
+                  <Label fx:id="deptText" contentDisplay="CENTER" prefHeight="22.0" prefWidth="162.0" text="%department.text" translateY="20.0" underline="true">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -43,7 +43,7 @@
             <HBox prefHeight="66.0" prefWidth="193.0" style="-fx-background-color: lightgrey;" />
             <HBox prefHeight="66.0" prefWidth="157.0" style="-fx-background-color: lightgrey;">
                <children>
-                  <Button id="logoutButton" fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" text="%logout.text" translateX="30.0" translateY="20.0" />
+                  <Button id="logoutButton" fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" text="%logout.text" translateY="20.0" />
                </children>
             </HBox>
          </children>
