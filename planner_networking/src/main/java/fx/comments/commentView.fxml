@@ -28,8 +28,8 @@
               </rowConstraints>
                <children>
                   <RadioButton id="removeComment" fx:id="removeComment" mnemonicParsing="false" prefHeight="18.0" prefWidth="170.0" text="Remove Comment" GridPane.rowIndex="1" />
-                  <RadioButton id="addCommen" fx:id="addComment" mnemonicParsing="false" text="Add Comment" GridPane.rowIndex="2" />
-                <Button mnemonicParsing="false" onAction="#setLabel" prefHeight="27.0" prefWidth="150.0" text="Display Comment" />
+                  <RadioButton id="addComment" fx:id="addComment" mnemonicParsing="false" text="Add Comment" GridPane.rowIndex="2" />
+                <Button id="displayButton" fx:id="displayButton" mnemonicParsing="false" onAction="#setLabel" prefHeight="27.0" prefWidth="150.0" text="Display Comment" />
                </children>
             </GridPane>
          </center>

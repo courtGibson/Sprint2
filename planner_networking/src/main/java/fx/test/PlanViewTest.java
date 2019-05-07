@@ -304,6 +304,7 @@ public class PlanViewTest extends ApplicationTest{
 
 	}
 	
+	@Test
 	public void testComments()
 	{
 		navigateToPage();
@@ -339,7 +340,7 @@ public class PlanViewTest extends ApplicationTest{
 		
 		clickOn("#displayButton");
 		
-		assertEquals(getTextTextArea("#commentLabel"), "This is a Comment");
+		assertEquals(getTextLabel("#commentLabel"), "This is a Comment");
 		
 		clickOn("#removeComment");
 		
