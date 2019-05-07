@@ -23,6 +23,8 @@ public class CompareViewController
 	String propBund;
 	Language l;
 	Stage primaryStage;
+	PlanFile originalPlan;
+	PlanFile comparePlan;
 	
 	@FXML
 	public Text planA;
@@ -39,10 +41,12 @@ public class CompareViewController
 	@FXML
 	public Text comparePlans;
 	
-	public void setPlans(String pA, String pB)
+	public void setPlans(PlanFile pA, PlanFile pB)
 	{
-		planA.setText(pA);
-		planB.setText(pB);
+		originalPlan = pA;
+		comparePlan = pB;
+		planA.setText(pA.getYear());
+		planB.setText(pB.getYear());
 	}
 	
 	public void setTestClient(Client testClient)

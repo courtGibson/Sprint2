@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -13,9 +12,14 @@
    <center>
       <BorderPane prefHeight="529.0" prefWidth="675.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
          <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" translateX="100.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%comparePlan.text" translateX="90.0" translateY="30.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Plan Year" translateX="100.0" translateY="80.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%comparePlan.text" translateX="130.0" translateY="30.0">
                      <font>
                         <Font size="26.0" />
                      </font>
@@ -28,7 +32,11 @@
                               <Button mnemonicParsing="false" text="%logout.text" translateX="60.0" translateY="5.0" />
                            </children>
                         </HBox>
-                        <ComboBox prefWidth="150.0" promptText="%selectPlan.text" translateX="60.0" translateY="25.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Plan Year" translateX="120.0" translateY="45.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
                      </children>
                   </VBox>
                </children>

@@ -171,11 +171,11 @@ public class ChoosePlanController
 		 
 	
             
-	if (count==0)
-	{
-		 compareMenu.setItems(thisArray);
-		 count ++;
-	}
+		if (count==0)
+		{
+			 compareMenu.setItems(thisArray);
+			 count ++;
+		}
 
 	
 	}
@@ -286,6 +286,7 @@ public class ChoosePlanController
 			cont.setLangTag(langTag);
 			cont.setPropBund(propBund);
 			cont.setLanguage(l);
+			cont.setPlans(plan, comparePlan);
 
 			cont.setTestClient(testClient);
 			
