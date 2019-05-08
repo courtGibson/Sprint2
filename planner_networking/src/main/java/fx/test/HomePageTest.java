@@ -21,7 +21,8 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import fx.choosePlan.ChoosePlanController;
 import fx.homePageView.HomePageViewController;
@@ -50,6 +51,8 @@ import javafx.stage.Stage;
 import loginView.LoginViewController;
 import serverView.ServerViewController;
 import software_masters.planner_networking.Client;
+import software_masters.planner_networking.LangEnglish;
+import software_masters.planner_networking.Language;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.PlanFile;
 import software_masters.planner_networking.Server;
@@ -65,6 +68,10 @@ public class HomePageTest extends ApplicationTest
 	private Registry registry;
 	private Stage stage;
 	private HomePageViewController cont;
+	String langTag = "en-US";
+	String propBund = "prop/en";
+	Language l = new LangEnglish();
+
 
 	@Override
 	public void start(Stage stage) throws Exception
@@ -86,10 +93,17 @@ public class HomePageTest extends ApplicationTest
 		testClient.login(username, "user");
 			
 		FXMLLoader loader = new FXMLLoader();
+		Locale locale = Locale.forLanguageTag("en-US");
+		
+		ResourceBundle labels = ResourceBundle.getBundle("prop/en", locale);
+		loader.setResources(labels);
 		loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
 		Scene s = new Scene(loader.load());
 		cont = loader.getController();
 		cont.setUser(username);
+		cont.setLangTag(langTag);
+		cont.setPropBund(propBund);
+		cont.setLanguage(l);
 
 		String deptName = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();
 		System.out.println("deptName: "+deptName);
@@ -98,7 +112,7 @@ public class HomePageTest extends ApplicationTest
 		cont.setUser(username);
 		
 		cont.setPrimaryStage(stage);
-		stage.setWidth(500);
+		stage.setWidth(800);
 		stage.setScene(s);
 		stage.show();
 		
@@ -121,7 +135,7 @@ public class HomePageTest extends ApplicationTest
 	public void testMenu()
 	{
 		//assertEquals(true, ((Node) lookup("#menu")).);
-		assertEquals("Select plan", getComboBoxText("#menu"));
+		assertEquals("Selected Plan:", getComboBoxText("#menu"));
 		clickOn("#menu");
 		
 		//type(KeyCode.DOWN);
@@ -141,8 +155,8 @@ public class HomePageTest extends ApplicationTest
 	private String getComboBoxText(String id)
 	{
 
-		ComboBox<String> c = lookup(id).query();
-		return c.getPromptText();
+		String c = lookup(id).queryComboBox().getPromptText();
+		return c;
 
 	}
 	
