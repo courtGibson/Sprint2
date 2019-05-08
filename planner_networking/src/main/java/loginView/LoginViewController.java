@@ -178,10 +178,12 @@ public class LoginViewController
 		cont.setUser(username);
 
 		String deptName = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();
-
+		Double money = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getBudget();
+		
+		String budget = deptName + " " + money.toString();
 		cont.setTestClient(testClient);
 		System.out.println("deptName: "+deptName);
-		cont.setDept(deptName);
+		cont.setDept(budget);
 		
 		
 		cont.setUser(username);

@@ -58,8 +58,8 @@ public class HomePageViewController
 	
 	public void setDept(String deptName) throws RemoteException
 	{
-		Double money = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getBudget();
-		dept.setText(deptName + " " + money.toString());
+		
+		dept.setText(deptName);
 	}
 	
 	
