@@ -137,12 +137,13 @@ public class DefaultServerSelectionTest extends ApplicationTest
 		clickOn("Spanish");
 		//checkRBText("#localHost", "H\u00F4te Local:");
 		checkRBText("#other", "Otro:");
-		clickOn("#DefaultServerButton");
+		//clickOn("#DefaultServerButton");
 		
 		clickOn("#ServerSubmitButton");
 		//checkRBText("#user", "Nombre de Usuario:");
 		//checkRBText("#pass", "Contrase\u00F1a:");
 		//checkRBText("#login", "Iniciar Sesi\u00F3n");
+
 
 	}
 	
@@ -153,7 +154,7 @@ public class DefaultServerSelectionTest extends ApplicationTest
 		clickOn("French");
 		//checkRBText("#localHost", "H\u00F4te Local:");
 		checkRBText("#other", "Autre:");
-		clickOn("#DefaultServerButton");
+		//clickOn("#DefaultServerButton");
 		
 		clickOn("#ServerSubmitButton");
 		checkRBText("#user", "Nom D'Utilisateur:");
@@ -172,15 +173,7 @@ public class DefaultServerSelectionTest extends ApplicationTest
 		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Submit"));
 		assertThat(lookup("#other").queryAs(Text.class)).hasText("Other:");
 		
-		
-	/*	clickOn("#ServerSubmitButton");
-		cont.setLangTag("en-US");
-		cont.setLanguage(new LangEnglish());
-		cont.setPropBund("prop/en");
-		assertThat(lookup("#login").queryText()).hasText("Login");
-		assertThat(lookup("#user").queryAs(Text.class)).hasText("Username:");
-		assertThat(lookup("#pass").queryAs(Label.class)).hasText("Password:");
-		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Submit"));*/
+
 	}
 	
 	@Test
@@ -194,15 +187,6 @@ public class DefaultServerSelectionTest extends ApplicationTest
 		assertThat(lookup("#selectLang").queryAs(Label.class)).hasText("Seleccione el Idioma:");
 		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Enviar"));
 		assertThat(lookup("#other").queryAs(Text.class)).hasText("Otro:");
-		
-		/*clickOn("#ServerSubmitButton");
-		cont.setLangTag("sp-SP");
-		cont.setLanguage(new LangSpanish());
-		cont.setPropBund("prop/sp");
-		assertThat(lookup("#login").queryText()).hasText("Iniciar Sesi\u00F3n");
-		assertThat(lookup("#user").queryAs(Text.class)).hasText("Nombre de Usuario:");
-		//assertThat(lookup("#pass").queryAs(Label.class)).hasText("Contrase\u00F1a:");
-		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Enviar"));*/
 		
 	
 	}
@@ -220,14 +204,7 @@ public class DefaultServerSelectionTest extends ApplicationTest
 		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Soumettre"));
 		assertThat(lookup("#other").queryAs(Text.class)).hasText("Autre:");
 		
-		/*clickOn("#ServerSubmitButton");
-		cont.setLangTag("fr-FR");
-		cont.setLanguage(new LangFrench());
-		cont.setPropBund("prop/fr");
-		assertThat(lookup("#login").queryText()).hasText("S'Identifier");
-		assertThat(lookup("#user").queryAs(Text.class)).hasText("Username:");
-		assertThat(lookup("#pass").queryAs(Label.class)).hasText("Password:");
-		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Soumettre"));*/
+
 	}
 	
 	

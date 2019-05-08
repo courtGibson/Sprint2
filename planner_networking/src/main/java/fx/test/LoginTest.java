@@ -15,6 +15,8 @@ import java.rmi.NotBoundException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -27,6 +29,8 @@ import javafx.stage.Stage;
 import loginView.LoginViewController;
 import serverView.ServerViewController;
 import software_masters.planner_networking.Client;
+import software_masters.planner_networking.LangEnglish;
+import software_masters.planner_networking.Language;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.Server;
 import software_masters.planner_networking.ServerImplementation;
@@ -76,19 +80,31 @@ public class LoginTest extends ApplicationTest
 	private Stage primaryStage;
 	BorderPane mainView;
 	LoginViewController cont;
+	String langTag = "en-US";
+	String propBund = "prop/en";
+	Language l = new LangEnglish();
 
 	@Override
 	public void start(Stage primaryStage) throws IOException, NotBoundException
 	{
 		this.primaryStage = primaryStage;
 		FXMLLoader loader = new FXMLLoader();
+		Locale locale = Locale.forLanguageTag("en-US");
+		
+		ResourceBundle labels = ResourceBundle.getBundle("prop/en", locale);
+		loader.setResources(labels);
 		loader.setLocation(Main.class.getResource("/serverView/serverView.fxml"));
+		
 		mainView = loader.load();
-
 		
 		ServerViewController cont = loader.getController();
+		cont.setLangTag(langTag);
+		cont.setPropBund(propBund);
+		cont.setLanguage(l);
 		cont.setMainView(mainView);
 		cont.setPrimaryStage(primaryStage);
+		
+
 		
 		Scene s = new Scene(mainView);
 		primaryStage.setScene(s);
@@ -108,11 +124,18 @@ public class LoginTest extends ApplicationTest
 		this.testClient = testClient;
 		
 		FXMLLoader loader2 = new FXMLLoader();
+		Locale locale2 = Locale.forLanguageTag(langTag);
+		
+		ResourceBundle labels2 = ResourceBundle.getBundle(propBund, locale2);
+		loader2.setResources(labels2);
 		loader2.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
 		this.mainView = loader2.load();
 		assertThat(mainView!=null);
 		
 		LoginViewController cont2 = loader2.getController();
+		cont2.setLangTag(langTag);
+		cont2.setPropBund(propBund);
+		cont2.setLanguage(l);
 		cont2.setTestClient(testClient);
 		cont2.setPrimaryStage(primaryStage);
 		cont2.setMainView(mainView);
@@ -143,6 +166,7 @@ public class LoginTest extends ApplicationTest
 		assertThat(cont.getTestClient().getCookie() != null);
 
 	}
+	
 	
 	@Test
 	public void testBadUsernamePassword()

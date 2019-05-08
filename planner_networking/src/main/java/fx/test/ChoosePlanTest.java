@@ -21,6 +21,8 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import fx.choosePlan.ChoosePlanController;
 import javafx.collections.FXCollections;
@@ -47,6 +49,8 @@ import javafx.stage.Stage;
 import loginView.LoginViewController;
 import serverView.ServerViewController;
 import software_masters.planner_networking.Client;
+import software_masters.planner_networking.LangEnglish;
+import software_masters.planner_networking.Language;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.PlanFile;
 import software_masters.planner_networking.Server;
@@ -61,6 +65,9 @@ public class ChoosePlanTest extends ApplicationTest
 	private Server actualServer;
 	private Registry registry;
 	private Stage stage;
+	String langTag = "en-US";
+	String propBund = "prop/en";
+	Language l = new LangEnglish();
 
 	@Override
 	public void start(Stage stage) throws Exception
@@ -69,9 +76,16 @@ public class ChoosePlanTest extends ApplicationTest
 		this.stage = stage;
 
 		FXMLLoader loader = new FXMLLoader();
+		Locale locale = Locale.forLanguageTag("en-US");
+		
+		ResourceBundle labels = ResourceBundle.getBundle("prop/en", locale);
+		loader.setResources(labels);
 		loader.setLocation(Main.class.getResource("/fx/choosePlan/choosePlan.fxml"));
 		Scene s = new Scene(loader.load());
 		ChoosePlanController cont = loader.getController();
+		cont.setLangTag(langTag);
+		cont.setPropBund(propBund);
+		cont.setLanguage(l);
 		
 		
 		registry = LocateRegistry.createRegistry(1077);
@@ -94,7 +108,9 @@ public class ChoosePlanTest extends ApplicationTest
 		cont.setTestClient(testClient);
 		cont.setUser(username);
 		cont.setPrimaryStage(stage);
+		stage.setWidth(700);
 		stage.setScene(s);
+		
 		stage.show();
 			
 	}
