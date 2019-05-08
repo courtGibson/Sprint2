@@ -172,7 +172,7 @@ public class ServerViewController
 		
 		if (hostName.equals("127.0.0.1"))
 		{
-			registry = LocateRegistry.createRegistry(1077);
+			registry = LocateRegistry.createRegistry(1078);
 	
 			ServerImplementation server = ServerImplementation.load();
 			
@@ -182,7 +182,7 @@ public class ServerViewController
 		}
 		else
 		{
-			registry = LocateRegistry.getRegistry(hostName, 1077);
+			registry = LocateRegistry.getRegistry(hostName, 1078);
 			ServerImplementation server = ServerImplementation.load();
 			
 			actualServer = server;

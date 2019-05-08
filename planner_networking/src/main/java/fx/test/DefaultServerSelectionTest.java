@@ -110,10 +110,10 @@ public class DefaultServerSelectionTest extends ApplicationTest
 		checkRBText("#localHost", "Local Host:");
 		checkRBText("#other", "Other:");
 	
+		
 		clickOn("#ServerSubmitButton");
 		
-		clickOn("#selection");
-		clickOn("Spanish");
+		
 		
 		assertTrue(primaryStage.getUserData().toString().contains("loginView"));
 		
@@ -127,6 +127,41 @@ public class DefaultServerSelectionTest extends ApplicationTest
 		assertThat(cont.getTestClient().getCookie() != null);
 		
 	}
+	
+	
+	
+	@Test
+	public void checkDefaultConnectSpanish()
+	{
+		clickOn("#selection");
+		clickOn("Spanish");
+		//checkRBText("#localHost", "H\u00F4te Local:");
+		checkRBText("#other", "Otro:");
+		clickOn("#DefaultServerButton");
+		
+		clickOn("#ServerSubmitButton");
+		//checkRBText("#user", "Nombre de Usuario:");
+		//checkRBText("#pass", "Contrase\u00F1a:");
+		//checkRBText("#login", "Iniciar Sesi\u00F3n");
+
+	}
+	
+	@Test
+	public void checkDefaultConnectFrench()
+	{
+		clickOn("#selection");
+		clickOn("French");
+		//checkRBText("#localHost", "H\u00F4te Local:");
+		checkRBText("#other", "Autre:");
+		clickOn("#DefaultServerButton");
+		
+		clickOn("#ServerSubmitButton");
+		checkRBText("#user", "Nom D'Utilisateur:");
+		checkRBText("#pass", "Mot de Passe:");
+		checkRBText("#login", "S'Identifier");
+
+	}
+	
 	
 	@Test
 	public void checkLanguageEng()
