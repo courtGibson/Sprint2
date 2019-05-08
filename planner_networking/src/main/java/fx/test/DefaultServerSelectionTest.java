@@ -29,6 +29,8 @@ import javafx.stage.Stage;
 import serverView.ServerViewController;
 import software_masters.planner_networking.Client;
 import software_masters.planner_networking.LangEnglish;
+import software_masters.planner_networking.LangFrench;
+import software_masters.planner_networking.LangSpanish;
 import software_masters.planner_networking.Language;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.Server;
@@ -60,9 +62,9 @@ public class DefaultServerSelectionTest extends ApplicationTest
 		Locale locale = Locale.forLanguageTag(langTag);
 		
 		ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
-
-		loader.setLocation(Main.class.getResource("/serverView/serverView.fxml"));
 		loader.setResources(labels);
+		loader.setLocation(Main.class.getResource("/serverView/serverView.fxml"));
+		
 
 		mainView = loader.load();
 
@@ -110,7 +112,11 @@ public class DefaultServerSelectionTest extends ApplicationTest
 	
 		clickOn("#ServerSubmitButton");
 		
+		clickOn("#selection");
+		clickOn("Spanish");
+		
 		assertTrue(primaryStage.getUserData().toString().contains("loginView"));
+		
 		
 		assertThat(cont.getTestClient().getCookie() == null);
 		clickOn("#UsernameTextField");
@@ -123,7 +129,7 @@ public class DefaultServerSelectionTest extends ApplicationTest
 	}
 	
 	@Test
-	public void checkLanguage()
+	public void checkLanguageEng()
 	{		
 		assertThat(lookup("#servSelect").queryText()).hasText("Server Selection");
 		assertThat(lookup("#localHost").queryAs(Text.class)).hasText("Local Host:");
@@ -131,16 +137,62 @@ public class DefaultServerSelectionTest extends ApplicationTest
 		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Submit"));
 		assertThat(lookup("#other").queryAs(Text.class)).hasText("Other:");
 		
+		
+	/*	clickOn("#ServerSubmitButton");
+		cont.setLangTag("en-US");
+		cont.setLanguage(new LangEnglish());
+		cont.setPropBund("prop/en");
+		assertThat(lookup("#login").queryText()).hasText("Login");
+		assertThat(lookup("#user").queryAs(Text.class)).hasText("Username:");
+		assertThat(lookup("#pass").queryAs(Label.class)).hasText("Password:");
+		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Submit"));*/
+	}
+	
+	@Test
+	public void checkLanguageSpa()
+	{
 		clickOn("#selection");
 		clickOn("Spanish");
 		
 		assertThat(lookup("#servSelect").queryText()).hasText("Selecci\u00F3n de Servidor");
-		//assertThat(lookup("#localHost").queryAs(Text.class)).hasText("Anfitri\u00F3n Local:");
+		assertThat(lookup("#localHost").queryAs(Text.class)).hasText("Anfitri\u00F3n Local:");
 		assertThat(lookup("#selectLang").queryAs(Label.class)).hasText("Seleccione el Idioma:");
 		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Enviar"));
 		assertThat(lookup("#other").queryAs(Text.class)).hasText("Otro:");
 		
+		/*clickOn("#ServerSubmitButton");
+		cont.setLangTag("sp-SP");
+		cont.setLanguage(new LangSpanish());
+		cont.setPropBund("prop/sp");
+		assertThat(lookup("#login").queryText()).hasText("Iniciar Sesi\u00F3n");
+		assertThat(lookup("#user").queryAs(Text.class)).hasText("Nombre de Usuario:");
+		//assertThat(lookup("#pass").queryAs(Label.class)).hasText("Contrase\u00F1a:");
+		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Enviar"));*/
 		
+	
+	}
+	
+	@Test
+	public void checkLanguageFre()
+	{
+		clickOn("#selection");
+		clickOn("French");
+		
+		
+		assertThat(lookup("#servSelect").queryText()).hasText("S\u00E9lection du Serveur");
+		assertThat(lookup("#localHost").queryAs(Text.class)).hasText("H\u00F4te Local:");
+		assertThat(lookup("#selectLang").queryAs(Label.class)).hasText("Choisir la Langue:");
+		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Soumettre"));
+		assertThat(lookup("#other").queryAs(Text.class)).hasText("Autre:");
+		
+		/*clickOn("#ServerSubmitButton");
+		cont.setLangTag("fr-FR");
+		cont.setLanguage(new LangFrench());
+		cont.setPropBund("prop/fr");
+		assertThat(lookup("#login").queryText()).hasText("S'Identifier");
+		assertThat(lookup("#user").queryAs(Text.class)).hasText("Username:");
+		assertThat(lookup("#pass").queryAs(Label.class)).hasText("Password:");
+		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Soumettre"));*/
 	}
 	
 	

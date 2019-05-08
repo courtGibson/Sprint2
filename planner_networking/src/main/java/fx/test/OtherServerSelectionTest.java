@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import org.assertj.core.api.Assertions;
 import org.junit.After;
@@ -26,6 +28,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import serverView.ServerViewController;
 import software_masters.planner_networking.Client;
+import software_masters.planner_networking.LangEnglish;
+import software_masters.planner_networking.Language;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.Server;
 import software_masters.planner_networking.ServerImplementation;
@@ -42,7 +46,9 @@ public class OtherServerSelectionTest extends ApplicationTest
 	private Stage primaryStage;
 	BorderPane mainView;
 	ServerViewController cont;
-	
+	String langTag = "en-US";
+	String propBund = "prop/en";
+	Language l = new LangEnglish();
 
 	
 	@Override
@@ -50,6 +56,10 @@ public class OtherServerSelectionTest extends ApplicationTest
 	{
 		this.primaryStage = primaryStage;
 		FXMLLoader loader = new FXMLLoader();
+		Locale locale = Locale.forLanguageTag(langTag);
+		
+		ResourceBundle labels = ResourceBundle.getBundle(propBund, locale);
+		loader.setResources(labels);
 		loader.setLocation(Main.class.getResource("/serverView/serverView.fxml"));
 		mainView = loader.load();
 
@@ -57,6 +67,9 @@ public class OtherServerSelectionTest extends ApplicationTest
 		ServerViewController cont = loader.getController();
 		cont.setMainView(mainView);
 		cont.setPrimaryStage(primaryStage);
+		cont.setLangTag(langTag);
+		cont.setPropBund(propBund);
+		cont.setLanguage(l);
 		
 		Scene s = new Scene(mainView);
 		primaryStage.setScene(s);
@@ -91,8 +104,8 @@ public class OtherServerSelectionTest extends ApplicationTest
 		
 		clickOn("#OtherServerButton");
 		
-		checkRBText("#localText", "Default: Local Host");
-		checkRBText("#otherText", "Other:");
+		checkRBText("#localHost", "Local Host:");
+		checkRBText("#other", "Other:");
 		
 		clickOn("#OtherServerTextField");
 		write("127.0.0.1");
