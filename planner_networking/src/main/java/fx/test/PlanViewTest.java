@@ -38,7 +38,9 @@ import software_masters.planner_networking.PlanNode;
 import software_masters.planner_networking.Server;
 import software_masters.planner_networking.ServerImplementation;
 
-
+import java.lang.Object;
+import java.lang.Number;
+import java.lang.Double;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.testfx.assertions.api.Assertions.assertThat;
@@ -140,8 +142,11 @@ public class PlanViewTest extends ApplicationTest{
 	{
 		//Want to show the last node of a standard plan exists
 		navigateToPage();
-		
-		
+		Double ten = 10.0;
+		Double zero = 0.0;
+		Double seven = 7.0;
+		Double three = 3.0;
+		Double twentyFour = 24.0;
 		clickOn("Mission");
 		doubleClickOn("Mission");
 		doubleClickOn("Goal");
@@ -177,14 +182,14 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("#tree");
 		clickOn("Goal");
 		
-		assertEquals(testClient.getCurrNode().getChildren().get(0).getBudget(), 0.0);
+		assertEquals(testClient.getCurrNode().getChildren().get(0).getBudget(), zero);
 		
 		doubleClickOn("#budgetField");
 		write("11.0");
 		clickOn("#budgetButton");
 		clickOn("Goal");
 		
-		assertEquals(testClient.getCurrNode().getChildren().get(0).getBudget(), 0.0);
+		assertEquals(testClient.getCurrNode().getChildren().get(0).getBudget(), zero);
 		
 		doubleClickOn("#budgetField");
 		write("3.0");
@@ -192,7 +197,7 @@ public class PlanViewTest extends ApplicationTest{
 		
 		clickOn("Goal");
 		
-		assertEquals(testClient.getCurrNode().getBudget(), 3.0);
+		assertEquals(testClient.getCurrNode().getBudget(), three);
 		
 		
 		// check budget Planfile change
@@ -203,8 +208,8 @@ public class PlanViewTest extends ApplicationTest{
 		write("26.0");
 		clickOn("#budgetButton");
 		
-		assertEquals(testClient.getCurrPlanFile().getBudget(), 10.0);
-		assertEquals(testClient.getCurrNode().getBudget(), 10.0);
+		assertEquals(testClient.getCurrPlanFile().getBudget(), ten);
+		assertEquals(testClient.getCurrNode().getBudget(), ten);
 		
 		clickOn("Mission");
 		
@@ -212,17 +217,17 @@ public class PlanViewTest extends ApplicationTest{
 		write("24.0");
 		clickOn("#budgetButton");
 		
-		assertEquals(testClient.getCurrPlanFile().getBudget(), 24.0);
-		assertEquals(testClient.getCurrNode().getBudget(), 24.0);
+		assertEquals(testClient.getCurrPlanFile().getBudget(), twentyFour);
+		assertEquals(testClient.getCurrNode().getBudget(), twentyFour);
 		
 		clickOn("Mission");
 		
 		doubleClickOn("#budgetField");
 		write("10.0");
 		clickOn("#budgetButton");
-		
-		assertEquals(testClient.getCurrPlanFile().getBudget(), 10.0);
-		assertEquals(testClient.getCurrNode().getBudget(), 10.0);
+	
+		assertEquals(testClient.getCurrPlanFile().getBudget(), ten);
+		assertEquals(testClient.getCurrNode().getBudget(), ten);
 		
 		
 		
@@ -245,21 +250,27 @@ public class PlanViewTest extends ApplicationTest{
 		assertEquals(thisTree.getRoot().getChildren().size(), 2);
 		
 		clickOn("Goal");
-		press(KeyCode.DOWN);
 		
+		press(KeyCode.DOWN);
+		release(KeyCode.DOWN);
+		this.sleep(200);
 		
 		doubleClickOn("#budgetField");
+
+		
 		write("8.0");
 		clickOn("#budgetButton");
 		
-		assertEquals(testClient.getCurrNode().getParent().getChildren().get(1).getBudget(), 0.0);
+		assertEquals(testClient.getCurrNode().getParent().getChildren().get(1).getBudget(), zero);
 		
 		
 		doubleClickOn("#budgetField");
+
+		clickOn("#budgetField");
 		write("7.0");
 		clickOn("#budgetButton");
 		
-		assertEquals(testClient.getCurrNode().getParent().getChildren().get(1).getBudget(), 7.0);
+		assertEquals(testClient.getCurrNode().getParent().getChildren().get(1).getBudget(), seven);
 		
 		clickOn("Goal");
 		clickOn("#removeBtn");
@@ -274,7 +285,7 @@ public class PlanViewTest extends ApplicationTest{
 		
 		
 		doubleClickOn("Goal");
-		assertEquals(testClient.getCurrNode().getParent().getChildren().get(0).getBudget(), 7.0);
+		assertEquals(testClient.getCurrNode().getParent().getChildren().get(0).getBudget(), seven);
 
 		doubleClickOn("Learning Objective");
 		doubleClickOn("Assessment Process");
@@ -296,7 +307,7 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("Mission");
 		doubleClickOn("Mission");
 		doubleClickOn("Goal");
-		assertEquals(testClient.getCurrNode().getChildren().get(0).getBudget(), 7.0);
+		assertEquals(testClient.getCurrNode().getChildren().get(0).getBudget(), seven);
 		doubleClickOn("Learning Objective");
 		doubleClickOn("Assessment Process");
 		
@@ -323,7 +334,7 @@ public class PlanViewTest extends ApplicationTest{
 		clickOn("#contents");
 		
 		assertEquals(getTextTextArea("#contents"), "Check save");
-		assertEquals(testClient.getCurrNode().getBudget(), 10.0);
+		assertEquals(testClient.getCurrNode().getBudget(), ten);
 		
 		clickOn("#logoutButton");
 		
@@ -354,8 +365,8 @@ public class PlanViewTest extends ApplicationTest{
 		
 		assertEquals(getTextTextArea("#contents"), "Check save");
 		
-		assertEquals(testClient.getCurrPlanFile().getBudget(), 10.0);
-		assertEquals(testClient.getCurrNode().getBudget(), 10.0);
+		assertEquals(testClient.getCurrPlanFile().getBudget(), ten);
+		assertEquals(testClient.getCurrNode().getBudget(), ten);
 		
 	}
 	
