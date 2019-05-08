@@ -22,6 +22,7 @@ public class Client
 	private PlanNode currNode;
 	private Server server;
 	private ArrayList<PlanFile> deptPlans;
+	private Plan currPlan;
 
 	/**
 	 * Sets the client's server.
@@ -87,6 +88,7 @@ public class Client
 	 */
 	public void pushPlan(PlanFile plan) throws IllegalArgumentException, RemoteException
 	{
+		
 		server.savePlan(plan, this.cookie);
 	}
 
@@ -245,6 +247,16 @@ public class Client
 	public void setServer(Server server)
 	{
 		this.server = server;
+	}
+	
+	public void setPlan(Plan p)
+	{
+		this.currPlan = p;
+	}
+	
+	public Plan getPlan()
+	{
+		return this.currPlan;
 	}
 
 	public ArrayList<PlanFile> getPlans() throws RemoteException
