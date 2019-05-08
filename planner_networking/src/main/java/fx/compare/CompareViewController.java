@@ -201,6 +201,7 @@ public class CompareViewController
 
 
 			TreeItem<PlanNode> theRoot = makeTree(originalPlan);
+			theRoot.setExpanded(true);
 
 			tree1.setRoot(theRoot);
 
@@ -210,6 +211,8 @@ public class CompareViewController
 			planA.setText(originalPlan.getYear());
 			
 			TreeItem<PlanNode> theRoot2 = makeTree(comparePlan);
+			theRoot2.setExpanded(true);
+
 
 			tree2.setRoot(theRoot2);
 
@@ -438,6 +441,7 @@ public class CompareViewController
 	{
 
 		TreeItem<PlanNode> rootItem = getProducts(p.getPlan().getRoot());
+		rootItem.setExpanded(true);
 
 		return rootItem;
 
@@ -473,7 +477,7 @@ public class CompareViewController
 		{
 			TreeItem<PlanNode> newChild = new TreeItem<PlanNode>(parentNode.getChildren().get(i));
 			
-			
+			newChild.setExpanded(true);
 			
 			//System.out.println("new graphic: "+newChild.getGraphic());
 			parentTreeItem.getChildren().add(newChild);
