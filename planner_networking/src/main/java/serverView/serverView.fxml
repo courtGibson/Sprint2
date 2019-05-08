@@ -100,7 +100,7 @@
                         <Font size="31.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="selection" onAction="#setLanguage" onMouseClicked="#makeMenu" prefHeight="31.0" prefWidth="171.0" promptText="Default: English" translateX="100.0" translateY="25.0" />
+                  <ComboBox id="selection" fx:id="selection" onAction="#setLanguage" onMouseClicked="#makeMenu" prefHeight="31.0" prefWidth="171.0" promptText="Default: English" translateX="100.0" translateY="25.0" />
                </children>
             </HBox>
             <Label id="errorLabel" fx:id="error" opacity="0.0" text="Please enter a valid server." textFill="#e54109" translateX="180.0" translateY="40.0">
