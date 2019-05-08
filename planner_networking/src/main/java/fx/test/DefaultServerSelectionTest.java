@@ -88,7 +88,6 @@ public class DefaultServerSelectionTest extends ApplicationTest
 	public void checkRBText(String id, String val)
 	{
 		assertThat(lookup(id).queryAs(Text.class)).hasText(val);
-	
 	}
 	
 
@@ -106,8 +105,8 @@ public class DefaultServerSelectionTest extends ApplicationTest
 		
 		clickOn("#DefaultServerButton");
 		
-		checkRBText("#localText", "Default: Local Host");
-		checkRBText("#otherText", "Other:");
+		checkRBText("#localHost", "Local Host:");
+		checkRBText("#other", "Other:");
 	
 		clickOn("#ServerSubmitButton");
 		
@@ -125,30 +124,21 @@ public class DefaultServerSelectionTest extends ApplicationTest
 	
 	@Test
 	public void checkLanguage()
-	{
-		//Text s = lookup("#servSelection").queryText()
-		//checkRBText("#servSelect", "Server Selection");
-		
-		System.out.println("servSelect1: "+lookup("#servSelect"));
-		//System.out.println("servSelect2: "+lookup("#servSelect").queryAs(Text.class)).hasText("Server Selection"));
-		String t = mainView.lookup("#servSelect").getAccessibleText();
-		//System.out.println("servSelect3: "+t.contains("Server Selection"));
-		//System.out.println("servSelect3: "+mainView.lookup("#servSelect").getText());
-
-		//System.out.println("servSelect4: "+lookup("#servSelect").queryAs(Text.class));
-		//System.out.println("servSelect: "+lookup("#servSelect").queryAs(Text.class)).hasText("Local Host:");
-		
-		
+	{		
 		assertThat(lookup("#servSelect").queryText()).hasText("Server Selection");
 		assertThat(lookup("#localHost").queryAs(Text.class)).hasText("Local Host:");
 		assertThat(lookup("#selectLang").queryAs(Label.class)).hasText("Select Language:");
 		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Submit"));
-		
-
 		assertThat(lookup("#other").queryAs(Text.class)).hasText("Other:");
 		
 		clickOn("#selection");
 		clickOn("Spanish");
+		
+		assertThat(lookup("#servSelect").queryText()).hasText("Selecci\u00F3n de Servidor");
+		//assertThat(lookup("#localHost").queryAs(Text.class)).hasText("Anfitri\u00F3n Local:");
+		assertThat(lookup("#selectLang").queryAs(Label.class)).hasText("Seleccione el Idioma:");
+		assertThat(lookup("#ServerSubmitButton").queryButton().getText().contentEquals("Enviar"));
+		assertThat(lookup("#other").queryAs(Text.class)).hasText("Otro:");
 		
 		
 	}
