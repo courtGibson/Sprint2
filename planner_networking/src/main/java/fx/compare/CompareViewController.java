@@ -262,40 +262,11 @@ public class CompareViewController
 			//System.out.println("lenCh1 < lenCh2");
 			for (int i = 0; i<lenCh1; i++)
 			{
-				 String d1 = root1.getChildren().get(i).getValue().getData();
-				 String d2 = root2.getChildren().get(i).getValue().getData();
-				 
-				//Node n1 = root1.getChildren().get(i).g;
-				 
-				 if(d1==null && d2==null)
-				 {
-					 //do nothing
-				 }
-				 else if((d1==null && d2!=null) || (d1!=null && d2==null) || !d1.equals(d2))
-				 {
-					 /*TreeCell<TreeItem> cell1 = findCellByItem(root1.getChildren().get(i), tree1);
 
-					 TreeCell<TreeItem> cell2 = findCellByItem(root1.getChildren().get(i), tree1);
-					 //System.out.println("root1 graphic: "+root1.getChildren().get(i).getGraphic());
-					 cell1.setStyle("-fx-background-color: yellow");
-					 cell2.setStyle("-fx-background-color: yellow");
-					 //System.out.println("yellow color set");*/
-					 ImageView im1 = new ImageView();
-					 im1.setImage(treeItemImage);
-					 im1.setFitHeight(20);
-					 im1.setFitWidth(20);
-					 ImageView im2 = new ImageView();
-					 im2.setImage(treeItemImage);
-					 im2.setFitHeight(20);
-					 im2.setFitWidth(20);
-					 
-					 root1.getChildren().get(i).setGraphic(im1);
-					 root2.getChildren().get(i).setGraphic(im2);
-				 }
-				 
+				
 				 compareTrees(root1.getChildren().get(i), root2.getChildren().get(i));
-				 
-			}
+			} 
+
 			
 			for (int i = lenCh1-1; i < lenCh2; i++)
 			{
@@ -313,37 +284,11 @@ public class CompareViewController
 			//System.out.println("lenCh1 > lenCh2");
 			for (int i = 0; i<lenCh2; i++)
 			{
-				 String d1 = root1.getChildren().get(i).getValue().getData();
-				 String d2 = root2.getChildren().get(i).getValue().getData();
-				 
-				 if(d1==null && d2==null)
-				 {
-					 //do nothing
-				 }
-				 else if((d1==null && d2!=null) || (d1!=null && d2==null) || !d1.equals(d2))
-				 {
-					 /*TreeCell<PlanNode> cell1 = findCellByItem(root1.getChildren().get(i), tree1);
-
-					 TreeCell<TreeItem> cell2 = findCellByItem(root1.getChildren().get(i), tree1);
-					 //System.out.println("root1 graphic: "+root1.getChildren().get(i).getGraphic());
-					 cell1.setStyle("-fx-background-color: yellow");
-					 cell2.setStyle("-fx-background-color: yellow");*/
-					 ImageView im1 = new ImageView();
-					 im1.setImage(treeItemImage);
-					 im1.setFitHeight(20);
-					 im1.setFitWidth(20);
-					 ImageView im2 = new ImageView();
-					 im2.setImage(treeItemImage);
-					 im2.setFitHeight(20);
-					 im2.setFitWidth(20);
-					 
-					 root1.getChildren().get(i).setGraphic(im1);
-					 root2.getChildren().get(i).setGraphic(im2);
-				 }
-				 
+	
 				 compareTrees(root1.getChildren().get(i), root2.getChildren().get(i));
 				 
 			}
+
 			
 			for (int i = lenCh2-1; i < lenCh1; i++)
 			{
@@ -363,47 +308,17 @@ public class CompareViewController
 			//System.out.println("lenCh1 == lenCh2");
 			for (int i = 0; i<lenCh1; i++)
 			{
-				 String d1 = root1.getChildren().get(i).getValue().getData();
-				 String d2 = root2.getChildren().get(i).getValue().getData();
-				// System.out.println("d1: "+d1);
-				// System.out.println("d2: "+d2);
-				
-				 if(d1==null && d2==null)
-				 {
-					 //do nothing
-				 }
-				 else if((d1==null && d2!=null) || (d1!=null && d2==null) || !d1.equals(d2))
-				 {
-					 
-					 //TreeCell<TreeItem> cell1 = findCellByItem(root1.getChildren().get(i), tree1);
-
-					 //TreeCell<TreeItem> cell2 = findCellByItem(root1.getChildren().get(i), tree1);
-					 ImageView im1 = new ImageView();
-					 im1.setImage(treeItemImage);
-					 im1.setFitHeight(20);
-					 im1.setFitWidth(20);
-					 ImageView im2 = new ImageView();
-					 im2.setImage(treeItemImage);
-					 im2.setFitHeight(20);
-					 im2.setFitWidth(20);
-					 
-					 root1.getChildren().get(i).setGraphic(im1);
-					 root2.getChildren().get(i).setGraphic(im2);
-					 
-					 //System.out.println("root1 graphic: "+root1.getChildren().get(i).getGraphic());
-					 //cell1.setStyle("-fx-background-color: yellow");
-					 //cell2.setStyle("-fx-background-color: yellow");
-				 }
-				
-				 
-				 compareTrees(root1.getChildren().get(i), root2.getChildren().get(i));
-				 
+	
+				compareTrees(root1.getChildren().get(i), root2.getChildren().get(i));
 			}
+ 
+				 
 		}
-		
+	}
+	
 
 		
-	}
+	
 	
 	
 	
