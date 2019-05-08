@@ -92,8 +92,11 @@ public class HomePageTest extends ApplicationTest
 		cont.setUser(username);
 
 		String deptName = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();
+		
+		Double money = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getBudget();
+	
 		System.out.println("deptName: "+deptName);
-		cont.setDept(deptName);
+		cont.setDept(deptName + " " + money.toString());
 		cont.setTestClient(testClient);
 		cont.setUser(username);
 		
