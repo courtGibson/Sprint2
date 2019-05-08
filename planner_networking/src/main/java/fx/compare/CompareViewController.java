@@ -274,7 +274,7 @@ public class CompareViewController
 				im1.setImage(treeItemImage);
 				im1.setFitHeight(20);
 				im1.setFitWidth(20);
-				 root1.getChildren().get(i).setGraphic(im1);
+				root1.getChildren().get(i).setGraphic(im1);
 				//root2.getChildren().get(i).getGraphic().setStyle("-fx-background-color: orange");
 				//System.out.println("orange color set");
 			}
