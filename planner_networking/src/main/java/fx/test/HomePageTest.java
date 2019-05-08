@@ -166,7 +166,7 @@ public class HomePageTest extends ApplicationTest
 	{
 		// labels based on what client is logged on
 		assertEquals(getTextLabel("#user"), "user");
-		assertEquals(getTextLabel("#dept"), "default");
+		assertEquals(getTextLabel("#dept"), "default 25.0");
 		
 		
 	}
